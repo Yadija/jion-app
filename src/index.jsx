@@ -1,10 +1,63 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <BrowserRouter>
+    <StrictMode>
+      <App />
+    </StrictMode>
+  </BrowserRouter>,
 );
+
+/**
+ * @TODO home page
+ */
+
+/**
+ * @TODO detail page
+ */
+
+/**
+ * @TODO navigation
+ */
+
+/**
+ * @TODO not found page
+ */
+
+/**
+ * @TODO season page by year and season
+ */
+
+/**
+ * @TODO top page
+ */
+
+/**
+ * @TODO recommendations page
+ */
+
+/**
+ * @TODO random page
+ */
+
+/**
+ * @TODO producers page
+ */
+
+/**
+ * @TODO search page
+ */
+
+/**
+ * @TODO characters page
+ */
+
+/**
+ * @TODO add loading while isPreload is true
+ */

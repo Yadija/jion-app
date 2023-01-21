@@ -22,6 +22,7 @@
     "rules": {
         "linebreak-style": "off",
         "no-alert": "off",
+        "no-plusplus": "off",
         "no-underscore-dangle": "off",
         "import/prefer-default-export": "off",
         "react/jsx-filename-extension": "off",
