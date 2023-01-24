@@ -4,9 +4,13 @@ import { trimTitle } from '../utils';
 
 function CardItem({ title, images }) {
   return (
-    <div className="rounded-lg overflow-hidden bg-merino" title={title}>
-      <img src={images.jpg.image_url} alt={title} className="h-[260px] object-center object-cover w-full" />
-      <h2 className="text-center font-semibold p-0.5">{trimTitle(title, 12)}</h2>
+    <div className="select-none overflow-hidden rounded-lg bg-merino" title={title}>
+      <img
+        src={images.jpg.image_url}
+        alt={title}
+        className="pointer-events-none h-[260px] w-full object-cover object-center"
+      />
+      <h2 className="p-0.5 text-center font-semibold">{trimTitle(title, 12)}</h2>
     </div>
   );
 }

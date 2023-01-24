@@ -25,7 +25,7 @@ function UpcomingPage() {
 
   return (
     <div className="px-16 xs:px-12">
-      <h1 className="font-bold text-center pt-8 mb-4 text-2xl text-white">Upcoming</h1>
+      <h1 className="mb-4 pt-8 text-center text-2xl font-bold text-white">Upcoming</h1>
       <CardsList data={seasonUpcoming} />
       <Pagination pagination={paginationUpcoming} onUpdate={onUpdateHandler} />
     </div>

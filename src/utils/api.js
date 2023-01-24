@@ -14,7 +14,4 @@ async function getSeasonUpcoming(page = 1) {
   return responseJson;
 }
 
-export {
-  getSeasonNow,
-  getSeasonUpcoming,
-};
+export { getSeasonNow, getSeasonUpcoming };
