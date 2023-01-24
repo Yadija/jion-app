@@ -10,6 +10,12 @@ function Pagination({ pagination, onUpdate }) {
 
   const listPagination = [];
 
+  /**
+   * TODO ubah agar pagination tidak memiliki panjang lebih dari 5
+   * 1. memiliki 5 pagination
+   * 2. ketika ditengah atur agar tetap ditengah
+   */
+
   for (let i = 1; i <= lastVisiblePage; i++) {
     const className = i === currentPage ? 'text-cyan-500' : '';
     listPagination.push(
