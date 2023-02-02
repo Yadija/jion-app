@@ -1,17 +1,24 @@
-const BASE_URL = 'https://api.jikan.moe/v4';
+const api = (() => {
+  const BASE_URL = 'https://api.jikan.moe/v4';
 
-async function getSeasonNow(page = 1) {
-  const response = await fetch(`${BASE_URL}/seasons/now?page=${page}`);
-  const responseJson = await response.json();
+  async function getSeasonNow(page = 1) {
+    const response = await fetch(`${BASE_URL}/seasons/now?page=${page}`);
+    const responseJson = await response.json();
 
-  return responseJson;
-}
+    return responseJson;
+  }
 
-async function getSeasonUpcoming(page = 1) {
-  const response = await fetch(`${BASE_URL}/seasons/upcoming?page=${page}`);
-  const responseJson = await response.json();
+  async function getSeasonUpcoming(page = 1) {
+    const response = await fetch(`${BASE_URL}/seasons/upcoming?page=${page}`);
+    const responseJson = await response.json();
 
-  return responseJson;
-}
+    return responseJson;
+  }
 
-export { getSeasonNow, getSeasonUpcoming };
+  return {
+    getSeasonNow,
+    getSeasonUpcoming,
+  };
+})();
+
+export default api;

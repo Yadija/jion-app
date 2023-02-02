@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import SlideShow from '../components/SlideShow';
-import { getSeasonNow, getSeasonUpcoming } from '../utils/api';
+import { asyncReceiveNow } from '../states/now/action';
+import { asyncReceiveUpcoming } from '../states/upcoming/action';
 
 function HomePage() {
-  const [seasonNow, setSeasonNow] = useState([]);
-  const [seasonUpcoming, setSeasonUpcoming] = useState([]);
+  const {
+    now = {},
+    upcoming = {},
+  } = useSelector((states) => states);
+
+  const { data: seasonNow = [] } = now;
+  const { data: seasonUpcoming = [] } = upcoming;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getSeasonNow().then(({ data }) => {
-      setSeasonNow(data);
-    });
-    getSeasonUpcoming().then(({ data }) => {
-      setSeasonUpcoming(data);
-    });
-  }, []);
+    dispatch(asyncReceiveNow());
+    dispatch(asyncReceiveUpcoming());
+  }, [dispatch]);
 
   return (
     <>

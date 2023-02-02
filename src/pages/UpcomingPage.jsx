@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import CardsList from '../components/CardsList';
 import Pagination from '../components/Pagination';
-import { getSeasonUpcoming } from '../utils/api';
+import { asyncReceiveUpcoming } from '../states/upcoming/action';
 
 function UpcomingPage() {
-  const [seasonUpcoming, setSeasonUpcoming] = useState([]);
-  const [paginationUpcoming, setPaginationUpcoming] = useState({});
+  const { data = [], pagination = {} } = useSelector((states) => states.upcoming);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getSeasonUpcoming().then(({ data, pagination }) => {
-      setSeasonUpcoming(data);
-      setPaginationUpcoming(pagination);
-    });
-  }, []);
+    dispatch(asyncReceiveUpcoming());
+  }, [dispatch]);
 
   const onUpdateHandler = async (page) => {
-    const { data, pagination } = await getSeasonUpcoming(page);
-    setSeasonUpcoming(data);
-    setPaginationUpcoming(pagination);
+    dispatch(asyncReceiveUpcoming(page));
 
     // document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
-
   return (
     <div className="px-16 xs:px-12">
       <h1 className="mb-4 pt-8 text-center text-2xl font-bold text-white">Upcoming</h1>
-      <CardsList data={seasonUpcoming} />
-      <Pagination pagination={paginationUpcoming} onUpdate={onUpdateHandler} />
+      <CardsList data={data} />
+      <Pagination pagination={pagination} onUpdate={onUpdateHandler} />
     </div>
   );
 }
