@@ -15,7 +15,7 @@ root.render(
 );
 
 /**
- * @TODO home page
+ * @TODO home page // done
  */
 
 /**

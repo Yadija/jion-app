@@ -9,8 +9,8 @@ function SlideShow({ data }) {
   return (
     <Carousel
       autoPlay
-      autoPlaySpeed={3000}
-      customTransition="all 1s linear"
+      autoPlaySpeed={4000}
+      customTransition="all .7s ease-out"
       containerClass="carousel-container"
       draggable
       dotListClass="custom-dot-list-style"
