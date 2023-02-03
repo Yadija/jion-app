@@ -8,12 +8,9 @@ import { asyncReceiveUpcoming } from '../states/upcoming/action';
 
 function HomePage() {
   const {
-    now = {},
-    upcoming = {},
+    now: { data: seasonNow = [] },
+    upcoming: { data: seasonUpcoming = [] },
   } = useSelector((states) => states);
-
-  const { data: seasonNow = [] } = now;
-  const { data: seasonUpcoming = [] } = upcoming;
 
   const dispatch = useDispatch();
 
@@ -25,7 +22,7 @@ function HomePage() {
   return (
     <>
       <Navigation />
-      <section className="mx-16 xs:mx-12 pb-10">
+      <section className="mx-16 pb-10 xs:mx-12">
         <article>
           <div className="mx-2 mb-2 flex justify-between pt-4 text-white">
             <h2 className="text-xl font-bold">Now</h2>
