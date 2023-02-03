@@ -15,9 +15,25 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getTopAnime(page = 1) {
+    const response = await fetch(`${BASE_URL}/top/anime?page=${page}`);
+    const responseJson = await response.json();
+
+    return responseJson;
+  }
+
+  async function getTopManga(page = 1) {
+    const response = await fetch(`${BASE_URL}/top/manga?page=${page}`);
+    const responseJson = await response.json();
+
+    return responseJson;
+  }
+
   return {
     getSeasonNow,
     getSeasonUpcoming,
+    getTopAnime,
+    getTopManga,
   };
 })();
 

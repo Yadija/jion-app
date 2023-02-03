@@ -7,6 +7,11 @@ function Navigation() {
       <h2 className="text-xl font-bold">
         <Link to="/">Jion</Link>
       </h2>
+      <ul>
+        <li>
+          <Link to="/top">Top</Link>
+        </li>
+      </ul>
     </nav>
   );
 }

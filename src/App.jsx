@@ -5,6 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NowPage from './pages/NowPage';
+import TopAnimePage from './pages/TopAnimePage';
+import TopMangaPage from './pages/TopMangaPage';
+import TopPage from './pages/TopPage';
 import UpcomingPage from './pages/UpcomingPage';
 
 function App() {
@@ -14,6 +17,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/now" element={<NowPage />} />
         <Route path="/upcoming" element={<UpcomingPage />} />
+        <Route path="/top" element={<TopPage />} />
+        <Route path="/top-anime" element={<TopAnimePage />} />
+        <Route path="/top-manga" element={<TopMangaPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </main>
