@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardsList from '../components/CardsList';
+import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 
@@ -19,6 +20,12 @@ function TopMangaPage() {
     // document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
+
+  if (data.length === 0) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <div className="px-16 xs:px-12">

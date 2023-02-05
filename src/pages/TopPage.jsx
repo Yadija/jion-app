@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loading from '../components/Loading';
 import Navigation from '../components/Navigation';
 import SlideShow from '../components/SlideShow';
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
@@ -18,6 +19,12 @@ function TopPage() {
     dispatch(asyncReceiveTopAnime());
     dispatch(asyncReceiveTopManga());
   }, [dispatch]);
+
+  if (topAnime.length === 0 || topManga.length === 0) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <>

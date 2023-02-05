@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loading from '../components/Loading';
 import Navigation from '../components/Navigation';
 import SlideShow from '../components/SlideShow';
 import { asyncReceiveNow } from '../states/now/action';
@@ -18,6 +19,12 @@ function HomePage() {
     dispatch(asyncReceiveNow());
     dispatch(asyncReceiveUpcoming());
   }, [dispatch]);
+
+  if (seasonNow.length === 0 || seasonUpcoming.length === 0) {
+    return (
+      <Loading />
+    );
+  }
 
   return (
     <>
