@@ -14,7 +14,7 @@ function TopAnimePage() {
     dispatch(asyncReceiveTopAnime());
   }, [dispatch]);
 
-  const onUpdateHandler = async (page) => {
+  const onPageChangeHandler = async (page) => {
     dispatch(asyncReceiveTopAnime(page));
 
     // document.body.scrollTop = 0;
@@ -31,7 +31,7 @@ function TopAnimePage() {
     <div className="px-16 xs:px-12">
       <h1 className="mb-4 pt-8 text-center text-2xl font-bold text-white">Top Anime</h1>
       <CardsList data={data} />
-      <Pagination pagination={pagination} onUpdate={onUpdateHandler} />
+      <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
     </div>
   );
 }

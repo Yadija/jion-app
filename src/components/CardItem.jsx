@@ -8,7 +8,7 @@ function CardItem({ title, images }) {
       <img
         src={images.jpg.image_url}
         alt={title}
-        className="pointer-events-none h-[260px] w-full object-cover object-center"
+        className="pointer-events-none h-[260px] w-full object-cover object-center bg-gradient-to-tl from-gray-300 to-white"
       />
       <h2 className="p-0.5 text-center font-semibold">{trimTitle(title, 12)}</h2>
     </div>
