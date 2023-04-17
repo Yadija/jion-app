@@ -7,11 +7,7 @@ const range = (start, end) => {
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-export const usePagination = ({
-  currentPage,
-  totalPageCount,
-  siblingCount = 1,
-}) => {
+export const usePagination = ({ currentPage, totalPageCount, siblingCount = 1 }) => {
   // eslint-disable-next-line consistent-return
   const paginationRange = useMemo(() => {
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
@@ -26,10 +22,7 @@ export const usePagination = ({
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(
-      currentPage + siblingCount,
-      totalPageCount,
-    );
+    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPageCount);
 
     /*
       We do not want to show dots if there is only one position left
@@ -51,10 +44,7 @@ export const usePagination = ({
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(
-        totalPageCount - rightItemCount + 1,
-        totalPageCount,
-      );
+      const rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount);
       return [firstPageIndex, DOTS, ...rightRange];
     }
 

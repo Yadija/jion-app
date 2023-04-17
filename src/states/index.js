@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import detailReducer from './detail/reducer';
 import nowReducer from './now/reducer';
 import topAnimeReducer from './topAnime/reducer';
 import topMangaReducer from './topManga/reducer';
@@ -10,6 +11,7 @@ const store = configureStore({
     upcoming: upcomingReducer,
     topAnime: topAnimeReducer,
     topManga: topMangaReducer,
+    detail: detailReducer,
   },
 });
 

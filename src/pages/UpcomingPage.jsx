@@ -22,9 +22,7 @@ function UpcomingPage() {
   };
 
   if (data.length === 0) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   return (

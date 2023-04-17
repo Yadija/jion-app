@@ -29,11 +29,19 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getDetail(type, id) {
+    const response = await fetch(`${BASE_URL}/${type}/${id}/full`);
+    const responseJson = await response.json();
+
+    return responseJson;
+  }
+
   return {
     getSeasonNow,
     getSeasonUpcoming,
     getTopAnime,
     getTopManga,
+    getDetail,
   };
 })();
 

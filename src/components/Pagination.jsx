@@ -37,8 +37,11 @@ function Pagination({ pagination, onPageChange }) {
             <li key={pageNumber} className={`px-3 hover:text-cyan-500 ${className}`}>
               <button
                 type="button"
-                onClick={pageNumber === currentPage
-                || pageNumber > lastVisiblePage ? null : () => onPageChange(pageNumber)}
+                onClick={
+                  pageNumber === currentPage || pageNumber > lastVisiblePage
+                    ? null
+                    : () => onPageChange(pageNumber)
+                }
               >
                 {pageNumber}
               </button>
@@ -49,7 +52,9 @@ function Pagination({ pagination, onPageChange }) {
           <button
             type="button"
             className="m-auto hover:text-cyan-500"
-            onClick={currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)}
+            onClick={
+              currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)
+            }
           >
             <FiChevronRight />
           </button>

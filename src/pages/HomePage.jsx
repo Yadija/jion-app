@@ -21,9 +21,7 @@ function HomePage() {
   }, [dispatch]);
 
   if (seasonNow.length === 0 || seasonUpcoming.length === 0) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   return (

@@ -21,9 +21,7 @@ function TopPage() {
   }, [dispatch]);
 
   if (topAnime.length === 0 || topManga.length === 0) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   return (
