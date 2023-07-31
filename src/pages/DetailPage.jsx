@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -18,18 +19,57 @@ function DetailPage() {
     return <Loading />;
   }
 
+  document.title = `${data.title} - Jion`;
+
   return (
-    <div className="flex justify-center py-4 px-6">
-      <div className="flex max-w-lg flex-col gap-2 text-white">
-        <h2 className="text-2xl font-bold text-cyan-500">{data.title}</h2>
-        <section className="flex">
-          <section>
-            <img src={data.images.jpg.image_url} alt={data.title} />
+    <div className="relative flex flex-col text-white">
+      <nav className="flex py-9" />
+
+      {/* start backgorund image */}
+      <section>
+        <section className="absolute top-0 -z-10 block w-full">
+          <section
+            className="fixed h-[220px] w-full bg-cover bg-[center_top_35%] blur-[1px] lg:h-[260px]"
+            style={{ backgroundImage: `url(${data.images.jpg.large_image_url})` }}
+          />
+        </section>
+        <section className="fixed top-0 -z-10 h-[220px] w-full bg-gradient-to-br from-slate-800 to-transparent bg-fixed lg:h-[260px]" />
+        <section className="absolute bottom-0 top-[220px] -z-[5] w-full bg-codGray lg:top-[260px]" />
+      </section>
+      {/* end backgorund image */}
+
+      <section className="flex flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
+        <section className="flex gap-2 md:gap-4">
+          <section className="max-w-[300px]">
+            <img
+              className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
+              src={data.images.jpg.image_url}
+              alt={data.title}
+            />
           </section>
-          <section>
-            <section className="flex flex-wrap gap-2 p-2">
+          <section className="flex flex-col gap-2">
+            <h2 className="text-xl font-bold text-cyan-500 sm:text-2xl md:text-3xl lg:text-4xl">
+              {data.title}
+            </h2>
+
+            {/* start genre */}
+            <section className="flex flex-wrap gap-1 text-sm">
+              {data.genres.map(({ name }, i) => (
+                <p
+                  key={i}
+                  className="rounded-lg bg-cyan-500 px-2 font-bold text-[#171717] mix-blend-screen"
+                >
+                  {name}
+                </p>
+              ))}
+            </section>
+            {/* end genre */}
+
+            <section className="flex flex-wrap gap-2">
               <article className="text-center">
-                <h4 className="bg-cyan-500 py-0.5 px-2 font-bold text-black">SCORE</h4>
+                <h4 className="bg-cyan-500 py-0.5 px-2 font-bold text-[#171717] mix-blend-screen">
+                  SCORE
+                </h4>
                 <p className="text-lg font-bold text-cyan-500">{data.score || 'N/A'}</p>
                 <p className="text-xs">
                   {data.scored_by || '-'}
@@ -37,7 +77,7 @@ function DetailPage() {
                   users
                 </p>
               </article>
-              <section className="px-2">
+              <section className="px-2 text-sm sm:text-base">
                 <article>
                   <p>
                     Ranked
@@ -67,12 +107,10 @@ function DetailPage() {
                 </article>
               </section>
             </section>
-            <p className="mx-2 border-l-2 border-l-cyan-500 px-1 text-sm">
-              {data.genres.map(({ name }) => name).join(' | ')}
-            </p>
           </section>
         </section>
-        <div className="max-w-2xl">
+
+        <section className="bg-codGray">
           <article className="py-2">
             <h3 className="border-b border-cyan-500 text-xl font-bold text-cyan-500">
               Synopsis
@@ -90,14 +128,8 @@ function DetailPage() {
                 || 'No background information has been added to this title.'}
             </p>
           </article>
-          {/* <img
-            src={data.trailer.images.maximum_image_url || data.images.jpg.large_image_url}
-            alt={data.title}
-            className="max-w-md"
-          />
-          <iframe src={data.trailer.embed_url} title={data.title} /> */}
-        </div>
-      </div>
+        </section>
+      </section>
     </div>
   );
 }
