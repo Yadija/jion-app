@@ -8,6 +8,7 @@ import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 
 function TopPage() {
+  document.title = 'Top - Jion';
   const {
     topAnime: { data: topAnime = [] },
     topManga: { data: topManga = [] },

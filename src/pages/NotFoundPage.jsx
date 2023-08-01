@@ -1,6 +1,8 @@
 import React from 'react';
 
 function NotFoundPage() {
+  document.title = 'Not Found';
+
   return (
     <div className="grid h-screen">
       <h1 className="m-auto text-4xl text-white">

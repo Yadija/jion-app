@@ -6,6 +6,7 @@ import Pagination from '../components/Pagination';
 import { asyncReceiveUpcoming } from '../states/upcoming/action';
 
 function UpcomingPage() {
+  document.title = 'Upcoming - Jion';
   const { data = [], pagination = {} } = useSelector((states) => states.upcoming);
 
   const dispatch = useDispatch();

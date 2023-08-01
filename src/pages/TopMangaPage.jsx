@@ -6,6 +6,7 @@ import Pagination from '../components/Pagination';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 
 function TopMangaPage() {
+  document.title = 'Top Manga - Jion';
   const { data = [], pagination = {} } = useSelector((states) => states.topManga);
 
   const dispatch = useDispatch();
