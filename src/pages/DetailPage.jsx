@@ -36,7 +36,7 @@ function DetailPage() {
           <div className="relative w-auto my-6 mx-auto max-w-3xl px-4">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white">
               <img
-                className="rounded-md"
+                className="rounded-md shadow-md"
                 src={data.images.jpg.large_image_url}
                 alt={data.title}
               />
@@ -159,6 +159,22 @@ function DetailPage() {
               </p>
             </article>
           </section>
+
+          {
+          data.trailer
+          && (
+          <section>
+            <article>
+              <h3 className="border-b border-cyan-500 text-xl font-bold text-cyan-500">
+                Trailer
+              </h3>
+              <section className="relative overflow-hidden w-full lg:max-w-[780px] lg:pt-[438.75px] pt-[56.25%]">
+                <iframe className="absolute h-full w-full top-0 right-0 left-0 bottom-0 py-2" src={data.trailer.embed_url} title={data.title} />
+              </section>
+            </article>
+          </section>
+          )
+        }
         </section>
       </div>
     </>
