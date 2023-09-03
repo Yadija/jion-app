@@ -33,4 +33,4 @@ function asyncReceiveTopAnime(page) {
   };
 }
 
-export { ActionType, receiveTopAnimeActionCreator, asyncReceiveTopAnime };
+export { ActionType, asyncReceiveTopAnime, receiveTopAnimeActionCreator };

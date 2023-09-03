@@ -1,7 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { usePagination, DOTS } from '../hooks/usePagination';
+
+import { DOTS, usePagination } from '../hooks/usePagination';
 
 function Pagination({ pagination, onPageChange }) {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } = pagination;
@@ -16,12 +17,12 @@ function Pagination({ pagination, onPageChange }) {
   }
 
   return (
-    <div className="flex justify-center py-10 text-white">
-      <ul className="inline-flex text-xl">
-        <li className="flex px-3">
+    <div className='flex justify-center py-10 text-white'>
+      <ul className='inline-flex text-xl'>
+        <li className='flex px-3'>
           <button
-            type="button"
-            className="m-auto hover:text-cyan-500"
+            type='button'
+            className='m-auto hover:text-cyan-500'
             onClick={currentPage === 1 ? null : () => onPageChange(currentPage - 1)}
           >
             <FiChevronLeft />
@@ -36,7 +37,7 @@ function Pagination({ pagination, onPageChange }) {
           return (
             <li key={pageNumber} className={`px-3 hover:text-cyan-500 ${className}`}>
               <button
-                type="button"
+                type='button'
                 onClick={
                   pageNumber === currentPage || pageNumber > lastVisiblePage
                     ? null
@@ -48,10 +49,10 @@ function Pagination({ pagination, onPageChange }) {
             </li>
           );
         })}
-        <li className="flex px-3">
+        <li className='flex px-3'>
           <button
-            type="button"
-            className="m-auto hover:text-cyan-500"
+            type='button'
+            className='m-auto hover:text-cyan-500'
             onClick={
               currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)
             }

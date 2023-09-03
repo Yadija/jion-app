@@ -15,14 +15,14 @@ function App() {
   return (
     <main>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/now" element={<NowPage />} />
-        <Route path="/upcoming" element={<UpcomingPage />} />
-        <Route path="/top" element={<TopPage />} />
-        <Route path="/top-anime" element={<TopAnimePage />} />
-        <Route path="/top-manga" element={<TopMangaPage />} />
-        <Route path="/:type/:id" element={<DetailPage />} />
-        <Route path="/*" element={<NotFoundPage />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/now' element={<NowPage />} />
+        <Route path='/upcoming' element={<UpcomingPage />} />
+        <Route path='/top' element={<TopPage />} />
+        <Route path='/top-anime' element={<TopAnimePage />} />
+        <Route path='/top-manga' element={<TopMangaPage />} />
+        <Route path='/:type/:id' element={<DetailPage />} />
+        <Route path='/*' element={<NotFoundPage />} />
       </Routes>
     </main>
   );

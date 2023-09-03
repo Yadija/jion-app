@@ -33,4 +33,4 @@ function asyncReceiveUpcoming(page) {
   };
 }
 
-export { ActionType, receiveUpcomingActionCreator, asyncReceiveUpcoming };
+export { ActionType, asyncReceiveUpcoming, receiveUpcomingActionCreator };

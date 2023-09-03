@@ -33,4 +33,4 @@ function asyncReceiveTopManga(page) {
   };
 }
 
-export { ActionType, receiveTopMangaActionCreator, asyncReceiveTopManga };
+export { ActionType, asyncReceiveTopManga, receiveTopMangaActionCreator };

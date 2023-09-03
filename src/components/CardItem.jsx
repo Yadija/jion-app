@@ -1,25 +1,24 @@
 /* eslint-disable camelcase */
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { trimTitle } from '../utils';
 
-function CardItem({
-  title, images, type, mal_id,
-}) {
+function CardItem({ title, images, type, mal_id }) {
   const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
   const isType = typesManga.some((ty) => ty === type);
   const typeAnime = isType ? 'manga' : 'anime';
 
   return (
     <Link to={`/${typeAnime}/${mal_id}`}>
-      <div className="select-none overflow-hidden rounded-lg bg-merino" title={title}>
+      <div className='select-none overflow-hidden rounded-lg bg-merino' title={title}>
         <img
           src={images.jpg.image_url}
           alt={title}
-          className="pointer-events-none h-[260px] w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center"
+          className='pointer-events-none h-[260px] w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center'
         />
-        <h2 className="p-0.5 text-center font-semibold">{trimTitle(title, 12)}</h2>
+        <h2 className='p-0.5 text-center font-semibold'>{trimTitle(title, 12)}</h2>
       </div>
     </Link>
   );

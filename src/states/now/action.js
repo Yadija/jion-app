@@ -33,4 +33,4 @@ function asyncReceiveNow(page) {
   };
 }
 
-export { ActionType, receiveNowActionCreator, asyncReceiveNow };
+export { ActionType, asyncReceiveNow, receiveNowActionCreator };

@@ -33,4 +33,4 @@ function asyncReceiveDetail(type, id) {
   };
 }
 
-export { ActionType, receiveDetailActionCreator, asyncReceiveDetail };
+export { ActionType, asyncReceiveDetail, receiveDetailActionCreator };

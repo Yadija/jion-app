@@ -1,7 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+import PropTypes from 'prop-types';
+import React from 'react';
+import Carousel from 'react-multi-carousel';
+
 import { responsive } from '../config/config';
 import CardItem, { cardItemShape } from './CardItem';
 
@@ -10,12 +12,12 @@ function SlideShow({ data }) {
     <Carousel
       autoPlay
       autoPlaySpeed={4000}
-      customTransition="all .7s ease-out"
-      containerClass="carousel-container"
+      customTransition='all .7s ease-out'
+      containerClass='carousel-container'
       draggable
-      dotListClass="custom-dot-list-style"
+      dotListClass='custom-dot-list-style'
       infinite
-      itemClass="carousel-item-padding-40-px"
+      itemClass='carousel-item-padding-40-px'
       keyBoardControl
       pauseOnHover
       removeArrowOnDeviceType={['tablet', 'mobile']}
@@ -25,7 +27,7 @@ function SlideShow({ data }) {
       transitionDuration={1000}
     >
       {data.map((item) => (
-        <div className="mx-2" key={item.mal_id}>
+        <div className='mx-2' key={item.mal_id}>
           <CardItem {...item} />
         </div>
       ))}

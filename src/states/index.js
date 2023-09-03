@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import detailReducer from './detail/reducer';
 import nowReducer from './now/reducer';
 import topAnimeReducer from './topAnime/reducer';
