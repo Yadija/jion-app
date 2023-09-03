@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation';
 import SlideShow from '../components/SlideShow';
 import { asyncReceiveNow } from '../states/now/action';
 import { asyncReceiveUpcoming } from '../states/upcoming/action';
+import { mappingData } from '../utils';
 
 function HomePage() {
   const {
@@ -36,7 +37,7 @@ function HomePage() {
               See All
             </Link>
           </div>
-          <SlideShow data={seasonNow} />
+          <SlideShow data={mappingData(seasonNow)} />
         </article>
         <article>
           <div className='mx-2 mb-2 flex justify-between pt-4 text-white'>
@@ -45,7 +46,7 @@ function HomePage() {
               See All
             </Link>
           </div>
-          <SlideShow data={seasonUpcoming} />
+          <SlideShow data={mappingData(seasonUpcoming)} />
         </article>
       </section>
     </>

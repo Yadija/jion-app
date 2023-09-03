@@ -5,6 +5,7 @@ import CardsList from '../components/CardsList';
 import Loading from '../components/Loading';
 import Pagination from '../components/Pagination';
 import { asyncReceiveNow } from '../states/now/action';
+import { mappingData } from '../utils';
 
 function NowPage() {
   document.title = 'Now | Jion';
@@ -30,7 +31,7 @@ function NowPage() {
   return (
     <div className='px-16 xs:px-12'>
       <h1 className='mb-4 pt-8 text-center text-2xl font-bold text-white'>Now</h1>
-      <CardsList data={data} />
+      <CardsList data={mappingData(data)} />
       <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
     </div>
   );

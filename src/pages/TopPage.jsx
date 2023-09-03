@@ -7,6 +7,7 @@ import Navigation from '../components/Navigation';
 import SlideShow from '../components/SlideShow';
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
+import { mappingData } from '../utils';
 
 function TopPage() {
   document.title = 'Top | Jion';
@@ -37,7 +38,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <SlideShow data={topAnime} />
+          <SlideShow data={mappingData(topAnime)} />
         </article>
         <article>
           <div className='mx-2 mb-2 flex justify-between pt-4 text-white'>
@@ -46,7 +47,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <SlideShow data={topManga} />
+          <SlideShow data={mappingData(topManga)} />
         </article>
       </section>
     </>
