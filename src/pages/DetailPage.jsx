@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 // icons
 import { BsArrowsAngleExpand } from 'react-icons/bs';
+import { TbHeart } from 'react-icons/tb';
 
 // components
 import Loading from '../components/Loading';
@@ -187,6 +188,16 @@ function DetailPage() {
             </section>
           )}
         </section>
+
+        <footer className="bg-cyan-500 text-center py-4 selection:text-black">
+          <p className="inline-flex">
+            Create with
+            {' '}
+            <TbHeart className="translate-y-[0.3rem] mx-1 text-pink-500" />
+            {' '}
+            by yadija
+          </p>
+        </footer>
       </div>
     </>
   );
