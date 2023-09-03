@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination';
 import { asyncReceiveNow } from '../states/now/action';
 
 function NowPage() {
-  document.title = 'Now - Jion';
+  document.title = 'Now | Jion';
   const { data = [], pagination = {} } = useSelector((states) => states.now);
 
   const dispatch = useDispatch();

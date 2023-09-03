@@ -28,7 +28,7 @@ function DetailPage() {
     return <Loading />;
   }
 
-  document.title = `${data.title} - Jion`;
+  document.title = `${data.title} | Jion`;
 
   return (
     <>
