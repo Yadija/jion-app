@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import DarkMode from './DarkMode.jsx';
+
 function Navigation() {
   return (
     <nav className='sticky top-0 z-10 flex items-center justify-between bg-funBLue px-10 py-4 text-softPeach dark:bg-denimBLue dark:text-balticSea'>
       <h2 className='text-xl font-bold'>
         <Link to='/'>Jion</Link>
       </h2>
-      <ul className='flex flex-row'>
+      <ul className='flex flex-row gap-3'>
         <li className='w-28'>
           <section className='group relative'>
             <button
@@ -60,6 +62,9 @@ function Navigation() {
               </section>
             </div>
           </section>
+        </li>
+        <li>
+          <DarkMode />
         </li>
       </ul>
     </nav>
