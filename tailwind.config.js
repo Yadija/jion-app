@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -7,8 +8,20 @@ export default {
         bounce: 'bounce 1.4s infinite ease-in-out',
       },
       backgroundColor: {
-        merino: '#FAF7F0',
-        codGray: '#171717',
+        // light
+        funBLue: '#225CB3',
+        softPeach: '#EDEDED',
+        // dark
+        balticSea: '#222C32',
+        denimBLue: '#68C4EE',
+      },
+      colors: {
+        // light
+        funBLue: '#225CB3',
+        softPeach: '#EDEDED',
+        // dark
+        balticSea: '#222C32',
+        denimBLue: '#68C4EE',
       },
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],

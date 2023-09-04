@@ -13,7 +13,7 @@ import UpcomingPage from './pages/UpcomingPage';
 
 function App() {
   return (
-    <main>
+    <main className='bg-softPeach selection:bg-funBLue selection:text-softPeach dark:bg-balticSea selection:dark:bg-denimBLue dark:selection:text-balticSea'>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/now' element={<NowPage />} />

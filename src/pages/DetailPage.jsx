@@ -58,7 +58,7 @@ function DetailPage() {
             />
           </section>
           <section className='fixed top-0 -z-10 h-[220px] w-full bg-gradient-to-br from-slate-800 to-transparent bg-fixed lg:h-[260px]' />
-          <section className='absolute bottom-0 top-[220px] -z-[5] w-full bg-codGray lg:top-[260px]' />
+          <section className='bg-codGray absolute bottom-0 top-[220px] -z-[5] w-full lg:top-[260px]' />
         </section>
         {/* end backgorund image */}
 
