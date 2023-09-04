@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 
 // components
 import Loading from '../components/Loading';
+import Modal from '../components/Modal';
 // states
 import { asyncReceiveDetail } from '../states/detail/action';
 
@@ -29,28 +30,19 @@ function DetailPage() {
 
   document.title = `${data.title} | Jion`;
 
+  const handleModal = () => {
+    setShowModal(() => false);
+  };
+
   return (
     <>
       {/* start modal */}
       {showModal && (
-        <>
-          <button
-            type='button'
-            onClick={() => setShowModal(false)}
-            className='fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden'
-          >
-            <div className='relative mx-auto my-6 w-auto max-w-3xl px-4'>
-              <div className='relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg'>
-                <img
-                  className='rounded-md shadow-md'
-                  src={data.images.jpg.large_image_url}
-                  alt={data.title}
-                />
-              </div>
-            </div>
-          </button>
-          <div className='fixed inset-0 z-40 bg-white opacity-25' />
-        </>
+        <Modal
+          image={data.images.jpg.large_image_url || ''}
+          title={data.title || ''}
+          handleModal={handleModal}
+        />
       )}
       {/* end modal */}
 
