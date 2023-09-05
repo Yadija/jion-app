@@ -46,7 +46,7 @@ function DetailPage() {
       )}
       {/* end modal */}
 
-      <div className='relative flex min-h-screen flex-col text-balticSea dark:text-softPeach'>
+      <div className='text-color-black relative flex min-h-screen flex-col'>
         <nav className='flex py-9' />
 
         {/* start backgorund image */}
@@ -58,7 +58,7 @@ function DetailPage() {
             />
           </section>
           <section className='fixed top-0 h-[220px] w-full bg-gradient-to-br from-zinc-300 to-transparent bg-fixed dark:bg-gradient-to-br dark:from-slate-800 dark:to-transparent lg:h-[260px]' />
-          <section className='absolute bottom-0 top-[220px] w-full bg-softPeach dark:bg-balticSea lg:top-[260px]' />
+          <section className='background-color-white absolute bottom-0 top-[220px] w-full lg:top-[260px]' />
         </section>
         {/* end backgorund image */}
 
@@ -74,12 +74,12 @@ function DetailPage() {
                 src={data.images.jpg.image_url}
                 alt={data.title}
               />
-              <section className='absolute bottom-0 top-0 flex w-full items-center justify-center rounded-md text-softPeach opacity-0 hover:opacity-100'>
+              <section className='absolute bottom-0 top-0 flex w-full items-center justify-center rounded-md text-soft-peach opacity-0 hover:opacity-100'>
                 <BsArrowsAngleExpand className='text-4xl md:text-6xl' />
               </section>
             </button>
             <section className='flex flex-col gap-2'>
-              <h2 className='text-xl font-bold text-funBLue dark:text-denimBLue sm:text-2xl md:text-3xl lg:text-4xl'>
+              <h2 className='text-color-blue text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl'>
                 {data.title}
               </h2>
 
@@ -88,7 +88,7 @@ function DetailPage() {
                 {data.genres.map(({ name }, i) => (
                   <p
                     key={i}
-                    className='rounded-lg bg-funBLue px-2 font-bold text-softPeach mix-blend-darken dark:bg-denimBLue dark:text-balticSea dark:mix-blend-screen'
+                    className='background-color-blue text-color-white rounded-lg px-2 font-bold mix-blend-darken dark:mix-blend-screen'
                   >
                     {name}
                   </p>
@@ -98,10 +98,10 @@ function DetailPage() {
 
               <section className='flex flex-wrap gap-2'>
                 <article className='text-center'>
-                  <h4 className='bg-funBLue px-2 py-0.5 font-bold text-softPeach mix-blend-darken dark:bg-denimBLue dark:text-balticSea dark:mix-blend-screen'>
+                  <h4 className='background-color-blue text-color-white px-2 py-0.5 font-bold mix-blend-darken dark:mix-blend-screen'>
                     SCORE
                   </h4>
-                  <p className='text-lg font-bold text-funBLue dark:text-denimBLue'>
+                  <p className='text-color-blue text-lg font-bold'>
                     {data.score || 'N/A'}
                   </p>
                   <p className='text-xs'>{data.scored_by || '-'} users</p>
@@ -110,7 +110,7 @@ function DetailPage() {
                   <article>
                     <p>
                       Ranked{' '}
-                      <b className='text-funBLue dark:text-denimBLue'>
+                      <b className='text-color-blue'>
                         {data.rank === null ? 'N/A' : `#${data.rank}`}
                       </b>
                     </p>
@@ -118,7 +118,7 @@ function DetailPage() {
                   <article>
                     <p>
                       Popularity{' '}
-                      <b className='text-funBLue dark:text-denimBLue'>
+                      <b className='text-color-blue'>
                         {data.popularity === null ? 'N/A' : `#${data.popularity}`}
                       </b>
                     </p>
@@ -126,7 +126,7 @@ function DetailPage() {
                   <article>
                     <p>
                       Members{' '}
-                      <b className='text-funBLue dark:text-denimBLue'>
+                      <b className='text-color-blue'>
                         {data.members === null ? 'N/A' : `#${data.members}`}
                       </b>
                     </p>
@@ -138,17 +138,13 @@ function DetailPage() {
 
           <section className=''>
             <article className='py-2'>
-              <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
-                Synopsis
-              </h3>
+              <h3 className='title-with-border'>Synopsis</h3>
               <p>
                 {data.synopsis || 'No synopsis information has been added to this title.'}
               </p>
             </article>
             <article className='py-2'>
-              <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
-                Background
-              </h3>
+              <h3 className='title-with-border'>Background</h3>
               <p>
                 {data.background ||
                   'No background information has been added to this title.'}
@@ -159,12 +155,10 @@ function DetailPage() {
           {data.trailer?.embed_url && (
             <section>
               <article>
-                <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
-                  Trailer
-                </h3>
+                <h3 className='title-with-border'>Trailer</h3>
                 <section className='relative w-full overflow-hidden pt-[56.25%] lg:max-w-[780px] lg:pt-[438.75px]'>
                   <iframe
-                    className='absolute bottom-0 left-0 right-0 top-0 my-2 h-full w-full bg-funBLue dark:bg-denimBLue'
+                    className='absolute bottom-0 left-0 right-0 top-0 my-2 h-full w-full bg-fun-blue dark:bg-denim-blue'
                     src={data.trailer.embed_url}
                     title={data.title}
                   />

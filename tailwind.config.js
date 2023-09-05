@@ -9,19 +9,19 @@ export default {
       },
       backgroundColor: {
         // light
-        funBLue: '#225CB3',
-        softPeach: '#EDEDED',
+        'fun-blue': '#225CB3',
+        'soft-peach': '#EDEDED',
         // dark
-        balticSea: '#222C32',
-        denimBLue: '#68C4EE',
+        'baltic-sea': '#222C32',
+        'denim-blue': '#68C4EE',
       },
       colors: {
         // light
-        funBLue: '#225CB3',
-        softPeach: '#EDEDED',
+        'fun-blue': '#225CB3',
+        'soft-peach': '#EDEDED',
         // dark
-        balticSea: '#222C32',
-        denimBLue: '#68C4EE',
+        'baltic-sea': '#222C32',
+        'denim-blue': '#68C4EE',
       },
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],

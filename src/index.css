@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .loading-ball {
+    @apply mx-1 inline-block h-3 w-3 animate-bounce rounded-full;
+  }
+  .background-color-blue {
+    @apply bg-fun-blue dark:bg-denim-blue;
+  }
+  .background-color-white {
+    @apply bg-soft-peach dark:bg-baltic-sea;
+  }
+  .text-color-blue {
+    @apply text-fun-blue dark:text-denim-blue;
+  }
+  .text-color-white {
+    @apply text-soft-peach dark:text-baltic-sea;
+  }
+  .text-color-black {
+    @apply text-baltic-sea dark:text-soft-peach;
+  }
+  .transition {
+    @apply transition-all duration-1000;
+  }
+  .title-page {
+    @apply mb-4 pt-8 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach;
+  }
+  .title-with-border {
+    @apply border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue;
+  }
+}

@@ -13,7 +13,7 @@ function CardItem({ title, image, type, mal_id }) {
   return (
     <Link to={`/${typeAnime}/${mal_id}`}>
       <div
-        className='select-none overflow-hidden rounded-lg bg-funBLue text-softPeach transition-all duration-1000 dark:bg-softPeach dark:text-balticSea'
+        className='text-color-white select-none overflow-hidden rounded-lg bg-fun-blue transition-all duration-1000 dark:bg-soft-peach'
         title={title}
       >
         <img

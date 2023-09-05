@@ -8,13 +8,13 @@ function DarkMode() {
 
   return (
     <button
-      className=' relative flex h-6 w-10 cursor-pointer items-center justify-between rounded-xl border border-black p-1 text-sm text-softPeach dark:text-balticSea'
+      className='text-color-white relative flex h-6 w-10 cursor-pointer items-center justify-between rounded-xl border border-black p-1 text-sm'
       onClick={toggle}
     >
       <TbMoon />
       <TbSunHigh />
       <div
-        className={`absolute h-4 w-4 rounded-full bg-softPeach dark:bg-balticSea ${
+        className={`background-color-white absolute h-4 w-4 rounded-full ${
           mode === 'dark' ? 'right-[2px]' : 'left-[2px]'
         }`}
       />

@@ -30,20 +30,26 @@ function TopPage() {
   return (
     <>
       <Navigation />
-      <section className='mx-16 pb-10 xs:mx-12'>
+      <section className='px-16 pb-10 xs:px-12'>
         <article>
-          <div className='mx-2 mb-2 flex justify-between pt-4 text-balticSea dark:text-softPeach'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
             <h2 className='text-xl font-bold'>Top Anime</h2>
-            <Link to='/top-anime' className='hover:text-funBLue active:text-funBLue'>
+            <Link
+              to='/top-anime'
+              className='hover:text-color-blue active:text-color-blue'
+            >
               See All
             </Link>
           </div>
           <SlideShow data={mappingData(topAnime)} />
         </article>
         <article>
-          <div className='mx-2 mb-2 flex justify-between pt-4 text-balticSea dark:text-softPeach'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
             <h2 className='text-xl font-bold'>Top Manga</h2>
-            <Link to='/top-manga' className='hover:text-funBLue active:text-funBLue'>
+            <Link
+              to='/top-manga'
+              className='hover:text-color-blue active:text-color-blue'
+            >
               See All
             </Link>
           </div>

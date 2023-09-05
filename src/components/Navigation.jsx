@@ -5,7 +5,7 @@ import DarkMode from './DarkMode.jsx';
 
 function Navigation() {
   return (
-    <nav className='sticky top-0 z-[1000] flex items-center justify-between bg-funBLue px-10 py-4 text-softPeach transition-all duration-1000 dark:bg-denimBLue dark:text-balticSea'>
+    <nav className='background-color-blue text-color-white sticky top-0 z-[1000] flex items-center justify-between px-10 py-4 transition-all duration-1000'>
       <h2 className='text-xl font-bold'>
         <Link to='/'>Jion</Link>
       </h2>
@@ -16,7 +16,7 @@ function Navigation() {
               id='dropdownHoverButton'
               data-dropdown-toggle='dropdownHover'
               data-dropdown-trigger='hover'
-              className='inline-flex items-center text-center text-softPeach dark:text-balticSea'
+              className='text-color-white inline-flex items-center text-center'
               type='button'
             >
               Top{' '}
@@ -37,15 +37,15 @@ function Navigation() {
               </svg>
             </button>
             <div className='absolute z-10 hidden group-hover:block'>
-              <section className='bg-softPeach shadow-lg dark:bg-balticSea'>
+              <section className='background-color-white shadow-lg'>
                 <ul
-                  className='py-2 text-sm text-balticSea dark:text-softPeach'
+                  className='text-color-black py-2 text-sm'
                   aria-labelledby='dropdownHoverButton'
                 >
                   <li>
                     <a
                       href='/top-anime'
-                      className='block px-4 py-2 hover:bg-funBLue hover:text-softPeach dark:hover:bg-denimBLue'
+                      className='hover:background-color-blue block px-4 py-2 hover:text-soft-peach'
                     >
                       Top Anime
                     </a>
@@ -53,7 +53,7 @@ function Navigation() {
                   <li>
                     <a
                       href='/top-manga'
-                      className='block px-4 py-2 hover:bg-funBLue hover:text-softPeach dark:hover:bg-denimBLue'
+                      className='hover:background-color-blue block px-4 py-2 hover:text-soft-peach'
                     >
                       Top Manga
                     </a>

@@ -17,12 +17,12 @@ function Pagination({ pagination, onPageChange }) {
   }
 
   return (
-    <div className='flex justify-center py-10 text-balticSea dark:text-softPeach'>
+    <div className='text-color-black flex justify-center py-10'>
       <ul className='inline-flex text-xl'>
         <li className='flex px-3'>
           <button
             type='button'
-            className='m-auto hover:text-funBLue dark:hover:text-denimBLue'
+            className='hover:text-color-blue m-auto'
             onClick={currentPage === 1 ? null : () => onPageChange(currentPage - 1)}
           >
             <FiChevronLeft />
@@ -36,8 +36,8 @@ function Pagination({ pagination, onPageChange }) {
           return (
             <li
               key={pageNumber}
-              className={`px-3 hover:text-funBLue dark:hover:text-denimBLue ${
-                pageNumber === currentPage && 'text-funBLue dark:text-denimBLue'
+              className={`hover:text-color-blue px-3 ${
+                pageNumber === currentPage && 'text-color-blue'
               }`}
             >
               <button
@@ -56,7 +56,7 @@ function Pagination({ pagination, onPageChange }) {
         <li className='flex px-3'>
           <button
             type='button'
-            className='m-auto hover:text-funBLue dark:hover:text-denimBLue'
+            className='hover:text-color-blue m-auto'
             onClick={
               currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)
             }

@@ -31,18 +31,18 @@ function HomePage() {
       <Navigation />
       <section className='px-16 pb-10 xs:px-12'>
         <article>
-          <div className='mx-2 mb-2 flex justify-between pt-4 text-balticSea dark:text-softPeach'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
             <h2 className='text-xl font-bold'>Now</h2>
-            <Link to='/now' className='hover:text-funBLue active:text-funBLue'>
+            <Link to='/now' className='hover:text-color-blue active:text-color-blue'>
               See All
             </Link>
           </div>
           <SlideShow data={mappingData(seasonNow)} />
         </article>
         <article>
-          <div className='mx-2 mb-2 flex justify-between pt-4 text-balticSea dark:text-softPeach'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
             <h2 className='text-xl font-bold'>Upcoming</h2>
-            <Link to='/upcoming' className='hover:text-funBLue active:text-funBLue'>
+            <Link to='/upcoming' className='hover:text-color-blue active:text-color-blue'>
               See All
             </Link>
           </div>

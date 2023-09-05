@@ -30,9 +30,7 @@ function TopAnimePage() {
 
   return (
     <div className='px-16 xs:px-12'>
-      <h1 className='mb-4 pt-8 text-center text-2xl font-bold text-balticSea dark:text-softPeach'>
-        Top Anime
-      </h1>
+      <h1 className='title-page'>Top Anime</h1>
       <CardsList data={mappingData(data)} />
       <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
     </div>
