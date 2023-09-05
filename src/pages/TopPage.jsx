@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Loading from '../components/Loading';
-import Navigation from '../components/Navigation';
-import SlideShow from '../components/SlideShow';
+import SlideShow from '../components/Carousel/SlideShow';
+import Loading from '../components/Loading/Loading';
+import Navigation from '../components/Navbar/Navigation';
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 import { mappingData } from '../utils';

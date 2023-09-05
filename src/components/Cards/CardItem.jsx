@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { trimTitle } from '../utils';
+import { trimTitle } from '../../utils';
 
 const CardItem = ({ title, image, type, mal_id }) => {
   const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];

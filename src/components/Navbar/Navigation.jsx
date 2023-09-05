@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import DarkMode from './DarkMode.jsx';
+import DarkMode from '../DarkMode/DarkMode.jsx';
 
 const Navigation = () => {
   return (

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CardsList from '../components/CardsList';
-import Loading from '../components/Loading';
-import Pagination from '../components/Pagination';
+import CardsList from '../components/Cards/CardsList';
+import Loading from '../components/Loading/Loading';
+import Pagination from '../components/Pagination/Pagination';
 import { asyncReceiveUpcoming } from '../states/upcoming/action';
 import { mappingData } from '../utils';
 

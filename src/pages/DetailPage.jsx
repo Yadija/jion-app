@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // components
-import Footer from '../components/Footer';
-import Loading from '../components/Loading';
-import Modal from '../components/Modal';
+import Footer from '../components/Footer/Footer';
+import Loading from '../components/Loading/Loading';
+import Modal from '../components/Modal/Modal';
 // states
 import { asyncReceiveDetail } from '../states/detail/action';
 

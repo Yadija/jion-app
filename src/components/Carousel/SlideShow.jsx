@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 
-import { responsive } from '../config/config';
-import CardItem, { cardItemShape } from './CardItem';
+import { responsive } from '../../config/config';
+import CardItem, { cardItemShape } from '../Cards/CardItem';
 
 const SlideShow = ({ data }) => {
   return (

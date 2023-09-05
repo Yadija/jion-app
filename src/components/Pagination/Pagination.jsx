@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-import { DOTS, usePagination } from '../hooks/usePagination';
+import { DOTS, usePagination } from '../../hooks/usePagination';
 
 const Pagination = ({ pagination, onPageChange }) => {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } = pagination;
