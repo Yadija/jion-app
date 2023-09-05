@@ -2,11 +2,11 @@
 import React, { useEffect } from 'react';
 // icons
 import { BsArrowsAngleExpand } from 'react-icons/bs';
-import { TbHeart } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // components
+import Footer from '../components/Footer';
 import Loading from '../components/Loading';
 import Modal from '../components/Modal';
 // states
@@ -136,7 +136,7 @@ function DetailPage() {
             </section>
           </section>
 
-          <section className=''>
+          <section>
             <article className='py-2'>
               <h3 className='title-with-border'>Synopsis</h3>
               <p>
@@ -154,7 +154,7 @@ function DetailPage() {
 
           {data.trailer?.embed_url && (
             <section>
-              <article>
+              <article className='py-2'>
                 <h3 className='title-with-border'>Trailer</h3>
                 <section className='relative w-full overflow-hidden pt-[56.25%] lg:max-w-[780px] lg:pt-[438.75px]'>
                   <iframe
@@ -168,12 +168,9 @@ function DetailPage() {
           )}
         </section>
 
-        <footer className='bg-cyan-500 py-4 text-center selection:text-black'>
-          <p className='inline-flex'>
-            Create with <TbHeart className='mx-1 translate-y-[0.3rem] text-pink-500' /> by
-            yadija
-          </p>
-        </footer>
+        <div className='relative'>
+          <Footer />
+        </div>
       </div>
     </>
   );
