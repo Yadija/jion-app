@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import DarkMode from '../DarkMode/DarkMode.jsx';
 
-const Navigation = () => {
+const Navbar = () => {
   return (
     <nav className='background-color-blue text-color-white sticky top-0 z-[1000] flex items-center justify-between px-10 py-4 transition-all duration-1000'>
       <h2 className='text-xl font-bold'>
@@ -71,4 +71,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Navbar;

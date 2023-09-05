@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SlideShow from '../components/Carousel/SlideShow';
 import Loading from '../components/Loading/Loading';
-import Navigation from '../components/Navbar/Navigation';
+import Navbar from '../components/Navbar/Navbar';
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 import { mappingData } from '../utils';
@@ -29,7 +29,7 @@ function TopPage() {
 
   return (
     <>
-      <Navigation />
+      <Navbar />
       <section className='px-16 pb-10 xs:px-12'>
         <article>
           <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
