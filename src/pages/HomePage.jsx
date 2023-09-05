@@ -29,7 +29,7 @@ function HomePage() {
   return (
     <>
       <Navigation />
-      <section className='mx-16 pb-10 xs:mx-12'>
+      <section className='px-16 pb-10 xs:px-12'>
         <article>
           <div className='mx-2 mb-2 flex justify-between pt-4 text-balticSea dark:text-softPeach'>
             <h2 className='text-xl font-bold'>Now</h2>

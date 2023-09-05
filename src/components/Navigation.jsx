@@ -5,7 +5,7 @@ import DarkMode from './DarkMode.jsx';
 
 function Navigation() {
   return (
-    <nav className='sticky top-0 z-10 flex items-center justify-between bg-funBLue px-10 py-4 text-softPeach dark:bg-denimBLue dark:text-balticSea'>
+    <nav className='sticky top-0 z-[1000] flex items-center justify-between bg-funBLue px-10 py-4 text-softPeach transition-all duration-1000 dark:bg-denimBLue dark:text-balticSea'>
       <h2 className='text-xl font-bold'>
         <Link to='/'>Jion</Link>
       </h2>

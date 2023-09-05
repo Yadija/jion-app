@@ -46,27 +46,27 @@ function DetailPage() {
       )}
       {/* end modal */}
 
-      <div className='relative flex min-h-screen flex-col text-white'>
+      <div className='relative flex min-h-screen flex-col text-balticSea dark:text-softPeach'>
         <nav className='flex py-9' />
 
         {/* start backgorund image */}
         <section>
-          <section className='absolute top-0 -z-10 block w-full'>
+          <section className='fixed top-0 block w-full'>
             <section
-              className='fixed h-[220px] w-full bg-cover bg-[center_top_35%] blur-[1px] lg:h-[260px]'
+              className='h-[220px] w-full bg-cover bg-[center_top_35%] blur-[1px] lg:h-[260px]'
               style={{ backgroundImage: `url(${data.images.jpg.large_image_url})` }}
             />
           </section>
-          <section className='fixed top-0 -z-10 h-[220px] w-full bg-gradient-to-br from-slate-800 to-transparent bg-fixed lg:h-[260px]' />
-          <section className='bg-codGray absolute bottom-0 top-[220px] -z-[5] w-full lg:top-[260px]' />
+          <section className='fixed top-0 h-[220px] w-full bg-gradient-to-br from-zinc-300 to-transparent bg-fixed dark:bg-gradient-to-br dark:from-slate-800 dark:to-transparent lg:h-[260px]' />
+          <section className='absolute bottom-0 top-[220px] w-full bg-softPeach dark:bg-balticSea lg:top-[260px]' />
         </section>
         {/* end backgorund image */}
 
-        <section className='mb-6 flex flex-grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20'>
+        <section className='z-1 relative mb-6 flex flex-grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20'>
           <section className='flex gap-2 md:gap-4'>
             <button
               type='button'
-              className='relative max-w-[300px] md:hover:opacity-75'
+              className='relative z-10 max-w-[300px] md:hover:opacity-75'
               onClick={() => setShowModal(true)}
             >
               <img
@@ -74,12 +74,12 @@ function DetailPage() {
                 src={data.images.jpg.image_url}
                 alt={data.title}
               />
-              <section className='absolute bottom-0 top-0 flex w-full items-center justify-center rounded-md opacity-0 hover:opacity-100'>
+              <section className='absolute bottom-0 top-0 flex w-full items-center justify-center rounded-md text-softPeach opacity-0 hover:opacity-100'>
                 <BsArrowsAngleExpand className='text-4xl md:text-6xl' />
               </section>
             </button>
             <section className='flex flex-col gap-2'>
-              <h2 className='text-xl font-bold text-cyan-500 sm:text-2xl md:text-3xl lg:text-4xl'>
+              <h2 className='text-xl font-bold text-funBLue dark:text-denimBLue sm:text-2xl md:text-3xl lg:text-4xl'>
                 {data.title}
               </h2>
 
@@ -88,7 +88,7 @@ function DetailPage() {
                 {data.genres.map(({ name }, i) => (
                   <p
                     key={i}
-                    className='rounded-lg bg-cyan-500 px-2 font-bold text-[#171717] mix-blend-screen'
+                    className='rounded-lg bg-funBLue px-2 font-bold text-softPeach mix-blend-darken dark:bg-denimBLue dark:text-balticSea dark:mix-blend-screen'
                   >
                     {name}
                   </p>
@@ -98,17 +98,19 @@ function DetailPage() {
 
               <section className='flex flex-wrap gap-2'>
                 <article className='text-center'>
-                  <h4 className='bg-cyan-500 px-2 py-0.5 font-bold text-[#171717] mix-blend-screen'>
+                  <h4 className='bg-funBLue px-2 py-0.5 font-bold text-softPeach mix-blend-darken dark:bg-denimBLue dark:text-balticSea dark:mix-blend-screen'>
                     SCORE
                   </h4>
-                  <p className='text-lg font-bold text-cyan-500'>{data.score || 'N/A'}</p>
+                  <p className='text-lg font-bold text-funBLue dark:text-denimBLue'>
+                    {data.score || 'N/A'}
+                  </p>
                   <p className='text-xs'>{data.scored_by || '-'} users</p>
                 </article>
                 <section className='px-2 text-sm sm:text-base'>
                   <article>
                     <p>
                       Ranked{' '}
-                      <b className='text-cyan-500'>
+                      <b className='text-funBLue dark:text-denimBLue'>
                         {data.rank === null ? 'N/A' : `#${data.rank}`}
                       </b>
                     </p>
@@ -116,7 +118,7 @@ function DetailPage() {
                   <article>
                     <p>
                       Popularity{' '}
-                      <b className='text-cyan-500'>
+                      <b className='text-funBLue dark:text-denimBLue'>
                         {data.popularity === null ? 'N/A' : `#${data.popularity}`}
                       </b>
                     </p>
@@ -124,7 +126,7 @@ function DetailPage() {
                   <article>
                     <p>
                       Members{' '}
-                      <b className='text-cyan-500'>
+                      <b className='text-funBLue dark:text-denimBLue'>
                         {data.members === null ? 'N/A' : `#${data.members}`}
                       </b>
                     </p>
@@ -134,9 +136,9 @@ function DetailPage() {
             </section>
           </section>
 
-          <section className='bg-codGray'>
+          <section className=''>
             <article className='py-2'>
-              <h3 className='border-b border-cyan-500 text-xl font-bold text-cyan-500'>
+              <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
                 Synopsis
               </h3>
               <p>
@@ -144,7 +146,7 @@ function DetailPage() {
               </p>
             </article>
             <article className='py-2'>
-              <h3 className='border-b border-cyan-500 text-xl font-bold text-cyan-500'>
+              <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
                 Background
               </h3>
               <p>
@@ -157,12 +159,12 @@ function DetailPage() {
           {data.trailer?.embed_url && (
             <section>
               <article>
-                <h3 className='border-b border-cyan-500 text-xl font-bold text-cyan-500'>
+                <h3 className='border-b border-funBLue text-xl font-bold text-funBLue dark:border-denimBLue dark:text-denimBLue'>
                   Trailer
                 </h3>
                 <section className='relative w-full overflow-hidden pt-[56.25%] lg:max-w-[780px] lg:pt-[438.75px]'>
                   <iframe
-                    className='absolute bottom-0 left-0 right-0 top-0 my-2 h-full w-full bg-cyan-500'
+                    className='absolute bottom-0 left-0 right-0 top-0 my-2 h-full w-full bg-funBLue dark:bg-denimBLue'
                     src={data.trailer.embed_url}
                     title={data.title}
                   />
