@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Modal({ handleModal, image, title }) {
+const Modal = ({ handleModal, image, title }) => {
   return (
     <>
       <button
@@ -18,7 +18,7 @@ function Modal({ handleModal, image, title }) {
       <div className='fixed inset-0 z-40 bg-white opacity-25' />
     </>
   );
-}
+};
 
 Modal.propTypes = {
   handleModal: PropTypes.func.isRequired,

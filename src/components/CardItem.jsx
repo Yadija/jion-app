@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { trimTitle } from '../utils';
 
-function CardItem({ title, image, type, mal_id }) {
+const CardItem = ({ title, image, type, mal_id }) => {
   const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
   const isType = typesManga.some((kind) => kind === type);
   const typeAnime = isType ? 'manga' : 'anime';
@@ -25,7 +25,7 @@ function CardItem({ title, image, type, mal_id }) {
       </div>
     </Link>
   );
-}
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const cardItemShape = {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Loading() {
+const Loading = () => {
   return (
     <div className='background-color-white grid h-screen'>
       <div className='m-auto flex'>
@@ -18,6 +18,6 @@ function Loading() {
       </div>
     </div>
   );
-}
+};
 
 export default Loading;

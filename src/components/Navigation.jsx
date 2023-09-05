@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import DarkMode from './DarkMode.jsx';
 
-function Navigation() {
+const Navigation = () => {
   return (
     <nav className='background-color-blue text-color-white sticky top-0 z-[1000] flex items-center justify-between px-10 py-4 transition-all duration-1000'>
       <h2 className='text-xl font-bold'>
@@ -69,6 +69,6 @@ function Navigation() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Navigation;

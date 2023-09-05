@@ -8,7 +8,6 @@ const range = (start, end) => {
 };
 
 export const usePagination = ({ currentPage, totalPageCount, siblingCount = 1 }) => {
-  // eslint-disable-next-line consistent-return
   const paginationRange = useMemo(() => {
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
     const totalPageNumbers = siblingCount + 5;

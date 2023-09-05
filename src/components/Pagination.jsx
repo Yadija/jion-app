@@ -4,7 +4,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { DOTS, usePagination } from '../hooks/usePagination';
 
-function Pagination({ pagination, onPageChange }) {
+const Pagination = ({ pagination, onPageChange }) => {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } = pagination;
 
   const paginationRange = usePagination({
@@ -67,7 +67,7 @@ function Pagination({ pagination, onPageChange }) {
       </ul>
     </div>
   );
-}
+};
 
 const paginationItemShape = {
   currentPage: PropTypes.number,

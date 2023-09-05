@@ -1,7 +1,7 @@
 import React from 'react';
 import { TbHeart } from 'react-icons/tb';
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className='background-color-blue py-4 text-center text-soft-peach selection:bg-soft-peach dark:selection:bg-soft-peach'>
       <p className='inline-flex'>
@@ -10,6 +10,6 @@ function Footer() {
       </p>
     </footer>
   );
-}
+};
 
 export default Footer;

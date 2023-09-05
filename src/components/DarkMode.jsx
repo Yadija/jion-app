@@ -3,7 +3,7 @@ import { TbMoon, TbSunHigh } from 'react-icons/tb';
 
 import { ThemeContext } from '../context/ThemeContext';
 
-function DarkMode() {
+const DarkMode = () => {
   const { mode, toggle } = useContext(ThemeContext);
 
   return (
@@ -20,6 +20,6 @@ function DarkMode() {
       />
     </button>
   );
-}
+};
 
 export default DarkMode;

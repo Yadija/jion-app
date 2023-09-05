@@ -7,7 +7,7 @@ import Carousel from 'react-multi-carousel';
 import { responsive } from '../config/config';
 import CardItem, { cardItemShape } from './CardItem';
 
-function SlideShow({ data }) {
+const SlideShow = ({ data }) => {
   return (
     <Carousel
       autoPlay
@@ -33,7 +33,7 @@ function SlideShow({ data }) {
       ))}
     </Carousel>
   );
-}
+};
 
 SlideShow.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape(cardItemShape)).isRequired,
