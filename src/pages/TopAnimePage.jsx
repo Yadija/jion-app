@@ -29,9 +29,11 @@ function TopAnimePage() {
   }
 
   return (
-    <div className='px-16 xs:px-12'>
+    <div className='flex min-h-screen flex-col justify-between px-16 xs:px-12'>
       <h1 className='title-page'>Top Anime</h1>
-      <CardsList data={mappingData(data)} />
+      <div className='grow'>
+        <CardsList data={mappingData(data)} />
+      </div>
       <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
     </div>
   );
