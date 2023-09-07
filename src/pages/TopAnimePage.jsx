@@ -9,8 +9,9 @@ import { mappingData } from '../utils';
 
 function TopAnimePage() {
   document.title = 'Top Anime | Jion';
-  const { data = [], pagination = {} } = useSelector((states) => states.topAnime);
 
+  const data = useSelector((states) => states.topAnime.data) || [];
+  const pagination = useSelector((states) => states.topAnime.pagination) || {};
   const dispatch = useDispatch();
 
   useEffect(() => {

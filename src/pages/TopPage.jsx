@@ -11,11 +11,9 @@ import { mappingData } from '../utils';
 
 function TopPage() {
   document.title = 'Top | Jion';
-  const {
-    topAnime: { data: topAnime = [] },
-    topManga: { data: topManga = [] },
-  } = useSelector((states) => states);
 
+  const topAnime = useSelector((states) => states.topAnime.data) || [];
+  const topManga = useSelector((states) => states.topManga.data) || [];
   const dispatch = useDispatch();
 
   useEffect(() => {

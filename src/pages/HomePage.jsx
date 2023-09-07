@@ -10,11 +10,8 @@ import { asyncReceiveUpcoming } from '../states/upcoming/action';
 import { mappingData } from '../utils';
 
 function HomePage() {
-  const {
-    now: { data: seasonNow = [] },
-    upcoming: { data: seasonUpcoming = [] },
-  } = useSelector((states) => states);
-
+  const seasonNow = useSelector((states) => states.now.data) || [];
+  const seasonUpcoming = useSelector((states) => states.upcoming.data) || [];
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -9,8 +9,9 @@ import { mappingData } from '../utils';
 
 function TopMangaPage() {
   document.title = 'Top Manga | Jion';
-  const { data = [], pagination = {} } = useSelector((states) => states.topManga);
 
+  const data = useSelector((states) => states.topManga.data) || [];
+  const pagination = useSelector((states) => states.topManga.pagination) || {};
   const dispatch = useDispatch();
 
   useEffect(() => {

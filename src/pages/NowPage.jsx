@@ -9,8 +9,9 @@ import { mappingData } from '../utils';
 
 function NowPage() {
   document.title = 'Now | Jion';
-  const { data = [], pagination = {} } = useSelector((states) => states.now);
 
+  const data = useSelector((states) => states.now.data) || [];
+  const pagination = useSelector((states) => states.now.pagination) || {};
   const dispatch = useDispatch();
 
   useEffect(() => {

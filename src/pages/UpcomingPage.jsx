@@ -9,8 +9,9 @@ import { mappingData } from '../utils';
 
 function UpcomingPage() {
   document.title = 'Upcoming | Jion';
-  const { data = [], pagination = {} } = useSelector((states) => states.upcoming);
 
+  const data = useSelector((states) => states.upcoming.data) || [];
+  const pagination = useSelector((states) => states.upcoming.pagination) || {};
   const dispatch = useDispatch();
 
   useEffect(() => {
