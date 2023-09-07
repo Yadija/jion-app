@@ -22,7 +22,9 @@ const Pagination = ({ pagination, onPageChange }) => {
         <li className='flex px-3'>
           <button
             type='button'
-            className='hover:text-color-blue m-auto'
+            className={`m-auto ${
+              currentPage === 1 ? 'cursor-default' : 'hover:text-color-blue'
+            }`}
             onClick={currentPage === 1 ? null : () => onPageChange(currentPage - 1)}
           >
             <FiChevronLeft />
@@ -30,7 +32,11 @@ const Pagination = ({ pagination, onPageChange }) => {
         </li>
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
-            return <li key={pageNumber + Math.random()}>&#8230;</li>;
+            return (
+              <li key={pageNumber + Math.random()} className='cursor-default'>
+                &#8230;
+              </li>
+            );
           }
 
           return (
@@ -42,6 +48,7 @@ const Pagination = ({ pagination, onPageChange }) => {
             >
               <button
                 type='button'
+                className={pageNumber === currentPage ? 'cursor-default' : ''}
                 onClick={
                   pageNumber === currentPage || pageNumber > lastVisiblePage
                     ? null
@@ -56,7 +63,9 @@ const Pagination = ({ pagination, onPageChange }) => {
         <li className='flex px-3'>
           <button
             type='button'
-            className='hover:text-color-blue m-auto'
+            className={`m-auto ${
+              currentPage === lastVisiblePage ? 'cursor-default' : 'hover:text-color-blue'
+            }`}
             onClick={
               currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)
             }
