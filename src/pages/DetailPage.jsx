@@ -11,15 +11,21 @@ import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
 // states
 import { asyncReceiveDetail } from '../states/detail/action';
+import NotFoundPage from './NotFoundPage';
 
 function DetailPage() {
   const [showModal, setShowModal] = React.useState(false);
 
   const { type, id } = useParams();
-  const { data = null } = useSelector((states) => states.detail);
+  const data = useSelector((states) => states.detail.data) || null;
 
   const dispatch = useDispatch();
 
+  if (!['anime', 'manga'].some((item) => item === type) || !id.match(/^[0-9]+$/)) {
+    return <NotFoundPage />;
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     dispatch(asyncReceiveDetail(type, id));
   }, [dispatch, id, type]);
