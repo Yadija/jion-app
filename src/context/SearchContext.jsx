@@ -9,8 +9,14 @@ export const SearchProvider = ({ children }) => {
     setIsShowSearchModal((prev) => !prev);
   };
 
+  const toggleCloseSearchModal = () => {
+    setIsShowSearchModal(false);
+  };
+
   return (
-    <SearchContext.Provider value={{ isShowSearchModal, toggleSearchModal }}>
+    <SearchContext.Provider
+      value={{ isShowSearchModal, toggleSearchModal, toggleCloseSearchModal }}
+    >
       {children}
     </SearchContext.Provider>
   );

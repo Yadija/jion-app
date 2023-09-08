@@ -9,11 +9,11 @@ const SearchModal = () => {
   const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState('anime');
   const [query, setQuery] = useState('');
-  const { toggleSearchModal } = useContext(SearchContext);
+  const { toggleCloseSearchModal } = useContext(SearchContext);
 
   const handleSearch = async () => {
     navigate(`/${selectedType}?search=${query}`);
-    toggleSearchModal();
+    toggleCloseSearchModal();
   };
 
   return (

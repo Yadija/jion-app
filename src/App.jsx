@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 // components
 import SearchModal from './components/Modal/SearchModal';
@@ -17,7 +17,12 @@ import TopPage from './pages/TopPage';
 import UpcomingPage from './pages/UpcomingPage';
 
 function App() {
-  const { isShowSearchModal } = useContext(SearchContext);
+  const { isShowSearchModal, toggleCloseSearchModal } = useContext(SearchContext);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    toggleCloseSearchModal();
+  }, [pathname]);
 
   return (
     <main className='background-color-white transition-all duration-1000 selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea'>
