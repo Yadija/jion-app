@@ -36,12 +36,22 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getBySearch(type, queryParams) {
+    const { query = '', page = 1 } = queryParams;
+
+    const response = await fetch(`${BASE_URL}/${type}?q=${query}&page=${page}`);
+    const responseJson = await response.json();
+
+    return responseJson;
+  }
+
   return {
     getSeasonNow,
     getSeasonUpcoming,
     getTopAnime,
     getTopManga,
     getDetail,
+    getBySearch,
   };
 })();
 

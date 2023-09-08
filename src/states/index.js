@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import bySearchReducer from './bySearch/reducer';
 import detailReducer from './detail/reducer';
 import nowReducer from './now/reducer';
 import topAnimeReducer from './topAnime/reducer';
@@ -13,6 +14,7 @@ const store = configureStore({
     topAnime: topAnimeReducer,
     topManga: topMangaReducer,
     detail: detailReducer,
+    bySearch: bySearchReducer,
   },
 });
 

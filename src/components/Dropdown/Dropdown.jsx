@@ -18,6 +18,22 @@ const dropdown = [
       },
     ],
   },
+  {
+    id: 'item-2',
+    title: 'Type',
+    content: [
+      {
+        id: 'content-2-1',
+        title: 'Anime',
+        link: '/anime',
+      },
+      {
+        id: 'content-2-2',
+        title: 'Manga',
+        link: '/manga',
+      },
+    ],
+  },
 ];
 
 const Dropdown = () => {
