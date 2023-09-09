@@ -10,6 +10,7 @@ function mappingData(data) {
     image: item.images?.jpg?.image_url || '',
     title: item.title || '',
     type: item.type || '',
+    rating: item.rating || '',
   }));
 }
 
