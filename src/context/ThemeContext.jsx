@@ -3,10 +3,16 @@ import { createContext, useState } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState('dark');
+  if (localStorage.getItem('mode') === null) {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    localStorage.setItem('mode', isDark ? 'dark' : 'light');
+  }
+
+  const [mode, setMode] = useState(localStorage.getItem('mode') || 'dark');
 
   const toggle = () => {
-    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    localStorage.setItem('mode', mode === 'dark' ? 'light' : 'dark');
+    setMode(localStorage.getItem('mode'));
   };
 
   return (
