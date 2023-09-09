@@ -20,10 +20,10 @@ const SearchModal = () => {
     <>
       <div className='fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto overflow-x-hidden'>
         <div className='relative mx-auto my-40 w-auto max-w-3xl px-4'>
-          <div className='flex w-[250px] sm:w-[400px] md:w-[600px] justify-center font-bold'>
+          <div className='flex w-[250px] justify-center font-bold sm:w-[400px] md:w-[600px]'>
             <select
               defaultValue={selectedType}
-              className='p-2 text-color-blue rounded-l-lg'
+              className='text-color-blue rounded-l-lg p-2'
               onChange={(event) => setSelectedType(event.target.value)}
             >
               <option value='anime' className='font-semibold'>
@@ -45,7 +45,7 @@ const SearchModal = () => {
             />
             <button
               type='button'
-              className='text-soft-peach background-color-blue p-3 text-xl rounded-r-lg'
+              className='background-color-blue rounded-r-lg p-3 text-xl text-soft-peach'
               onClick={() => handleSearch()}
             >
               <GoSearch />

@@ -21,7 +21,7 @@ const Navbar = () => {
         <button
           className={`${
             isShowSearchModal && 'background-color-white text-color-blue'
-          } rounded-full p-2 mr-3 transition-all duration-500`}
+          } mr-3 rounded-full p-2 transition-all duration-500`}
           onClick={() => toggleSearchModal((prev) => !prev)}
         >
           <GoSearch />
