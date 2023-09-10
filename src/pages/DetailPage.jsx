@@ -11,6 +11,7 @@ import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
 // states
 import { asyncReceiveDetail } from '../states/detail/action';
+// pages
 import NotFoundPage from './NotFoundPage';
 
 function DetailPage() {
@@ -158,6 +159,65 @@ function DetailPage() {
             </article>
           </section>
 
+          {/* start informations */}
+          <section>
+            <article className='py-2'>
+              <h3 className='title-with-border'>Information</h3>
+              {data.status && (
+                <p>
+                  <b>Status:</b> {data.status}
+                </p>
+              )}
+              {data.season && (
+                <p>
+                  <b>Season:</b> {data.season}
+                </p>
+              )}
+              {data.rating && (
+                <p>
+                  <b>Rating:</b> {data.rating}
+                </p>
+              )}
+              {data.aired && (
+                <p>
+                  <b>Aired:</b> {data.aired.string}
+                </p>
+              )}
+              {data.published && (
+                <p>
+                  <b>Published:</b> {data.published.string}
+                </p>
+              )}
+              {data.volumes && (
+                <p>
+                  <b>Volumes:</b> {data.volumes}
+                </p>
+              )}
+              {data.episodes && (
+                <p>
+                  <b>Episodes:</b> {data.episodes}
+                </p>
+              )}
+              {data.duration && (
+                <p>
+                  <b>Duration:</b> {data.duration}
+                </p>
+              )}
+              {data.source && (
+                <p>
+                  <b>Source:</b> {data.source}
+                </p>
+              )}
+              {data.type && (
+                <p>
+                  <b>Type:</b> {data.type}
+                </p>
+              )}
+            </article>
+          </section>
+          {/* end informations */}
+
+          {/* start trailer */}
           {data.trailer?.embed_url && (
             <section>
               <article className='py-2'>
@@ -172,6 +232,53 @@ function DetailPage() {
               </article>
             </section>
           )}
+          {/* end trailer */}
+
+          {/* start producers */}
+          {data.producers && data.producers.length > 0 && (
+            <section>
+              <article className='py-2'>
+                <h3 className='title-with-border'>Producers</h3>
+                <section className='flex flex-wrap gap-2 py-2'>
+                  {data.producers.map((producer) => (
+                    <p key={producer.mal_id}>
+                      •{' '}
+                      <a
+                        href={producer.url}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='text-color-blue border-b border-fun-blue dark:border-denim-blue hover:border-0'
+                      >
+                        {producer.name}
+                      </a>
+                    </p>
+                  ))}
+                </section>
+              </article>
+            </section>
+          )}
+          {/* end producers */}
+
+          {/* start url */}
+          {data.url && (
+            <section>
+              <article className='py-2'>
+                <h3 className='title-with-border'>Links</h3>
+                <p className='py-2'>
+                  •{' '}
+                  <a
+                    href={data.url}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='text-color-blue border-b border-fun-blue dark:border-denim-blue hover:border-0'
+                  >
+                    MAL
+                  </a>
+                </p>
+              </article>
+            </section>
+          )}
+          {/* end url */}
         </section>
 
         <div className='relative'>
