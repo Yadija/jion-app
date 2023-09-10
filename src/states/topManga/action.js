@@ -25,8 +25,8 @@ function asyncReceiveTopManga(page) {
     dispatch(clearTopMangaActionCreator());
 
     try {
-      const now = await api.getTopManga(page);
-      dispatch(receiveTopMangaActionCreator(now));
+      const topManga = await api.getTopManga(page);
+      dispatch(receiveTopMangaActionCreator(topManga));
     } catch (error) {
       alert(error.message);
     }
