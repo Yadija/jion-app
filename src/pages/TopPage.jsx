@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import SlideShow from '../components/Carousel/SlideShow';
+// component
+import Carousel from '../components/Carousel/Carousel';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
+// states
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
+// utils
 import { mappingData } from '../utils';
 
 function TopPage() {
@@ -28,30 +31,25 @@ function TopPage() {
   return (
     <>
       <Navbar />
-      <section className='px-16 pb-10 xs:px-12'>
+      <section className='pb-10'>
         <article>
-          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4'>
             <h2 className='text-xl font-bold'>Top Anime</h2>
-            <Link
-              to='/top-anime'
-              className='hover:text-color-blue active:text-color-blue'
-            >
+            <Link to='/upcoming' className='hover:text-color-blue active:text-color-blue'>
               See All
             </Link>
           </div>
-          <SlideShow data={mappingData(topAnime)} />
+          <Carousel data={mappingData(topAnime)} />
         </article>
+
         <article>
-          <div className='text-color-black mx-2 mb-2 flex justify-between pt-4'>
+          <div className='text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4'>
             <h2 className='text-xl font-bold'>Top Manga</h2>
-            <Link
-              to='/top-manga'
-              className='hover:text-color-blue active:text-color-blue'
-            >
+            <Link to='/upcoming' className='hover:text-color-blue active:text-color-blue'>
               See All
             </Link>
           </div>
-          <SlideShow data={mappingData(topManga)} />
+          <Carousel data={mappingData(topManga)} />
         </article>
       </section>
     </>

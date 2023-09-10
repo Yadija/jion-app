@@ -247,7 +247,7 @@ function DetailPage() {
                         href={producer.url}
                         target='_blank'
                         rel='noreferrer'
-                        className='text-color-blue border-b border-fun-blue dark:border-denim-blue hover:border-0'
+                        className='text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue'
                       >
                         {producer.name}
                       </a>
@@ -270,7 +270,7 @@ function DetailPage() {
                     href={data.url}
                     target='_blank'
                     rel='noreferrer'
-                    className='text-color-blue border-b border-fun-blue dark:border-denim-blue hover:border-0'
+                    className='text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue'
                   >
                     MAL
                   </a>
