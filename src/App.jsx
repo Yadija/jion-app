@@ -7,6 +7,7 @@ import SearchModal from './components/Modal/SearchModal';
 import { SearchContext } from './context/SearchContext';
 // pages
 import DetailPage from './pages/DetailPage';
+import DetailProducerPage from './pages/DetailProducerPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NowPage from './pages/NowPage';
@@ -36,6 +37,7 @@ function App() {
         <Route path='/top-anime' element={<TopAnimePage />} />
         <Route path='/top-manga' element={<TopMangaPage />} />
         <Route path='/producers' element={<ProducersPage />} />
+        <Route path='/producers/:id' element={<DetailProducerPage />} />
         <Route path='/:type' element={<SearchPage />} />
         <Route path='/:type/:id' element={<DetailPage />} />
         <Route path='/*' element={<NotFoundPage />} />

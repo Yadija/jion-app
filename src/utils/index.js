@@ -14,16 +14,17 @@ function mappingData(data) {
   }));
 }
 
+function getTitleFromUrl(url) {
+  return url.split('/')[url.split('/').indexOf('producer') + 2].replaceAll(/_/g, ' ');
+}
+
 function mappingDataProducer(data) {
   return data.map((item) => ({
     mal_id: item.mal_id || '',
     image: item.images?.jpg?.image_url || '',
-    title:
-      item.url
-        .split('/')
-        [item.url.split('/').indexOf('producer') + 2].replaceAll(/_/g, ' ') || '', // get title by url
+    title: getTitleFromUrl(item.url) || '',
     type: 'producer',
   }));
 }
 
-export { mappingData, mappingDataProducer, trimTitle };
+export { getTitleFromUrl, mappingData, mappingDataProducer, trimTitle };
