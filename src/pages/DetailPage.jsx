@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 // icons
 import { BsArrowsAngleExpand } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // components
 import Footer from '../components/Footer/Footer';
@@ -243,14 +243,13 @@ function DetailPage() {
                   {data.producers.map((producer) => (
                     <p key={producer.mal_id}>
                       •{' '}
-                      <a
-                        href={producer.url}
+                      <Link
+                        to={`/producers/${producer.mal_id}`}
                         target='_blank'
-                        rel='noreferrer'
                         className='text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue'
                       >
                         {producer.name}
-                      </a>
+                      </Link>
                     </p>
                   ))}
                 </section>
@@ -258,6 +257,54 @@ function DetailPage() {
             </section>
           )}
           {/* end producers */}
+
+          {/* start licensors */}
+          {data.licensors && data.licensors.length > 0 && (
+            <section>
+              <article className='py-2'>
+                <h3 className='title-with-border'>Licensors</h3>
+                <section className='flex flex-wrap gap-2 py-2'>
+                  {data.licensors.map((licensor) => (
+                    <p key={licensor.mal_id}>
+                      •{' '}
+                      <Link
+                        to={`/producers/${licensor.mal_id}`}
+                        target='_blank'
+                        className='text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue'
+                      >
+                        {licensor.name}
+                      </Link>
+                    </p>
+                  ))}
+                </section>
+              </article>
+            </section>
+          )}
+          {/* end licensors */}
+
+          {/* start studios */}
+          {data.studios && data.studios.length > 0 && (
+            <section>
+              <article className='py-2'>
+                <h3 className='title-with-border'>Studios</h3>
+                <section className='flex flex-wrap gap-2 py-2'>
+                  {data.studios.map((studio) => (
+                    <p key={studio.mal_id}>
+                      •{' '}
+                      <Link
+                        to={`/producers/${studio.mal_id}`}
+                        target='_blank'
+                        className='text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue'
+                      >
+                        {studio.name}
+                      </Link>
+                    </p>
+                  ))}
+                </section>
+              </article>
+            </section>
+          )}
+          {/* end studios */}
 
           {/* start url */}
           {data.url && (
