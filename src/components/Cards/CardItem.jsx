@@ -30,7 +30,7 @@ const CardItem = ({ title, image, type, mal_id, rating = '' }) => {
   return (
     <Link to={`/${type}/${mal_id}`}>
       <div
-        className='text-color-white select-none overflow-hidden rounded-lg bg-fun-blue transition-all duration-1000 dark:bg-soft-peach'
+        className='text-color-white select-none overflow-hidden rounded-lg shadow-md'
         title={title}
       >
         <img
@@ -43,7 +43,9 @@ const CardItem = ({ title, image, type, mal_id, rating = '' }) => {
             type === 'producers' ? 'h-[140px]' : 'h-[260px]'
           } pointer-events-none w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
         />
-        <h2 className='p-0.5 text-center font-semibold'>{trimTitle(title, 12)}</h2>
+        <h2 className='bg-fun-blue p-0.5 text-center font-semibold transition-all duration-1000 dark:bg-soft-peach'>
+          {trimTitle(title, 12)}
+        </h2>
       </div>
     </Link>
   );
