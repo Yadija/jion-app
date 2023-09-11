@@ -45,6 +45,13 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getProducers(page = 1) {
+    const response = await fetch(`${BASE_URL}/producers?page=${page}`);
+    const responseJson = await response.json();
+
+    return responseJson;
+  }
+
   return {
     getSeasonNow,
     getSeasonUpcoming,
@@ -52,6 +59,7 @@ const api = (() => {
     getTopManga,
     getDetail,
     getBySearch,
+    getProducers,
   };
 })();
 

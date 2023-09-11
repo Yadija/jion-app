@@ -10,6 +10,7 @@ import DetailPage from './pages/DetailPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NowPage from './pages/NowPage';
+import ProducersPage from './pages/ProducersPage';
 import SearchPage from './pages/SearchPage';
 import TopAnimePage from './pages/TopAnimePage';
 import TopMangaPage from './pages/TopMangaPage';
@@ -34,6 +35,7 @@ function App() {
         <Route path='/top' element={<TopPage />} />
         <Route path='/top-anime' element={<TopAnimePage />} />
         <Route path='/top-manga' element={<TopMangaPage />} />
+        <Route path='/producers' element={<ProducersPage />} />
         <Route path='/:type' element={<SearchPage />} />
         <Route path='/:type/:id' element={<DetailPage />} />
         <Route path='/*' element={<NotFoundPage />} />

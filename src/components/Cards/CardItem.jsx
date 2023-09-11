@@ -5,13 +5,30 @@ import { Link } from 'react-router-dom';
 
 import { trimTitle } from '../../utils';
 
-const CardItem = ({ title, image, type, mal_id, rating }) => {
-  const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
-  const isType = typesManga.some((kind) => kind === type);
-  const typeAnime = isType ? 'manga' : 'anime';
+const CardItem = ({ title, image, type, mal_id, rating = '' }) => {
+  // const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
+
+  switch (type.toLowerCase()) {
+    case 'manga':
+    case 'light novel':
+    case 'manhwa':
+    case 'manhua':
+    case 'novel':
+    case 'one-shot':
+      type = 'manga';
+      break;
+
+    case 'producer':
+      type = 'producers';
+      break;
+
+    default:
+      type = 'anime';
+      break;
+  }
 
   return (
-    <Link to={`/${typeAnime}/${mal_id}`}>
+    <Link to={`/${type}/${mal_id}`}>
       <div
         className='text-color-white select-none overflow-hidden rounded-lg bg-fun-blue transition-all duration-1000 dark:bg-soft-peach'
         title={title}
@@ -22,7 +39,9 @@ const CardItem = ({ title, image, type, mal_id, rating }) => {
           className={`${
             rating.toLowerCase().includes(atob('aGVudGFp')) &&
             'blur-md' /* filter for nsfw */
-          } pointer-events-none h-[260px] w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
+          } ${
+            type === 'producers' ? 'h-[140px]' : 'h-[260px]'
+          } pointer-events-none w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
         />
         <h2 className='p-0.5 text-center font-semibold'>{trimTitle(title, 12)}</h2>
       </div>
@@ -36,7 +55,7 @@ export const cardItemShape = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.string,
 };
 
 CardItem.propTypes = {
