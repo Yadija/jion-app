@@ -31,7 +31,7 @@ function TopPage() {
   return (
     <>
       <Navbar />
-      <section className='pb-10'>
+      <section>
         <article>
           <div className='text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4'>
             <h2 className='text-xl font-bold'>Top Anime</h2>
@@ -42,7 +42,7 @@ function TopPage() {
           <Carousel data={mappingData(topAnime)} />
         </article>
 
-        <article>
+        <article className='pb-10'>
           <div className='text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4'>
             <h2 className='text-xl font-bold'>Top Manga</h2>
             <Link to='/upcoming' className='hover:text-color-blue active:text-color-blue'>

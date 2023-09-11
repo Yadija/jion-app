@@ -27,7 +27,7 @@ function App() {
   }, [pathname]);
 
   return (
-    <main className='background-color-white transition-all duration-1000 selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea'>
+    <main className='background-color-white min-h-screen transition-all duration-1000 selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea'>
       {isShowSearchModal && <SearchModal />}
       <Routes>
         <Route path='/' element={<HomePage />} />
