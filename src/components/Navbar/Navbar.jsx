@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext.jsx';
 // component
 import DarkMode from '../DarkMode/DarkMode.jsx';
+import Drawer from '../Drawer/Drawer.jsx';
 import Dropdown from '../Dropdown/Dropdown.jsx';
 
 const Navbar = () => {
@@ -16,8 +17,8 @@ const Navbar = () => {
       <h2 className='text-xl font-bold'>
         <Link to='/'>Jion</Link>
       </h2>
-      <div className='flex items-center'>
-        <Dropdown />
+      <div className='flex items-center gap-3'>
+        {/* <Dropdown /> */}
         <button
           className={`${
             isShowSearchModal && 'background-color-white text-color-blue'
@@ -27,6 +28,7 @@ const Navbar = () => {
           <GoSearch />
         </button>
         <DarkMode />
+        <Drawer />
       </div>
     </nav>
   );
