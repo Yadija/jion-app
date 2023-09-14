@@ -28,7 +28,7 @@ function asyncReceiveDetailProducer(type, id) {
       const detailProducer = await api.getDetail(type, id);
       dispatch(receiveDetailProducerActionCreator(detailProducer));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveDetailProducerActionCreator({ error: error.message }));
     }
   };
 }

@@ -28,7 +28,7 @@ function asyncReceiveProducers(page) {
       const producers = await api.getProducers(page);
       dispatch(receiveProducersActionCreator(producers));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveProducersActionCreator({ error: error.message }));
     }
   };
 }

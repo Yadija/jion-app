@@ -28,7 +28,7 @@ function asyncReceiveUpcoming(page) {
       const upcoming = await api.getSeasonUpcoming(page);
       dispatch(receiveUpcomingActionCreator(upcoming));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveUpcomingActionCreator({ error: error.message }));
     }
   };
 }

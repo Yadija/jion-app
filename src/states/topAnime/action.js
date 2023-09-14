@@ -28,7 +28,7 @@ function asyncReceiveTopAnime(page) {
       const topAnime = await api.getTopAnime(page);
       dispatch(receiveTopAnimeActionCreator(topAnime));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveTopAnimeActionCreator({ error: error.message }));
     }
   };
 }

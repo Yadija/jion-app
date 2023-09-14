@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 // components
+import Error from '../components/Error/Error';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
@@ -19,6 +20,7 @@ function DetailPage() {
 
   const { type, id } = useParams();
   const data = useSelector((states) => states.detail.data) || null;
+  const error = useSelector((states) => states.detail.error) || '';
 
   const dispatch = useDispatch();
 
@@ -30,6 +32,10 @@ function DetailPage() {
   useEffect(() => {
     dispatch(asyncReceiveDetail(type, id));
   }, [dispatch, id, type]);
+
+  if (error) {
+    return <Error message={error} />;
+  }
 
   if (data === null) {
     return <Loading />;

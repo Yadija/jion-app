@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component
 import Carousel from '../components/Carousel/Carousel';
+import Error from '../components/Error/Error';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
 // states
@@ -14,13 +15,19 @@ import { mappingData } from '../utils';
 
 function HomePage() {
   const seasonNow = useSelector((states) => states.now.data) || [];
+  const errorInNow = useSelector((states) => states.now.error) || '';
   const seasonUpcoming = useSelector((states) => states.upcoming.data) || [];
+  const errorInUpcoming = useSelector((states) => states.upcoming.error) || '';
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(asyncReceiveNow());
     dispatch(asyncReceiveUpcoming());
   }, [dispatch]);
+
+  if (errorInNow || errorInUpcoming) {
+    return <Error message={errorInNow || errorInUpcoming} />;
+  }
 
   if (seasonNow.length === 0 || seasonUpcoming.length === 0) {
     return <Loading />;

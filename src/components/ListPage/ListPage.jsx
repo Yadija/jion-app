@@ -2,13 +2,17 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+// utils
 import { mappingData, mappingDataProducer } from '../../utils';
+// component
 import CardsList from '../Cards/CardsList';
+import Error from '../Error/Error';
 import Loading from '../Loading/Loading';
 import Pagination from '../Pagination/Pagination';
 
 function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
   const data = useSelector((states) => states[dataState].data) || [];
+  const error = useSelector((states) => states[dataState].error) || '';
   const pagination = useSelector((states) => states[dataState].pagination) || {};
   const dispatch = useDispatch();
 
@@ -22,6 +26,10 @@ function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
     // document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   };
+
+  if (error) {
+    return <Error message={error} />;
+  }
 
   if (data.length === 0) {
     return <Loading />;

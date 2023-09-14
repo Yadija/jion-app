@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component
 import Carousel from '../components/Carousel/Carousel';
+import Error from '../components/Error/Error';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
 // states
@@ -16,13 +17,19 @@ function TopPage() {
   document.title = 'Top | Jion';
 
   const topAnime = useSelector((states) => states.topAnime.data) || [];
+  const errorInTopAnime = useSelector((states) => states.topAnime.error) || '';
   const topManga = useSelector((states) => states.topManga.data) || [];
+  const errorInTopManga = useSelector((states) => states.topManga.error) || '';
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(asyncReceiveTopAnime());
     dispatch(asyncReceiveTopManga());
   }, [dispatch]);
+
+  if (errorInTopAnime || errorInTopManga) {
+    return <Error message={errorInTopAnime || errorInTopManga} />;
+  }
 
   if (topAnime.length === 0 || topManga.length === 0) {
     return <Loading />;

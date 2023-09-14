@@ -28,7 +28,7 @@ function asyncReceiveBySearch(type, queryParams) {
       const bySearch = await api.getBySearch(type, queryParams);
       dispatch(receiveBySearchActionCreator(bySearch));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveBySearchActionCreator({ error: error.message }));
     }
   };
 }

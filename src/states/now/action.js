@@ -28,7 +28,7 @@ function asyncReceiveNow(page) {
       const now = await api.getSeasonNow(page);
       dispatch(receiveNowActionCreator(now));
     } catch (error) {
-      alert(error.message);
+      dispatch(receiveNowActionCreator({ error: error.message }));
     }
   };
 }
