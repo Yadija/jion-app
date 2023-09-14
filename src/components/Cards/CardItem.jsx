@@ -37,8 +37,7 @@ const CardItem = ({ title, image, type, mal_id, rating = '' }) => {
           src={image}
           alt={title}
           className={`${
-            rating.toLowerCase().includes(atob('aGVudGFp')) &&
-            'blur-md' /* filter for nsfw */
+            rating.toLowerCase().includes('rx') && 'blur-md' /* filter for nsfw */
           } ${
             type === 'producers' ? 'h-[140px]' : 'h-[260px]'
           } pointer-events-none w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
