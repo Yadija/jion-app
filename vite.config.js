@@ -45,9 +45,39 @@ export default defineConfig({
           },
         ],
       },
-      // workbox: {
-      //   globPatterns: ['**/*.{js,css,html,ico,png,svg}']
-      // },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,webp}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\//,
+            handler: 'CacheFirst',
+          },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\//,
+            handler: 'CacheFirst',
+          },
+          {
+            urlPattern: /^https:\/\/api\.jikan\.moe\//,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'jikan-api',
+              expiration: {
+                maxAgeSeconds: 60 * 60 * 24,
+              },
+            },
+          },
+          {
+            urlPattern: ({ request }) => request.destination === 'image',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'image',
+              expiration: {
+                maxAgeSeconds: 60 * 60 * 24,
+              },
+            },
+          },
+        ],
+      },
       // srcDir: "public",
       // filename: 'service-worker.js',
       // strategies: 'injectManifest',
