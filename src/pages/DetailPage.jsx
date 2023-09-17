@@ -7,11 +7,14 @@ import { Link, useParams } from 'react-router-dom';
 
 // components
 import Error from '../components/Error/Error';
+import FavoriteButton from '../components/FavoriteButton/FavoriteButton';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
 // states
 import { asyncReceiveDetail } from '../states/detail/action';
+// utils
+import { mappingData } from '../utils';
 // pages
 import NotFoundPage from './NotFoundPage';
 
@@ -61,6 +64,8 @@ function DetailPage() {
 
       <div className='text-color-black relative flex min-h-screen flex-col'>
         <nav className='flex py-9' />
+
+        <FavoriteButton data={mappingData({ ...data, type })} />
 
         {/* start backgorund image */}
         <section>
