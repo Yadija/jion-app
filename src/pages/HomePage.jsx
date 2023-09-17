@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar/Navbar';
 import { asyncReceiveNow } from '../states/now/action';
 import { asyncReceiveUpcoming } from '../states/upcoming/action';
 // utils
-import { mappingData } from '../utils';
+import { mappingDataInArray } from '../utils';
 
 function HomePage() {
   const seasonNow = useSelector((states) => states.now.data) || [];
@@ -44,7 +44,7 @@ function HomePage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingData(seasonNow)} />
+          <Carousel data={mappingDataInArray(seasonNow)} />
         </article>
 
         <article className='pb-10'>
@@ -54,7 +54,7 @@ function HomePage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingData(seasonUpcoming)} />
+          <Carousel data={mappingDataInArray(seasonUpcoming)} />
         </article>
       </section>
     </>

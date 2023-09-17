@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // utils
-import { mappingData, mappingDataProducer } from '../../utils';
+import { mappingDataInArray, mappingDataProducerInArray } from '../../utils';
 // component
 import CardsList from '../Cards/CardsList';
 import Error from '../Error/Error';
@@ -39,7 +39,9 @@ function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
     <div className='flex flex-col justify-between px-16 xs:px-12'>
       <h1 className='title-page'>{title}</h1>
       <div className='grow'>
-        <CardsList data={producers ? mappingDataProducer(data) : mappingData(data)} />
+        <CardsList
+          data={producers ? mappingDataProducerInArray(data) : mappingDataInArray(data)}
+        />
       </div>
       <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
     </div>

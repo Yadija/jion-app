@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar/Navbar';
 import { asyncReceiveTopAnime } from '../states/topAnime/action';
 import { asyncReceiveTopManga } from '../states/topManga/action';
 // utils
-import { mappingData } from '../utils';
+import { mappingDataInArray } from '../utils';
 
 function TopPage() {
   document.title = 'Top | Jion';
@@ -46,7 +46,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingData(topAnime)} />
+          <Carousel data={mappingDataInArray(topAnime)} />
         </article>
 
         <article className='pb-10'>
@@ -56,7 +56,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingData(topManga)} />
+          <Carousel data={mappingDataInArray(topManga)} />
         </article>
       </section>
     </>

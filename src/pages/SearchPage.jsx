@@ -11,7 +11,7 @@ import Pagination from '../components/Pagination/Pagination';
 // states
 import { asyncReceiveBySearch } from '../states/bySearch/action';
 // utils
-import { mappingData } from '../utils';
+import { mappingDataInArray } from '../utils';
 // pages
 import NotFoundPage from './NotFoundPage';
 
@@ -60,7 +60,7 @@ function SearchPage() {
           <span className='py-6' />
         )}
         <div className='grow'>
-          <CardsList data={mappingData(data)} />
+          <CardsList data={mappingDataInArray(data)} />
         </div>
         <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
       </div>
