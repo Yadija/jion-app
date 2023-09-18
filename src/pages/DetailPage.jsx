@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 // components
-import Error from '../components/Error/Error';
 import FavoriteButton from '../components/FavoriteButton/FavoriteButton';
+import FetchError from '../components/FetchError/FetchError';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
@@ -37,7 +37,7 @@ function DetailPage() {
   }, [dispatch, id, type]);
 
   if (error) {
-    return <Error message={error} />;
+    return <FetchError />;
   }
 
   if (data === null) {

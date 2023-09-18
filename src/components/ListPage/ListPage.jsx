@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { mappingDataInArray, mappingDataProducerInArray } from '../../utils';
 // component
 import CardsList from '../Cards/CardsList';
-import Error from '../Error/Error';
+import FetchError from '../FetchError/FetchError';
 import Loading from '../Loading/Loading';
 import Pagination from '../Pagination/Pagination';
 
@@ -28,7 +28,7 @@ function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
   };
 
   if (error) {
-    return <Error message={error} />;
+    return <FetchError />;
   }
 
   if (data.length === 0) {

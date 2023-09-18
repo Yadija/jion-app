@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // components
-import Error from '../components/Error/Error';
+import FetchError from '../components/FetchError/FetchError';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';
@@ -35,7 +35,7 @@ function DetailProducerPage() {
   }, [dispatch, id]);
 
   if (error) {
-    return <Error message={error} />;
+    return <FetchError />;
   }
 
   if (data === null) {

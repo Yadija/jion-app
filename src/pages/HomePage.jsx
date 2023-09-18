@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component
 import Carousel from '../components/Carousel/Carousel';
-import Error from '../components/Error/Error';
+import FetchError from '../components/FetchError/FetchError';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
 // states
@@ -26,7 +26,7 @@ function HomePage() {
   }, [dispatch]);
 
   if (errorInNow || errorInUpcoming) {
-    return <Error message={errorInNow || errorInUpcoming} />;
+    return <FetchError />;
   }
 
   if (seasonNow.length === 0 || seasonUpcoming.length === 0) {

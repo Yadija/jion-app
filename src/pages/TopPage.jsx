@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component
 import Carousel from '../components/Carousel/Carousel';
-import Error from '../components/Error/Error';
+import FetchError from '../components/FetchError/FetchError';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
 // states
@@ -28,7 +28,7 @@ function TopPage() {
   }, [dispatch]);
 
   if (errorInTopAnime || errorInTopManga) {
-    return <Error message={errorInTopAnime || errorInTopManga} />;
+    return <FetchError />;
   }
 
   if (topAnime.length === 0 || topManga.length === 0) {
