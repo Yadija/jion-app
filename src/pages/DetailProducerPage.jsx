@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // components
-import FetchError from '../components/FetchError/FetchError';
+import FetchError from '../components/Error/FetchError';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';

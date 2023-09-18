@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
 // components
+import FetchError from '../components/Error/FetchError';
 import FavoriteButton from '../components/FavoriteButton/FavoriteButton';
-import FetchError from '../components/FetchError/FetchError';
 import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import Modal from '../components/Modal/Modal';

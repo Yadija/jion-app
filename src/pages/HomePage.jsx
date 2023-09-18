@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // component
 import Carousel from '../components/Carousel/Carousel';
-import FetchError from '../components/FetchError/FetchError';
+import FetchError from '../components/Error/FetchError';
 import Loading from '../components/Loading/Loading';
 import Navbar from '../components/Navbar/Navbar';
 // states
