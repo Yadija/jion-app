@@ -11,10 +11,23 @@ import NotFoundPage from './NotFoundPage';
 
 function FavoritePage() {
   const { type } = useParams();
-  const data = useLiveQuery(() => db[type].toArray(), []) || '';
+  const data = useLiveQuery(() => db[type].toArray(), []) || null;
 
   if (!data) return <Loading />;
-  if (data.length === 0) return <div>Is empty</div>;
+  if (data.length === 0)
+    return (
+      <div className='background-color-white grid h-screen'>
+        <div className='m-auto flex flex-col p-14 text-center'>
+          <h1 className='text-color-blue m-auto text-2xl font-bold md:text-4xl'>
+            No Favorite
+          </h1>
+          <p className='lg:text-lg'>
+            {`You haven't favorite anything yet, so we don't have anything to show you! Pick
+            some!`}
+          </p>
+        </div>
+      </div>
+    );
 
   if (!['anime', 'manga'].some((item) => item === type)) {
     return <NotFoundPage />;
