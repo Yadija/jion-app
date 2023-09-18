@@ -22,19 +22,24 @@ function getTitleFromUrl(url) {
   return url.split('/')[url.split('/').indexOf('producer') + 2].replaceAll(/_/g, ' ');
 }
 
-function mappingDataProducerInArray(data) {
-  return data.map((item) => ({
-    mal_id: item.mal_id || '',
-    image: item.images?.jpg?.image_url || '',
-    title: getTitleFromUrl(item.url) || '',
+function mappingDataProducer(data) {
+  return {
+    mal_id: data.mal_id || '',
+    image: data.images?.jpg?.image_url || '',
+    title: getTitleFromUrl(data.url) || '',
     type: 'producer',
-  }));
+  };
+}
+
+function mappingDataProducerInArray(data) {
+  return data.map((item) => mappingDataProducer(item));
 }
 
 export {
   getTitleFromUrl,
   mappingData,
   mappingDataInArray,
+  mappingDataProducer,
   mappingDataProducerInArray,
   trimTitle,
 };
