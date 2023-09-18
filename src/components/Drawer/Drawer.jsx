@@ -41,6 +41,22 @@ const drawer = [
     name: 'Producers',
     path: '/producers',
   },
+  {
+    id: 'favorite-1',
+    name: 'Favorite',
+    content: [
+      {
+        id: 'favorite-anime-1',
+        name: 'Anime',
+        path: '/favorite/anime',
+      },
+      {
+        id: 'favorite-manga-1',
+        name: 'Manga',
+        path: '/favorite/manga',
+      },
+    ],
+  },
 ];
 
 const Drawer = () => {

@@ -8,6 +8,7 @@ import { SearchContext } from './context/SearchContext';
 // pages
 import DetailPage from './pages/DetailPage';
 import DetailProducerPage from './pages/DetailProducerPage';
+import FavoritePage from './pages/FavoritePage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NowPage from './pages/NowPage';
@@ -38,6 +39,7 @@ function App() {
         <Route path='/top-manga' element={<TopMangaPage />} />
         <Route path='/producers' element={<ProducersPage />} />
         <Route path='/producers/:id' element={<DetailProducerPage />} />
+        <Route path='/favorite/:type' element={<FavoritePage />} />
         <Route path='/:type' element={<SearchPage />} />
         <Route path='/:type/:id' element={<DetailPage />} />
         <Route path='/*' element={<NotFoundPage />} />
