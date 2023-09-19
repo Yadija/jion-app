@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+// hooks
 import { DOTS, usePagination } from '../../hooks/usePagination';
 
-const Pagination = ({ pagination, onPageChange }) => {
+const Pagination = ({ pagination }) => {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } = pagination;
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const paginationRange = usePagination({
     currentPage,
@@ -25,7 +30,11 @@ const Pagination = ({ pagination, onPageChange }) => {
             className={`m-auto ${
               currentPage === 1 ? 'cursor-default' : 'hover:text-color-blue'
             }`}
-            onClick={currentPage === 1 ? null : () => onPageChange(currentPage - 1)}
+            onClick={
+              currentPage === 1
+                ? null
+                : () => navigate(`${pathname}?page=${currentPage - 1}`)
+            }
           >
             <FiChevronLeft />
           </button>
@@ -52,7 +61,7 @@ const Pagination = ({ pagination, onPageChange }) => {
                 onClick={
                   pageNumber === currentPage || pageNumber > lastVisiblePage
                     ? null
-                    : () => onPageChange(pageNumber)
+                    : () => navigate(`${pathname}?page=${pageNumber}`)
                 }
               >
                 {pageNumber}
@@ -67,7 +76,9 @@ const Pagination = ({ pagination, onPageChange }) => {
               currentPage === lastVisiblePage ? 'cursor-default' : 'hover:text-color-blue'
             }`}
             onClick={
-              currentPage === lastVisiblePage ? null : () => onPageChange(currentPage + 1)
+              currentPage === lastVisiblePage
+                ? null
+                : () => navigate(`${pathname}?page=${currentPage + 1}`)
             }
           >
             <FiChevronRight />
@@ -85,7 +96,6 @@ const paginationItemShape = {
 
 Pagination.propTypes = {
   pagination: PropTypes.shape(paginationItemShape).isRequired,
-  onPageChange: PropTypes.func.isRequired,
 };
 
 export default Pagination;

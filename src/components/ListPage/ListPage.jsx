@@ -29,15 +29,11 @@ function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    dispatch(asyncReceiveFunc());
-  }, [page]);
-
-  const onPageChangeHandler = async (page) => {
     dispatch(asyncReceiveFunc(page));
 
     // document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
+    // document.documentElement.scrollTop = 0;
+  }, [page]);
 
   if (page > pagination.last_visible_page) {
     return (
@@ -57,14 +53,14 @@ function ListPage({ title, asyncReceiveFunc, dataState, producers = false }) {
   }
 
   return (
-    <div className='flex flex-col justify-between px-16 xs:px-12'>
+    <div className='flex min-h-screen flex-col justify-between px-16 xs:px-12'>
       <h1 className='title-page'>{title}</h1>
       <div className='grow'>
         <CardsList
           data={producers ? mappingDataProducerInArray(data) : mappingDataInArray(data)}
         />
       </div>
-      <Pagination pagination={pagination} onPageChange={onPageChangeHandler} />
+      <Pagination pagination={pagination} />
     </div>
   );
 }
