@@ -7,7 +7,7 @@ const FetchError = () => {
         <h1 className='text-color-blue m-auto text-2xl font-bold md:text-4xl'>
           Failed to Retrieve Data
         </h1>
-        <p className='lg:text-lg'>
+        <p className='text-color-black lg:text-lg'>
           Data cannot be displayed due to an error on the server or because you are not
           connected to the internet and data is not available in the cache
         </p>
