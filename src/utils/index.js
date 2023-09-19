@@ -5,12 +5,18 @@ function trimTitle(title, limit = 20) {
 }
 
 function mappingData(data) {
+  const rating = (genres) => {
+    return genres.some((genre) => genre.name.toLowerCase().includes(atob('aGVudGFp')))
+      ? 'rx'
+      : '';
+  };
+
   return {
     mal_id: data.mal_id || '',
     image: data.images?.jpg?.image_url || '',
     title: data.title || '',
     type: data.type || '',
-    rating: data.rating || '',
+    rating: data.rating || rating(data.genres),
   };
 }
 
