@@ -3,7 +3,7 @@ import { GoSearch } from "react-icons/go";
 import { useNavigate } from "react-router";
 
 // context
-import { SearchContext } from "../../context/SearchContext";
+import { SearchContext } from "../../context/search-provider";
 
 export default function SearchModal() {
   const navigate = useNavigate();

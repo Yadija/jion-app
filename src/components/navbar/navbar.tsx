@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import jionBlack from "../../assets/images/jion-black.png";
 import jionWhite from "../../assets/images/jion-white.png";
 // context
-import { SearchContext } from "../../context/SearchContext.js";
-import { ThemeContext } from "../../context/ThemeContext.js";
+import { SearchContext } from "../../context/search-provider.js";
+import { ThemeContext } from "../../context/theme-provider.js";
 // components
-import DarkMode from "../DarkMode/DarkMode.tsx";
-import Drawer from "../Drawer/Drawer.tsx";
+import DarkMode from "../dark-mode/dark-mode.tsx";
+import Drawer from "../drawer/drawer.tsx";
 
 export default function Navbar() {
   const { isShowSearchModal, toggleSearchModal } = useContext(SearchContext);

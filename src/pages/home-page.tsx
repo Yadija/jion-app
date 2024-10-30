@@ -3,17 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // components
-import Carousel from "../components/Carousel/Carousel";
-import FetchError from "../components/Error/FetchError";
-import Loading from "../components/Loading/Loading";
-import Navbar from "../components/Navbar/Navbar";
+import Carousel from "../components/carousel/carousel";
+import FetchError from "../components/error/fetch-error";
+import Loading from "../components/loading/loading";
+import Navbar from "../components/navbar/navbar";
 // states
 import { asyncReceiveNow } from "../states/now/action";
 import { asyncReceiveUpcoming } from "../states/upcoming/action";
 // utils
 import { mappingDataInArray } from "../utils";
 
-function HomePage() {
+export default function HomePage() {
   const seasonNow = useSelector((states) => states.now.data) || [];
   const errorInNow = useSelector((states) => states.now.error) || "";
   const seasonUpcoming = useSelector((states) => states.upcoming.data) || [];
@@ -66,5 +66,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

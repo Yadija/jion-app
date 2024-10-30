@@ -2,7 +2,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // hooks
-import { DOTS, usePagination } from "../../hooks/usePagination";
+import { DOTS, usePagination } from "../../hooks/use-pagination";
 
 export default function Pagination({ pagination }: any) {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } =

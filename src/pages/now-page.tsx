@@ -1,5 +1,5 @@
 // components
-import ListPage from "../components/ListPage/ListPage";
+import ListPage from "../components/list-page/list-page";
 // states
 import { asyncReceiveNow } from "../states/now/action";
 

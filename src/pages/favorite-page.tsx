@@ -2,13 +2,13 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useParams } from "react-router";
 
 // components
-import CardsList from "../components/Cards/CardsList";
-import MessageError from "../components/Error/MessageError";
-import Loading from "../components/Loading/Loading";
+import CardsList from "../components/cards/cards-list";
+import MessageError from "../components/error/message-error";
+import Loading from "../components/loading/loading";
 // utils
 import { db } from "../utils/db";
 // pages
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "./not-found-page";
 
 export default function FavoritePage() {
   const { type } = useParams();

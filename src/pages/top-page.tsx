@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // components
-import Carousel from "../components/Carousel/Carousel";
-import FetchError from "../components/Error/FetchError";
-import Loading from "../components/Loading/Loading";
-import Navbar from "../components/Navbar/Navbar";
+import Carousel from "../components/carousel/carousel";
+import FetchError from "../components/error/fetch-error";
+import Loading from "../components/loading/loading";
+import Navbar from "../components/navbar/navbar";
 // states
 import { asyncReceiveTopAnime } from "../states/topAnime/action";
 import { asyncReceiveTopManga } from "../states/topManga/action";

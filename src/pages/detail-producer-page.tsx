@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/Error/FetchError";
-import Footer from "../components/Footer/Footer";
-import Loading from "../components/Loading/Loading";
-import Modal from "../components/Modal/Modal";
+import FetchError from "../components/error/fetch-error";
+import Footer from "../components/footer/footer";
+import Loading from "../components/loading/loading";
+import Modal from "../components/modal/modal";
 // states
 import { asyncReceiveDetailProducer } from "../states/detailProducer/action";
 import { getTitleFromUrl } from "../utils";
 // pages
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "./not-found-page";
 
 export default function DetailProducerPage() {
   const [showModal, setShowModal] = useState(false);

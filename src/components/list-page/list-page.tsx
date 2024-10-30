@@ -5,11 +5,11 @@ import { useSearchParams } from "react-router-dom";
 // utils
 import { mappingDataInArray, mappingDataProducerInArray } from "../../utils";
 // components
-import CardsList from "../Cards/CardsList";
-import FetchError from "../Error/FetchError";
-import MessageError from "../Error/MessageError";
-import Loading from "../Loading/Loading";
-import Pagination from "../Pagination/Pagination";
+import CardsList from "../cards/cards-list";
+import FetchError from "../error/fetch-error";
+import MessageError from "../error/message-error";
+import Loading from "../loading/loading";
+import Pagination from "../pagination/pagination";
 
 export default function ListPage({
   title,

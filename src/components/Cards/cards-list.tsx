@@ -1,5 +1,5 @@
 // component
-import CardItem from "./CardItem";
+import CardItem from "./card-item";
 
 export default function CardsList({ data }: any) {
   return (

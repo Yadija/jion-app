@@ -2,22 +2,22 @@ import { useContext, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 // components
-import SearchModal from "./components/Modal/SearchModal";
+import SearchModal from "./components/modal/search-modal";
 // context
-import { SearchContext } from "./context/SearchContext";
+import { SearchContext } from "./context/search-provider";
 // pages
-import DetailPage from "./pages/DetailPage";
-import DetailProducerPage from "./pages/DetailProducerPage";
-import FavoritePage from "./pages/FavoritePage";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import NowPage from "./pages/NowPage";
-import ProducersPage from "./pages/ProducersPage";
-import SearchPage from "./pages/SearchPage";
-import TopAnimePage from "./pages/TopAnimePage";
-import TopMangaPage from "./pages/TopMangaPage";
-import TopPage from "./pages/TopPage";
-import UpcomingPage from "./pages/UpcomingPage";
+import DetailPage from "./pages/detail-page";
+import DetailProducerPage from "./pages/detail-producer-page";
+import FavoritePage from "./pages/favorite-page";
+import HomePage from "./pages/home-page";
+import NotFoundPage from "./pages/not-found-page";
+import NowPage from "./pages/now-page";
+import ProducersPage from "./pages/producers-page";
+import SearchPage from "./pages/search-page";
+import TopAnimePage from "./pages/top-anime-page";
+import TopMangaPage from "./pages/top-manga-page";
+import TopPage from "./pages/top-page";
+import UpcomingPage from "./pages/upcoming-page";
 
 export default function App() {
   const { isShowSearchModal, toggleCloseSearchModal } =

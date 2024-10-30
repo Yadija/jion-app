@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/Error/FetchError";
-import FavoriteButton from "../components/FavoriteButton/FavoriteButton";
-import Footer from "../components/Footer/Footer";
-import Loading from "../components/Loading/Loading";
-import Modal from "../components/Modal/Modal";
+import FetchError from "../components/error/fetch-error";
+import FavoriteButton from "../components/favorite-button/favorite-button";
+import Footer from "../components/footer/footer";
+import Loading from "../components/loading/loading";
+import Modal from "../components/modal/modal";
 // states
 import { asyncReceiveDetail } from "../states/detail/action";
 // utils
 import { mappingData } from "../utils";
 // pages
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "./not-found-page";
 
 export default function DetailPage() {
   const [showModal, setShowModal] = useState(false);

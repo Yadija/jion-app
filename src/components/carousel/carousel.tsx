@@ -8,7 +8,7 @@ import { Autoplay, FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
-import CardItem from "../Cards/CardItem";
+import CardItem from "../cards/card-item";
 
 export default function Carousel({ data }: any) {
   return (

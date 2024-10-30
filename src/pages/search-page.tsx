@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
 
 // components
-import CardsList from "../components/Cards/CardsList";
-import Loading from "../components/Loading/Loading";
-import Navbar from "../components/Navbar/Navbar";
-import Pagination from "../components/Pagination/Pagination";
+import CardsList from "../components/cards/cards-list";
+import Loading from "../components/loading/loading";
+import Navbar from "../components/navbar/navbar";
+import Pagination from "../components/pagination/pagination";
 // states
 import { asyncReceiveBySearch } from "../states/bySearch/action";
 // utils
 import { mappingDataInArray } from "../utils";
 // pages
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "./not-found-page";
 
 export default function SearchPage() {
   const data = useSelector((states) => states.bySearch.data) || [];
