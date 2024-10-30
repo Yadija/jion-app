@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { TbMoon, TbSunHigh } from "react-icons/tb";
 
-// context
-import { ThemeContext } from "../../context/theme-provider";
+// hooks
+import { useTheme } from "../../hooks/use-theme";
 
 export default function DarkMode() {
-  const { mode, toggle } = useContext(ThemeContext);
+  const { mode, toggle } = useTheme();
 
   return (
     <button

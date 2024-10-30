@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 // components
 import SearchModal from "./components/modal/search-modal";
-// context
-import { SearchContext } from "./context/search-provider";
+// hooks
+import { useSearch } from "./hooks/use-search";
 // pages
 import DetailPage from "./pages/detail-page";
 import DetailProducerPage from "./pages/detail-producer-page";
@@ -20,8 +20,7 @@ import TopPage from "./pages/top-page";
 import UpcomingPage from "./pages/upcoming-page";
 
 export default function App() {
-  const { isShowSearchModal, toggleCloseSearchModal } =
-    useContext(SearchContext);
+  const { isShowSearchModal, toggleCloseSearchModal } = useSearch();
   const { pathname } = useLocation();
 
   useEffect(() => {

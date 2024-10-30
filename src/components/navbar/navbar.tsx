@@ -1,20 +1,19 @@
-import { useContext } from "react";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 // images
 import jionBlack from "../../assets/images/jion-black.png";
 import jionWhite from "../../assets/images/jion-white.png";
-// context
-import { SearchContext } from "../../context/search-provider.js";
-import { ThemeContext } from "../../context/theme-provider.js";
+// hooks
+import { useSearch } from "../../hooks/use-search";
+import { useTheme } from "../../hooks/use-theme";
 // components
-import DarkMode from "../dark-mode/dark-mode.tsx";
-import Drawer from "../drawer/drawer.tsx";
+import DarkMode from "../dark-mode/dark-mode";
+import Drawer from "../drawer/drawer";
 
 export default function Navbar() {
-  const { isShowSearchModal, toggleSearchModal } = useContext(SearchContext);
-  const { mode } = useContext(ThemeContext);
+  const { isShowSearchModal, toggleSearchModal } = useSearch();
+  const { mode } = useTheme();
 
   return (
     <nav className="background-color-blue text-color-white sticky top-0 z-[10000] flex items-center justify-between px-6 py-3 transition-all duration-1000">
@@ -32,7 +31,7 @@ export default function Navbar() {
           className={`${
             isShowSearchModal && "background-color-white text-color-blue"
           } mr-3 rounded-full p-2 transition-all duration-500`}
-          onClick={() => toggleSearchModal((prev) => !prev)}
+          onClick={() => toggleSearchModal()}
         >
           <GoSearch />
         </button>

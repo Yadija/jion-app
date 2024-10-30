@@ -1,15 +1,15 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { GoSearch } from "react-icons/go";
 import { useNavigate } from "react-router";
 
-// context
-import { SearchContext } from "../../context/search-provider";
+// hooks
+import { useSearch } from "../../hooks/use-search";
 
 export default function SearchModal() {
   const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState("anime");
   const [query, setQuery] = useState("");
-  const { toggleCloseSearchModal } = useContext<any>(SearchContext);
+  const { toggleCloseSearchModal } = useSearch();
 
   const handleSearch = async () => {
     navigate(`/${selectedType}?search=${query}`);

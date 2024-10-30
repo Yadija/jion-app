@@ -8,9 +8,9 @@ import { BrowserRouter } from "react-router-dom";
 
 // components
 import App from "./app";
-// context
-import { SearchProvider } from "./context/search-provider.tsx";
-import { ThemeProvider } from "./context/theme-provider.tsx";
+// contexts
+import { SearchProvider } from "./contexts/search-provider";
+import { ThemeProvider } from "./contexts/theme-provider";
 // states
 import store from "./states/index.ts";
 
