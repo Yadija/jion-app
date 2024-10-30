@@ -1,4 +1,10 @@
-export default function Modal({ handleModal, image, title }: any) {
+interface ModalProps {
+  handleModal: () => void;
+  image: string;
+  title: string;
+}
+
+export default function Modal({ handleModal, image, title }: ModalProps) {
   return (
     <>
       <button

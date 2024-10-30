@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 // utils
 import { trimTitle } from "../../utils";
 
+export interface CardItemProps {
+  title: string;
+  image: string;
+  type: string;
+  mal_id: number;
+  rating?: string;
+}
+
 export default function CardItem({
   title,
   image,
   type,
   mal_id,
   rating = "",
-}: any) {
+}: CardItemProps) {
   // const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
 
   switch (type.toLowerCase()) {

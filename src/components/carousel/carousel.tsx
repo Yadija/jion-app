@@ -8,9 +8,13 @@ import { Autoplay, FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
-import CardItem from "../cards/card-item";
+import CardItem, { CardItemProps } from "../cards/card-item";
 
-export default function Carousel({ data }: any) {
+interface CarouselProps {
+  data: CardItemProps[];
+}
+
+export default function Carousel({ data }: CarouselProps) {
   return (
     <Swiper
       modules={[Autoplay, Mousewheel, FreeMode]}
@@ -21,7 +25,7 @@ export default function Carousel({ data }: any) {
       spaceBetween={20}
       slidesPerView="auto" // this is a point to make the carousel fixed
     >
-      {data.map((item: any) => (
+      {data.map((item) => (
         <SwiperSlide
           key={item.mal_id}
           style={{ width: "80%", maxWidth: "180px", marginRight: "20px" }} // and this the second

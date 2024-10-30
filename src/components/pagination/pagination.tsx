@@ -4,7 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 // hooks
 import { DOTS, usePagination } from "../../hooks/use-pagination";
 
-export default function Pagination({ pagination }: any) {
+interface PaginationProps {
+  pagination: {
+    current_page: number;
+    last_visible_page: number;
+    total_pages: number;
+  };
+}
+
+export default function Pagination({ pagination }: PaginationProps) {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } =
     pagination;
 
@@ -31,7 +39,7 @@ export default function Pagination({ pagination }: any) {
             }`}
             onClick={
               currentPage === 1
-                ? null
+                ? undefined
                 : () => navigate(`${pathname}?page=${currentPage - 1}`)
             }
           >
@@ -58,8 +66,9 @@ export default function Pagination({ pagination }: any) {
                 type="button"
                 className={pageNumber === currentPage ? "cursor-default" : ""}
                 onClick={
-                  pageNumber === currentPage || pageNumber > lastVisiblePage
-                    ? null
+                  typeof pageNumber === "number" &&
+                  (pageNumber === currentPage || pageNumber > lastVisiblePage)
+                    ? undefined
                     : () => navigate(`${pathname}?page=${pageNumber}`)
                 }
               >
@@ -78,7 +87,7 @@ export default function Pagination({ pagination }: any) {
             }`}
             onClick={
               currentPage === lastVisiblePage
-                ? null
+                ? undefined
                 : () => navigate(`${pathname}?page=${currentPage + 1}`)
             }
           >

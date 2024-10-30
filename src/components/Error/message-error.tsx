@@ -1,4 +1,9 @@
-export default function MessageError({ title, message }: any) {
+interface MessageErrorProps {
+  title: string;
+  message: string;
+}
+
+export default function MessageError({ title, message }: MessageErrorProps) {
   return (
     <div className="background-color-white grid h-screen">
       <div className="m-auto flex flex-col p-14 text-center">

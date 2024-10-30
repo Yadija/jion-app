@@ -11,12 +11,19 @@ import MessageError from "../error/message-error";
 import Loading from "../loading/loading";
 import Pagination from "../pagination/pagination";
 
+interface ListPageProps {
+  title: string;
+  asyncReceiveFunc: any;
+  dataState: string;
+  producers?: boolean;
+}
+
 export default function ListPage({
   title,
   asyncReceiveFunc,
   dataState,
   producers = false,
-}: any) {
+}: ListPageProps) {
   const data = useSelector((states) => states[dataState].data) || [];
   const error = useSelector((states) => states[dataState].error) || "";
   const pagination =
