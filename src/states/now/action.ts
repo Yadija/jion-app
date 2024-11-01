@@ -8,11 +8,15 @@ import { AppDispatch } from "../index";
 enum ActionType {
   RECEIVE_NOW = "now/receive",
   CLEAR_NOW = "now/clear",
+  SET_LOADING = "loading/set",
+  SET_ERROR = "error/set",
 }
 
 export type NowAction =
   | { type: ActionType.RECEIVE_NOW; payload: { now: AnimeList } }
-  | { type: ActionType.CLEAR_NOW };
+  | { type: ActionType.CLEAR_NOW }
+  | { type: ActionType.SET_LOADING; payload: boolean }
+  | { type: ActionType.SET_ERROR; payload: string | null };
 
 function receiveNowActionCreator(now: AnimeList) {
   return {
@@ -29,16 +33,39 @@ function clearNowActionCreator() {
   };
 }
 
+function setLoadingActionCreator(isLoading: boolean) {
+  return {
+    type: ActionType.SET_LOADING,
+    payload: isLoading,
+  };
+}
+
+function setErrorActionCreator(error: string | null) {
+  return {
+    type: ActionType.SET_ERROR,
+    payload: error,
+  };
+}
+
 function asyncReceiveNow(page?: number) {
   return async (dispatch: AppDispatch) => {
     dispatch(clearNowActionCreator());
+    dispatch(setLoadingActionCreator(true));
+    dispatch(setErrorActionCreator(null));
 
     try {
       const now = await api.getSeasonNow(page);
       dispatch(receiveNowActionCreator(now));
-    } catch (error) {
-      console.error("Error fetching now anime:", error);
-      // dispatch(receiveNowActionCreator({ error: error.message }));
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error fetching now anime:", error);
+        dispatch(setErrorActionCreator(error.message));
+      } else {
+        console.error("Unknown error:", error);
+        dispatch(setErrorActionCreator("An unknown error occurred"));
+      }
+    } finally {
+      dispatch(setLoadingActionCreator(false));
     }
   };
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // components
 import Carousel from "../components/carousel/carousel";
-// import FetchError from "../components/error/fetch-error";
+import FetchError from "../components/error/fetch-error";
 import Loading from "../components/loading/loading";
 import Navbar from "../components/navbar/navbar";
 // hooks
@@ -17,12 +17,16 @@ import { mappingDataInArray } from "../utils";
 function TopPage() {
   document.title = "Top | Jion";
 
-  const { data: topAnime } = useAppSelector((states) => states.topAnime) || [];
-  // const errorInTopAnime =
-  //   useAppSelector((states) => states.topAnime.error) || "";
-  const topManga = useAppSelector((states) => states.topManga.data) || [];
-  // const errorInTopManga =
-  //   useAppSelector((states) => states.topManga.error) || "";
+  const {
+    data: topAnime,
+    isLoading: loadingInTopAnime,
+    error: errorInTopAnime,
+  } = useAppSelector((states) => states.topAnime) || [];
+  const {
+    data: topManga,
+    isLoading: loadingInTopManga,
+    error: errorInTopManga,
+  } = useAppSelector((states) => states.topManga) || [];
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -30,11 +34,11 @@ function TopPage() {
     dispatch(asyncReceiveTopManga(1));
   }, [dispatch]);
 
-  // if (errorInTopAnime || errorInTopManga) {
-  //   return <FetchError />;
-  // }
+  if (errorInTopAnime || errorInTopManga) {
+    return <FetchError />;
+  }
 
-  if (topAnime.length === 0 || topManga.length === 0) {
+  if (loadingInTopAnime || loadingInTopManga || !topAnime || !topManga) {
     return <Loading />;
   }
 
@@ -52,7 +56,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingDataInArray(topAnime)} />
+          <Carousel data={mappingDataInArray(topAnime.data)} />
         </article>
 
         <article className="pb-10">
@@ -65,7 +69,7 @@ function TopPage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingDataInArray(topManga)} />
+          <Carousel data={mappingDataInArray(topManga.data)} />
         </article>
       </section>
     </>

@@ -139,6 +139,18 @@ export interface AnimeList {
   pagination: Pagination;
 }
 
+export interface AnimeListState {
+  data: AnimeList | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
 export interface AnimeDetail {
   data: Anime | null;
+}
+
+export interface AnimeDetailState {
+  data: AnimeDetail | null;
+  isLoading: boolean;
+  error: string | null;
 }

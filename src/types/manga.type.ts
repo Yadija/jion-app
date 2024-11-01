@@ -111,6 +111,18 @@ export interface MangaList {
   pagination: Pagination;
 }
 
+export interface MangaListState {
+  data: MangaList | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
 export interface MangaDetail {
   data: Manga | null;
+}
+
+export interface MangaDetailState {
+  data: MangaDetail | null;
+  isLoading: boolean;
+  error: string | null;
 }

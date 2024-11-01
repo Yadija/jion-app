@@ -1,19 +1,37 @@
 // types
-import { AnimeDetail } from "../../types/anime.type";
-import { MangaDetail } from "../../types/manga.type";
+import { AnimeDetailState } from "../../types/anime.type";
+import { MangaDetailState } from "../../types/manga.type";
 // actions
 import { ActionType, DetailAction } from "./action";
 
-const initialState = { data: null } as AnimeDetail | MangaDetail;
+const initialState: AnimeDetailState | MangaDetailState = {
+  data: null,
+  isLoading: true,
+  error: null,
+};
 
-function detailReducer(detail = initialState, action: DetailAction) {
+function detailReducer(state = initialState, action: DetailAction) {
   switch (action.type) {
     case ActionType.RECEIVE_DETAIL:
-      return action.payload.detail;
+      return {
+        ...state,
+        data: action.payload.detail,
+      };
     case ActionType.CLEAR_DETAIL:
       return initialState;
+    case ActionType.SET_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case ActionType.SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+      };
     default:
-      return detail;
+      return state;
   }
 }
 

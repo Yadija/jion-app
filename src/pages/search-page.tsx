@@ -17,9 +17,8 @@ import NotFoundPage from "./not-found-page";
 
 export default function SearchPage() {
   const [searchParams] = useSearchParams();
-  const { data } = useAppSelector((states) => states.bySearch) || [];
-  const pagination =
-    useAppSelector((states) => states.bySearch.pagination) || {};
+  const { data: bySearch, isLoading } =
+    useAppSelector((states) => states.bySearch) || [];
   const dispatch = useAppDispatch();
 
   const { type } = useParams() as { type: "anime" | "manga" };
@@ -45,7 +44,7 @@ export default function SearchPage() {
   //   document.documentElement.scrollTop = 0;
   // };
 
-  if (data.length === 0) {
+  if (isLoading || !bySearch?.data) {
     return <Loading />;
   }
 
@@ -62,10 +61,10 @@ export default function SearchPage() {
           <span className="py-6" />
         )}
         <div className="grow">
-          <CardsList data={mappingDataInArray(data)} />
+          <CardsList data={mappingDataInArray(bySearch.data)} />
         </div>
         <Pagination
-          pagination={pagination}
+          pagination={bySearch.pagination}
           // onPageChange={onPageChangeHandler}
         />
       </div>

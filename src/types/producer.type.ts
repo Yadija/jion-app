@@ -29,6 +29,18 @@ export interface ProducersList {
   pagination: Pagination;
 }
 
+export interface ProducersListState {
+  data: ProducersList | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
 export interface ProducerDetail {
   data: Producer | null;
+}
+
+export interface ProducerDetailState {
+  data: ProducerDetail | null;
+  isLoading: boolean;
+  error: string | null;
 }

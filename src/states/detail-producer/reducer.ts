@@ -1,22 +1,25 @@
 // types
-import { AnimeListState } from "../../types/anime.type";
+import { ProducerDetailState } from "../../types/producer.type";
 // actions
-import { ActionType, NowAction } from "./action";
+import { ActionType, DetailProducerAction } from "./action";
 
-const initialState: AnimeListState = {
+const initialState: ProducerDetailState = {
   data: null,
   isLoading: true,
   error: null,
 };
 
-function nowReducer(state = initialState, action: NowAction) {
+function detailProducerReducer(
+  state = initialState,
+  action: DetailProducerAction,
+) {
   switch (action.type) {
-    case ActionType.RECEIVE_NOW:
+    case ActionType.RECEIVE_DETAIL_PRODUCER:
       return {
         ...state,
-        data: action.payload.now,
+        data: action.payload.detailProducer,
       };
-    case ActionType.CLEAR_NOW:
+    case ActionType.CLEAR_DETAIL_PRODUCER:
       return initialState;
     case ActionType.SET_LOADING:
       return {
@@ -34,4 +37,4 @@ function nowReducer(state = initialState, action: NowAction) {
   }
 }
 
-export default nowReducer;
+export default detailProducerReducer;

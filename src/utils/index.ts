@@ -19,11 +19,11 @@ function mappingData(data: Anime | Manga) {
   };
 
   return {
-    mal_id: data.mal_id || "",
+    mal_id: data.mal_id || 0,
     image: data.images?.jpg?.image_url || "",
     title: data.title || "",
     type: data.type || "",
-    rating: "rating" in data ? data.rating : rating(data.genres),
+    rating: "rating" in data ? data.rating || "" : rating(data.genres),
   };
 }
 
@@ -39,7 +39,7 @@ function getTitleFromUrl(url: string) {
 
 function mappingDataProducer(data: Producer) {
   return {
-    mal_id: data.mal_id || "",
+    mal_id: data.mal_id || 0,
     image: data.images.jpg.image_url || "",
     title: getTitleFromUrl(data.url) || "",
     type: "producer",

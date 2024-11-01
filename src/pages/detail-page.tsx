@@ -3,7 +3,7 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 
 // components
-// import FetchError from "../components/error/fetch-error";
+import FetchError from "../components/error/fetch-error";
 import FavoriteButton from "../components/favorite-button/favorite-button";
 import Footer from "../components/footer/footer";
 import Loading from "../components/loading/loading";
@@ -22,7 +22,11 @@ export default function DetailPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { type, id } = useParams();
-  const data = useAppSelector((states) => states.detail.data) || null;
+  const {
+    data: detail,
+    isLoading,
+    error,
+  } = useAppSelector((states) => states.detail);
   // const error = useAppSelector((states) => states.detail.error) || "";
 
   const dispatch = useAppDispatch<AppDispatch>();
@@ -43,15 +47,15 @@ export default function DetailPage() {
     dispatch(asyncReceiveDetail(type, Number(id)));
   }, [dispatch, id, type]);
 
-  // if (error) {
-  //   return <FetchError />;
-  // }
+  if (error) {
+    return <FetchError />;
+  }
 
-  if (data === null) {
+  if (isLoading || !detail?.data) {
     return <Loading />;
   }
 
-  document.title = `${data.title} | Jion`;
+  document.title = `${detail.data.title} | Jion`;
 
   const handleModal = () => {
     setShowModal(() => false);
@@ -62,8 +66,8 @@ export default function DetailPage() {
       {/* start modal */}
       {showModal && (
         <Modal
-          image={data.images.jpg.large_image_url || ""}
-          title={data.title || ""}
+          image={detail.data.images.jpg.large_image_url || ""}
+          title={detail.data.title || ""}
           handleModal={handleModal}
         />
       )}
@@ -72,7 +76,7 @@ export default function DetailPage() {
       <div className="text-color-black relative flex min-h-screen flex-col">
         <nav className="flex py-9" />
 
-        <FavoriteButton data={mappingData({ ...data, type })} />
+        <FavoriteButton data={mappingData({ ...detail.data, type })} />
 
         {/* start backgorund image */}
         <section>
@@ -80,7 +84,7 @@ export default function DetailPage() {
             <section
               className="h-[220px] w-full bg-cover bg-[center_top_35%] blur-[1px] lg:h-[260px]"
               style={{
-                backgroundImage: `url(${data.images.jpg.large_image_url})`,
+                backgroundImage: `url(${detail.data.images.jpg.large_image_url})`,
               }}
             />
           </section>
@@ -98,8 +102,8 @@ export default function DetailPage() {
             >
               <img
                 className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
-                src={data.images.jpg.image_url}
-                alt={data.title}
+                src={detail.data.images.jpg.image_url}
+                alt={detail.data.title}
               />
               <section className="absolute inset-y-0 flex w-full items-center justify-center rounded-md text-soft-peach opacity-0 hover:opacity-100">
                 <BsArrowsAngleExpand className="text-4xl md:text-6xl" />
@@ -107,12 +111,12 @@ export default function DetailPage() {
             </button>
             <section className="flex flex-col gap-2">
               <h2 className="text-color-blue text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl">
-                {data.title}
+                {detail.data.title}
               </h2>
 
               {/* start genre */}
               <section className="flex flex-wrap gap-1 text-sm">
-                {data.genres.map(({ name }, i) => (
+                {detail.data.genres.map(({ name }, i) => (
                   <p
                     key={i}
                     className="background-color-blue text-color-white rounded-lg px-2 font-bold mix-blend-darken dark:mix-blend-screen"
@@ -129,16 +133,20 @@ export default function DetailPage() {
                     SCORE
                   </h4>
                   <p className="text-color-blue text-lg font-bold">
-                    {data.score || "N/A"}
+                    {detail.data.score || "N/A"}
                   </p>
-                  <p className="text-xs">{data.scored_by || "-"} users</p>
+                  <p className="text-xs">
+                    {detail.data.scored_by || "-"} users
+                  </p>
                 </article>
                 <section className="px-2 text-sm sm:text-base">
                   <article>
                     <p>
                       Ranked{" "}
                       <b className="text-color-blue">
-                        {data.rank === null ? "N/A" : `#${data.rank}`}
+                        {detail.data.rank === null
+                          ? "N/A"
+                          : `#${detail.data.rank}`}
                       </b>
                     </p>
                   </article>
@@ -146,9 +154,9 @@ export default function DetailPage() {
                     <p>
                       Popularity{" "}
                       <b className="text-color-blue">
-                        {data.popularity === null
+                        {detail.data.popularity === null
                           ? "N/A"
-                          : `#${data.popularity}`}
+                          : `#${detail.data.popularity}`}
                       </b>
                     </p>
                   </article>
@@ -156,7 +164,9 @@ export default function DetailPage() {
                     <p>
                       Members{" "}
                       <b className="text-color-blue">
-                        {data.members === null ? "N/A" : `#${data.members}`}
+                        {detail.data.members === null
+                          ? "N/A"
+                          : `#${detail.data.members}`}
                       </b>
                     </p>
                   </article>
@@ -169,14 +179,14 @@ export default function DetailPage() {
             <article className="py-2">
               <h3 className="title-with-border">Synopsis</h3>
               <p>
-                {data.synopsis ||
+                {detail.data.synopsis ||
                   "No synopsis information has been added to this title."}
               </p>
             </article>
             <article className="py-2">
               <h3 className="title-with-border">Background</h3>
               <p>
-                {data.background ||
+                {detail.data.background ||
                   "No background information has been added to this title."}
               </p>
             </article>
@@ -186,54 +196,54 @@ export default function DetailPage() {
           <section>
             <article className="py-2">
               <h3 className="title-with-border">Information</h3>
-              {data.status && (
+              {detail.data.status && (
                 <p>
-                  <b>Status:</b> {data.status}
+                  <b>Status:</b> {detail.data.status}
                 </p>
               )}
-              {"season" in data && data.season && (
+              {"season" in detail.data && detail.data.season && (
                 <p>
-                  <b>Season:</b> {data.season}
+                  <b>Season:</b> {detail.data.season}
                 </p>
               )}
-              {"rating" in data && data.rating && (
+              {"rating" in detail.data && detail.data.rating && (
                 <p>
-                  <b>Rating:</b> {data.rating}
+                  <b>Rating:</b> {detail.data.rating}
                 </p>
               )}
-              {"aired" in data && data.aired && (
+              {"aired" in detail.data && detail.data.aired && (
                 <p>
-                  <b>Aired:</b> {data.aired.string}
+                  <b>Aired:</b> {detail.data.aired.string}
                 </p>
               )}
-              {"published" in data && data.published && (
+              {"published" in detail.data && detail.data.published && (
                 <p>
-                  <b>Published:</b> {data.published.string}
+                  <b>Published:</b> {detail.data.published.string}
                 </p>
               )}
-              {"volumes" in data && data.volumes && (
+              {"volumes" in detail.data && detail.data.volumes && (
                 <p>
-                  <b>Volumes:</b> {data.volumes}
+                  <b>Volumes:</b> {detail.data.volumes}
                 </p>
               )}
-              {"episodes" in data && data.episodes && (
+              {"episodes" in detail.data && detail.data.episodes && (
                 <p>
-                  <b>Episodes:</b> {data.episodes}
+                  <b>Episodes:</b> {detail.data.episodes}
                 </p>
               )}
-              {"duration" in data && data.duration && (
+              {"duration" in detail.data && detail.data.duration && (
                 <p>
-                  <b>Duration:</b> {data.duration}
+                  <b>Duration:</b> {detail.data.duration}
                 </p>
               )}
-              {"source" in data && data.source && (
+              {"source" in detail.data && detail.data.source && (
                 <p>
-                  <b>Source:</b> {data.source}
+                  <b>Source:</b> {detail.data.source}
                 </p>
               )}
-              {data.type && (
+              {detail.data.type && (
                 <p>
-                  <b>Type:</b> {data.type}
+                  <b>Type:</b> {detail.data.type}
                 </p>
               )}
             </article>
@@ -241,15 +251,15 @@ export default function DetailPage() {
           {/* end informations */}
 
           {/* start trailer */}
-          {"trailer" in data && data.trailer?.embed_url && (
+          {"trailer" in detail.data && detail.data.trailer?.embed_url && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Trailer</h3>
                 <section className="relative w-full overflow-hidden pt-[56.25%] lg:max-w-[780px] lg:pt-[438.75px]">
                   <iframe
                     className="absolute inset-0 my-2 size-full bg-fun-blue dark:bg-denim-blue"
-                    src={data.trailer.embed_url}
-                    title={data.title}
+                    src={detail.data.trailer.embed_url}
+                    title={detail.data.title}
                   />
                 </section>
               </article>
@@ -258,14 +268,14 @@ export default function DetailPage() {
           {/* end trailer */}
 
           {/* start producers */}
-          {"producers" in data &&
-            data.producers &&
-            data.producers.length > 0 && (
+          {"producers" in detail.data &&
+            detail.data.producers &&
+            detail.data.producers.length > 0 && (
               <section>
                 <article className="py-2">
                   <h3 className="title-with-border">Producers</h3>
                   <section className="flex flex-wrap gap-2 py-2">
-                    {data.producers.map((producer) => (
+                    {detail.data.producers.map((producer) => (
                       <p key={producer.mal_id}>
                         •{" "}
                         <Link
@@ -284,14 +294,14 @@ export default function DetailPage() {
           {/* end producers */}
 
           {/* start licensors */}
-          {"licensors" in data &&
-            data.licensors &&
-            data.licensors.length > 0 && (
+          {"licensors" in detail.data &&
+            detail.data.licensors &&
+            detail.data.licensors.length > 0 && (
               <section>
                 <article className="py-2">
                   <h3 className="title-with-border">Licensors</h3>
                   <section className="flex flex-wrap gap-2 py-2">
-                    {data.licensors.map((licensor) => (
+                    {detail.data.licensors.map((licensor) => (
                       <p key={licensor.mal_id}>
                         •{" "}
                         <Link
@@ -310,38 +320,40 @@ export default function DetailPage() {
           {/* end licensors */}
 
           {/* start studios */}
-          {"studios" in data && data.studios && data.studios.length > 0 && (
-            <section>
-              <article className="py-2">
-                <h3 className="title-with-border">Studios</h3>
-                <section className="flex flex-wrap gap-2 py-2">
-                  {data.studios.map((studio) => (
-                    <p key={studio.mal_id}>
-                      •{" "}
-                      <Link
-                        to={`/producers/${studio.mal_id}`}
-                        target="_blank"
-                        className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
-                      >
-                        {studio.name}
-                      </Link>
-                    </p>
-                  ))}
-                </section>
-              </article>
-            </section>
-          )}
+          {"studios" in detail.data &&
+            detail.data.studios &&
+            detail.data.studios.length > 0 && (
+              <section>
+                <article className="py-2">
+                  <h3 className="title-with-border">Studios</h3>
+                  <section className="flex flex-wrap gap-2 py-2">
+                    {detail.data.studios.map((studio) => (
+                      <p key={studio.mal_id}>
+                        •{" "}
+                        <Link
+                          to={`/producers/${studio.mal_id}`}
+                          target="_blank"
+                          className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+                        >
+                          {studio.name}
+                        </Link>
+                      </p>
+                    ))}
+                  </section>
+                </article>
+              </section>
+            )}
           {/* end studios */}
 
           {/* start url */}
-          {data.url && (
+          {detail.data.url && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Links</h3>
                 <p className="py-2">
                   •{" "}
                   <a
-                    href={data.url}
+                    href={detail.data.url}
                     target="_blank"
                     rel="noreferrer"
                     className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"

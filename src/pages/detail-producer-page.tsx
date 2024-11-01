@@ -3,14 +3,15 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
-// import FetchError from "../components/error/fetch-error";
+import FetchError from "../components/error/fetch-error";
 import Footer from "../components/footer/footer";
 import Loading from "../components/loading/loading";
 import Modal from "../components/modal/modal";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states
-import { asyncReceiveDetailProducer } from "../states/detailProducer/action";
+import { asyncReceiveDetailProducer } from "../states/detail-producer/action";
+// utils
 import { getTitleFromUrl } from "../utils";
 // pages
 import NotFoundPage from "./not-found-page";
@@ -19,8 +20,11 @@ export default function DetailProducerPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { id } = useParams();
-  const { data } = useAppSelector((states) => states.detailProducer) || null;
-  // const error = useAppSelector((states) => states.detailProducer.error) || "";
+  const {
+    data: detailProducer,
+    isLoading,
+    error,
+  } = useAppSelector((states) => states.detailProducer);
 
   const dispatch = useAppDispatch();
 
@@ -33,15 +37,15 @@ export default function DetailProducerPage() {
     dispatch(asyncReceiveDetailProducer("producers", Number(id)));
   }, [dispatch, id]);
 
-  // if (error) {
-  //   return <FetchError />;
-  // }
+  if (error) {
+    return <FetchError />;
+  }
 
-  if (data === null) {
+  if (isLoading || !detailProducer?.data) {
     return <Loading />;
   }
 
-  const title = getTitleFromUrl(data.url);
+  const title = getTitleFromUrl(detailProducer.data.url);
   document.title = `${title} | Jion`;
 
   const handleModal = () => {
@@ -53,7 +57,7 @@ export default function DetailProducerPage() {
       {/* start modal */}
       {showModal && (
         <Modal
-          image={data.images.jpg.image_url || ""}
+          image={detailProducer.data.images.jpg.image_url || ""}
           title={title || ""}
           handleModal={handleModal}
         />
@@ -71,7 +75,7 @@ export default function DetailProducerPage() {
             >
               <img
                 className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
-                src={data.images.jpg.image_url}
+                src={detailProducer.data.images.jpg.image_url}
                 alt={title}
               />
               <section className="absolute inset-y-0 flex w-full items-center justify-center rounded-md text-soft-peach opacity-0 hover:opacity-100">
@@ -84,28 +88,31 @@ export default function DetailProducerPage() {
               </h2>
               <p>
                 <b>Alternative Names:</b>{" "}
-                {data.titles
+                {detailProducer.data.titles
                   .map((item) => `${item.title}(${item.type})`)
                   .join(" | ")}
               </p>
-              {data.favorites && (
+              {detailProducer.data.favorites && (
                 <p>
-                  <b>Member Favorites:</b> {data.favorites}
+                  <b>Member Favorites:</b> {detailProducer.data.favorites}
                 </p>
               )}
               <p>
                 <b>Established:</b>{" "}
-                {new Date(data.established).toLocaleDateString("en-EN", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {new Date(detailProducer.data.established).toLocaleDateString(
+                  "en-EN",
+                  {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  },
+                )}
               </p>
               {/* <p>
                 <b>External:</b>{" "}
                 <span>
-                  {data.external.map((item: any, index: number) => (
+                  {detailProducer.data.external.map((item: any, index: number) => (
                     <span key={index}>
                       •{" "}
                       <a
@@ -127,21 +134,21 @@ export default function DetailProducerPage() {
             <article className="py-2">
               <h3 className="title-with-border">About</h3>
               <p>
-                {data.about ||
+                {detailProducer.data.about ||
                   "No about information has been added to this title."}
               </p>
             </article>
           </section>
 
           {/* start url */}
-          {data.url && (
+          {detailProducer.data.url && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Links</h3>
                 <p className="py-2">
                   •{" "}
                   <a
-                    href={data.url}
+                    href={detailProducer.data.url}
                     target="_blank"
                     rel="noreferrer"
                     className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"

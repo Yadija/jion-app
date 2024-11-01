@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // components
 import Carousel from "../components/carousel/carousel";
-// import FetchError from "../components/error/fetch-error";
+import FetchError from "../components/error/fetch-error";
 import Loading from "../components/loading/loading";
 import Navbar from "../components/navbar/navbar";
 // hooks
@@ -15,11 +15,16 @@ import { asyncReceiveUpcoming } from "../states/upcoming/action";
 import { mappingDataInArray } from "../utils";
 
 export default function HomePage() {
-  const { data: seasonNow } = useAppSelector((states) => states.now);
-  // const errorInNow = useAppSelector((states) => states.now.error) || "";
-  const { data: seasonUpcoming } = useAppSelector((states) => states.upcoming);
-  // const errorInUpcoming =
-  //   useAppSelector((states) => states.upcoming.error) || "";
+  const {
+    data: seasonNow,
+    isLoading: loadingInNow,
+    error: errorInNow,
+  } = useAppSelector((states) => states.now);
+  const {
+    data: seasonUpcoming,
+    isLoading: loadingInUpcoming,
+    error: errorInUpcoming,
+  } = useAppSelector((states) => states.upcoming);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -27,11 +32,11 @@ export default function HomePage() {
     dispatch(asyncReceiveUpcoming());
   }, [dispatch]);
 
-  // if (errorInNow || errorInUpcoming) {
-  //   return <FetchError />;
-  // }
+  if (errorInNow || errorInUpcoming) {
+    return <FetchError />;
+  }
 
-  if (seasonNow.length === 0 || seasonUpcoming.length === 0) {
+  if (loadingInNow || loadingInUpcoming || !seasonNow || !seasonUpcoming) {
     return <Loading />;
   }
 
@@ -49,7 +54,7 @@ export default function HomePage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingDataInArray(seasonNow)} />
+          <Carousel data={mappingDataInArray(seasonNow.data)} />
         </article>
 
         <article className="pb-10">
@@ -62,7 +67,7 @@ export default function HomePage() {
               See All
             </Link>
           </div>
-          <Carousel data={mappingDataInArray(seasonUpcoming)} />
+          <Carousel data={mappingDataInArray(seasonUpcoming.data)} />
         </article>
       </section>
     </>
