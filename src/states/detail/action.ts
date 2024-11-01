@@ -1,11 +1,24 @@
+// types
+import { AnimeDetail } from "../../types/anime.type";
+import { MangaDetail } from "../../types/manga.type";
+// utils
 import api from "../../utils/api";
+// states
+import { AppDispatch } from "..";
 
-const ActionType = {
-  RECEIVE_DETAIL: "RECEIVE_DETAIL",
-  CLEAR_DETAIL: "CLEAR_DETAIL",
-};
+enum ActionType {
+  RECEIVE_DETAIL = "detail/receive",
+  CLEAR_DETAIL = "detail/clear",
+}
 
-function receiveDetailActionCreator(detail) {
+export type DetailAction =
+  | {
+      type: ActionType.RECEIVE_DETAIL;
+      payload: { detail: AnimeDetail | MangaDetail };
+    }
+  | { type: ActionType.CLEAR_DETAIL };
+
+function receiveDetailActionCreator(detail: AnimeDetail | MangaDetail) {
   return {
     type: ActionType.RECEIVE_DETAIL,
     payload: {
@@ -20,15 +33,16 @@ function clearDetailActionCreator() {
   };
 }
 
-function asyncReceiveDetail(type, id) {
-  return async (dispatch) => {
+function asyncReceiveDetail(type: string, id: number) {
+  return async (dispatch: AppDispatch) => {
     dispatch(clearDetailActionCreator());
 
     try {
       const detail = await api.getDetail(type, id);
-      dispatch(receiveDetailActionCreator(detail));
+      dispatch(receiveDetailActionCreator(detail as AnimeDetail | MangaDetail));
     } catch (error) {
-      dispatch(receiveDetailActionCreator({ error: error.message }));
+      console.error("Error fetching detail:", error);
+      // dispatch(receiveDetailActionCreator({ error: error.message }));
     }
   };
 }

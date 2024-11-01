@@ -2,7 +2,7 @@
 import { AnimeList } from "../../types/anime.type";
 import { Pagination } from "../../types/pagination.type";
 // actions
-import { ActionType, NowAction } from "./action";
+import { ActionType, TopAnimeAction } from "./action";
 
 const initialState: AnimeList = {
   data: [],
@@ -18,15 +18,15 @@ const initialState: AnimeList = {
   } as Pagination,
 };
 
-function nowReducer(state = initialState, action: NowAction) {
+function topAnimeReducer(topAnime = initialState, action: TopAnimeAction) {
   switch (action.type) {
-    case ActionType.RECEIVE_NOW:
-      return action.payload.now;
-    case ActionType.CLEAR_NOW:
+    case ActionType.RECEIVE_TOP_ANIME:
+      return action.payload.topAnime;
+    case ActionType.CLEAR_TOP_ANIME:
       return initialState;
     default:
-      return state;
+      return topAnime;
   }
 }
 
-export default nowReducer;
+export default topAnimeReducer;

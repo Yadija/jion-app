@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { BsArrowsAngleExpand } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/error/fetch-error";
+// import FetchError from "../components/error/fetch-error";
 import Footer from "../components/footer/footer";
 import Loading from "../components/loading/loading";
 import Modal from "../components/modal/modal";
+// hooks
+import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states
 import { asyncReceiveDetailProducer } from "../states/detailProducer/action";
 import { getTitleFromUrl } from "../utils";
@@ -18,23 +19,23 @@ export default function DetailProducerPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { id } = useParams();
-  const data = useSelector((states) => states.detailProducer.data) || null;
-  const error = useSelector((states) => states.detailProducer.error) || "";
+  const { data } = useAppSelector((states) => states.detailProducer) || null;
+  // const error = useAppSelector((states) => states.detailProducer.error) || "";
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  if (!id.match(/^[0-9]+$/)) {
+  if (!id || !id.match(/^[0-9]+$/)) {
     return <NotFoundPage />;
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    dispatch(asyncReceiveDetailProducer("producers", id));
+    dispatch(asyncReceiveDetailProducer("producers", Number(id)));
   }, [dispatch, id]);
 
-  if (error) {
-    return <FetchError />;
-  }
+  // if (error) {
+  //   return <FetchError />;
+  // }
 
   if (data === null) {
     return <Loading />;
@@ -101,10 +102,10 @@ export default function DetailProducerPage() {
                   day: "numeric",
                 })}
               </p>
-              <p>
+              {/* <p>
                 <b>External:</b>{" "}
                 <span>
-                  {data.external.map((item, index) => (
+                  {data.external.map((item: any, index: number) => (
                     <span key={index}>
                       •{" "}
                       <a
@@ -118,7 +119,7 @@ export default function DetailProducerPage() {
                     </span>
                   ))}
                 </span>
-              </p>
+              </p> */}
             </section>
           </section>
 

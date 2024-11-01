@@ -1,11 +1,23 @@
+// types
+import { ProducerDetail } from "../../types/producer.type";
+// utils
 import api from "../../utils/api";
+// states
+import { AppDispatch } from "../index";
 
-const ActionType = {
-  RECEIVE_DETAIL_PRODUCER: "RECEIVE_DETAIL_PRODUCER",
-  CLEAR_DETAIL_PRODUCER: "CLEAR_DETAIL_PRODUCER",
-};
+enum ActionType {
+  RECEIVE_DETAIL_PRODUCER = "detail-producer/receive",
+  CLEAR_DETAIL_PRODUCER = "detail-producer/clear",
+}
 
-function receiveDetailProducerActionCreator(detailProducer) {
+export type DetailProducerAction =
+  | {
+      type: ActionType.RECEIVE_DETAIL_PRODUCER;
+      payload: { detailProducer: ProducerDetail };
+    }
+  | { type: ActionType.CLEAR_DETAIL_PRODUCER };
+
+function receiveDetailProducerActionCreator(detailProducer: ProducerDetail) {
   return {
     type: ActionType.RECEIVE_DETAIL_PRODUCER,
     payload: {
@@ -20,15 +32,18 @@ function clearDetailProducerActionCreator() {
   };
 }
 
-function asyncReceiveDetailProducer(type, id) {
-  return async (dispatch) => {
+function asyncReceiveDetailProducer(type: string, id: number) {
+  return async (dispatch: AppDispatch) => {
     dispatch(clearDetailProducerActionCreator());
 
     try {
       const detailProducer = await api.getDetail(type, id);
-      dispatch(receiveDetailProducerActionCreator(detailProducer));
+      dispatch(
+        receiveDetailProducerActionCreator(detailProducer as ProducerDetail),
+      );
     } catch (error) {
-      dispatch(receiveDetailProducerActionCreator({ error: error.message }));
+      console.error("Error fetching detail producer:", error);
+      // dispatch(receiveDetailProducerActionCreator({ error: error.message }));
     }
   };
 }

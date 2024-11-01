@@ -1,36 +1,40 @@
+// types
+import { AnimeList } from "../../types/anime.type";
+// utils
 import api from "../../utils/api";
+// states
+import { AppDispatch } from "../index";
 
-const ActionType = {
-  RECEIVE_UPCOMING: "RECEIVE_UPCOMING",
-  CLEAR_UPCOMING: "CLEAR_UPCOMING",
-};
-
-function receiveUpcomingActionCreator(upcoming) {
-  return {
-    type: ActionType.RECEIVE_UPCOMING,
-    payload: {
-      upcoming,
-    },
-  };
+enum ActionType {
+  RECEIVE_UPCOMING = "upcoming/receive",
+  CLEAR_UPCOMING = "upcoming/clear",
 }
 
-function clearUpcomingActionCreator() {
-  return {
-    type: ActionType.CLEAR_UPCOMING,
-  };
-}
+export type UpcomingAction =
+  | { type: ActionType.RECEIVE_UPCOMING; payload: { upcoming: AnimeList } }
+  | { type: ActionType.CLEAR_UPCOMING };
 
-function asyncReceiveUpcoming(page) {
-  return async (dispatch) => {
+const receiveUpcomingActionCreator = (upcoming: AnimeList) => ({
+  type: ActionType.RECEIVE_UPCOMING,
+  payload: { upcoming },
+});
+
+const clearUpcomingActionCreator = () => ({
+  type: ActionType.CLEAR_UPCOMING,
+});
+
+const asyncReceiveUpcoming = (page?: number) => {
+  return async (dispatch: AppDispatch) => {
     dispatch(clearUpcomingActionCreator());
 
     try {
       const upcoming = await api.getSeasonUpcoming(page);
       dispatch(receiveUpcomingActionCreator(upcoming));
     } catch (error) {
-      dispatch(receiveUpcomingActionCreator({ error: error.message }));
+      console.error("Error fetching upcoming anime:", error);
+      // dispatch(receiveUpcomingActionCreator({ error: error.message }));
     }
   };
-}
+};
 
 export { ActionType, asyncReceiveUpcoming, receiveUpcomingActionCreator };

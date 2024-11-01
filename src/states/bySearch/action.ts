@@ -1,11 +1,28 @@
+// types
+import { AnimeList } from "../../types/anime.type";
+import { MangaList } from "../../types/manga.type";
+// utils
 import api from "../../utils/api";
+// states
+import { AppDispatch } from "../index";
 
-const ActionType = {
-  RECEIVE_BY_SEARCH: "RECEIVE_BY_SEARCH",
-  CLEAR_BY_SEARCH: "CLEAR_BY_SEARCH",
-};
+enum ActionType {
+  RECEIVE_BY_SEARCH = "by-search/receive",
+  CLEAR_BY_SEARCH = "by-search/clear",
+}
 
-function receiveBySearchActionCreator(bySearch) {
+export type BySearchAction =
+  | {
+      type: ActionType.RECEIVE_BY_SEARCH;
+      payload: {
+        bySearch: AnimeList | MangaList;
+      };
+    }
+  | {
+      type: ActionType.CLEAR_BY_SEARCH;
+    };
+
+function receiveBySearchActionCreator(bySearch: AnimeList | MangaList) {
   return {
     type: ActionType.RECEIVE_BY_SEARCH,
     payload: {
@@ -20,15 +37,19 @@ function clearBySearchActionCreator() {
   };
 }
 
-function asyncReceiveBySearch(type, queryParams) {
-  return async (dispatch) => {
+function asyncReceiveBySearch(
+  type: string,
+  queryParams: { query: string; page: number },
+) {
+  return async (dispatch: AppDispatch) => {
     dispatch(clearBySearchActionCreator());
 
     try {
       const bySearch = await api.getBySearch(type, queryParams);
       dispatch(receiveBySearchActionCreator(bySearch));
     } catch (error) {
-      dispatch(receiveBySearchActionCreator({ error: error.message }));
+      console.error("Error fetching by search:", error);
+      // dispatch(receiveBySearchActionCreator({ error: error.message }));
     }
   };
 }

@@ -1,11 +1,21 @@
-import { ActionType } from "./action";
+// types
+import { ProducerDetail } from "../../types/producer.type";
+// actions
+import { ActionType, DetailProducerAction } from "./action";
 
-function detailProducerReducer(detailProducer = {}, action = {}) {
+const initialState: ProducerDetail = {
+  data: null,
+};
+
+function detailProducerReducer(
+  detailProducer = initialState,
+  action: DetailProducerAction,
+) {
   switch (action.type) {
     case ActionType.RECEIVE_DETAIL_PRODUCER:
       return action.payload.detailProducer;
     case ActionType.CLEAR_DETAIL_PRODUCER:
-      return {};
+      return initialState;
     default:
       return detailProducer;
   }

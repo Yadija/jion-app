@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { BsArrowsAngleExpand } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/error/fetch-error";
+// import FetchError from "../components/error/fetch-error";
 import FavoriteButton from "../components/favorite-button/favorite-button";
 import Footer from "../components/footer/footer";
 import Loading from "../components/loading/loading";
 import Modal from "../components/modal/modal";
+// hooks
+import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states
+import { AppDispatch } from "../states";
 import { asyncReceiveDetail } from "../states/detail/action";
 // utils
 import { mappingData } from "../utils";
@@ -20,10 +22,14 @@ export default function DetailPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { type, id } = useParams();
-  const data = useSelector((states) => states.detail.data) || null;
-  const error = useSelector((states) => states.detail.error) || "";
+  const data = useAppSelector((states) => states.detail.data) || null;
+  // const error = useAppSelector((states) => states.detail.error) || "";
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch<AppDispatch>();
+
+  if (!type || !id) {
+    return <NotFoundPage />;
+  }
 
   if (
     !["anime", "manga"].some((item) => item === type) ||
@@ -34,12 +40,12 @@ export default function DetailPage() {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    dispatch(asyncReceiveDetail(type, id));
+    dispatch(asyncReceiveDetail(type, Number(id)));
   }, [dispatch, id, type]);
 
-  if (error) {
-    return <FetchError />;
-  }
+  // if (error) {
+  //   return <FetchError />;
+  // }
 
   if (data === null) {
     return <Loading />;
@@ -185,42 +191,42 @@ export default function DetailPage() {
                   <b>Status:</b> {data.status}
                 </p>
               )}
-              {data.season && (
+              {"season" in data && data.season && (
                 <p>
                   <b>Season:</b> {data.season}
                 </p>
               )}
-              {data.rating && (
+              {"rating" in data && data.rating && (
                 <p>
                   <b>Rating:</b> {data.rating}
                 </p>
               )}
-              {data.aired && (
+              {"aired" in data && data.aired && (
                 <p>
                   <b>Aired:</b> {data.aired.string}
                 </p>
               )}
-              {data.published && (
+              {"published" in data && data.published && (
                 <p>
                   <b>Published:</b> {data.published.string}
                 </p>
               )}
-              {data.volumes && (
+              {"volumes" in data && data.volumes && (
                 <p>
                   <b>Volumes:</b> {data.volumes}
                 </p>
               )}
-              {data.episodes && (
+              {"episodes" in data && data.episodes && (
                 <p>
                   <b>Episodes:</b> {data.episodes}
                 </p>
               )}
-              {data.duration && (
+              {"duration" in data && data.duration && (
                 <p>
                   <b>Duration:</b> {data.duration}
                 </p>
               )}
-              {data.source && (
+              {"source" in data && data.source && (
                 <p>
                   <b>Source:</b> {data.source}
                 </p>
@@ -235,7 +241,7 @@ export default function DetailPage() {
           {/* end informations */}
 
           {/* start trailer */}
-          {data.trailer?.embed_url && (
+          {"trailer" in data && data.trailer?.embed_url && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Trailer</h3>
@@ -252,55 +258,59 @@ export default function DetailPage() {
           {/* end trailer */}
 
           {/* start producers */}
-          {data.producers && data.producers.length > 0 && (
-            <section>
-              <article className="py-2">
-                <h3 className="title-with-border">Producers</h3>
-                <section className="flex flex-wrap gap-2 py-2">
-                  {data.producers.map((producer) => (
-                    <p key={producer.mal_id}>
-                      •{" "}
-                      <Link
-                        to={`/producers/${producer.mal_id}`}
-                        target="_blank"
-                        className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
-                      >
-                        {producer.name}
-                      </Link>
-                    </p>
-                  ))}
-                </section>
-              </article>
-            </section>
-          )}
+          {"producers" in data &&
+            data.producers &&
+            data.producers.length > 0 && (
+              <section>
+                <article className="py-2">
+                  <h3 className="title-with-border">Producers</h3>
+                  <section className="flex flex-wrap gap-2 py-2">
+                    {data.producers.map((producer) => (
+                      <p key={producer.mal_id}>
+                        •{" "}
+                        <Link
+                          to={`/producers/${producer.mal_id}`}
+                          target="_blank"
+                          className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+                        >
+                          {producer.name}
+                        </Link>
+                      </p>
+                    ))}
+                  </section>
+                </article>
+              </section>
+            )}
           {/* end producers */}
 
           {/* start licensors */}
-          {data.licensors && data.licensors.length > 0 && (
-            <section>
-              <article className="py-2">
-                <h3 className="title-with-border">Licensors</h3>
-                <section className="flex flex-wrap gap-2 py-2">
-                  {data.licensors.map((licensor) => (
-                    <p key={licensor.mal_id}>
-                      •{" "}
-                      <Link
-                        to={`/producers/${licensor.mal_id}`}
-                        target="_blank"
-                        className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
-                      >
-                        {licensor.name}
-                      </Link>
-                    </p>
-                  ))}
-                </section>
-              </article>
-            </section>
-          )}
+          {"licensors" in data &&
+            data.licensors &&
+            data.licensors.length > 0 && (
+              <section>
+                <article className="py-2">
+                  <h3 className="title-with-border">Licensors</h3>
+                  <section className="flex flex-wrap gap-2 py-2">
+                    {data.licensors.map((licensor) => (
+                      <p key={licensor.mal_id}>
+                        •{" "}
+                        <Link
+                          to={`/producers/${licensor.mal_id}`}
+                          target="_blank"
+                          className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+                        >
+                          {licensor.name}
+                        </Link>
+                      </p>
+                    ))}
+                  </section>
+                </article>
+              </section>
+            )}
           {/* end licensors */}
 
           {/* start studios */}
-          {data.studios && data.studios.length > 0 && (
+          {"studios" in data && data.studios && data.studios.length > 0 && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Studios</h3>

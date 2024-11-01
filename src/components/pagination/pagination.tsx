@@ -3,13 +3,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 // hooks
 import { DOTS, usePagination } from "../../hooks/use-pagination";
+// types
+import type { Pagination } from "../../types/pagination.type";
 
 interface PaginationProps {
-  pagination: {
-    current_page: number;
-    last_visible_page: number;
-    total_pages: number;
-  };
+  pagination: Pagination;
 }
 
 export default function Pagination({ pagination }: PaginationProps) {

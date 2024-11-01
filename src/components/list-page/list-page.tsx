@@ -1,7 +1,15 @@
+import { UnknownAction } from "@reduxjs/toolkit";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
+// hooks
+import { useAppDispatch, useAppSelector } from "../../hooks/use-redux";
+// states
+import { RootState } from "../../states";
+// types
+import { Anime } from "../../types/anime.type";
+import { Manga } from "../../types/manga.type";
+import { Producer } from "../../types/producer.type";
 // utils
 import { mappingDataInArray, mappingDataProducerInArray } from "../../utils";
 // components
@@ -11,10 +19,12 @@ import MessageError from "../error/message-error";
 import Loading from "../loading/loading";
 import Pagination from "../pagination/pagination";
 
+type DataState = keyof RootState;
+
 interface ListPageProps {
   title: string;
-  asyncReceiveFunc: any;
-  dataState: string;
+  asyncReceiveFunc: (page: number) => UnknownAction;
+  dataState: DataState;
   producers?: boolean;
 }
 
@@ -24,14 +34,14 @@ export default function ListPage({
   dataState,
   producers = false,
 }: ListPageProps) {
-  const data = useSelector((states) => states[dataState].data) || [];
-  const error = useSelector((states) => states[dataState].error) || "";
+  const data = useAppSelector((states) => states[dataState].data) || [];
+  // const error = useAppSelector((states) => states[dataState].error) || "";
   const pagination =
-    useSelector((states) => states[dataState].pagination) || {};
-  const dispatch = useDispatch();
+    useAppSelector((states) => states[dataState].pagination) || {};
+  const dispatch = useAppDispatch();
 
   const [searchParams] = useSearchParams();
-  const page = parseInt(searchParams.get("page"), 10) || 1;
+  const page = parseInt(searchParams.get("page") || "1", 10);
 
   if (page < 1) {
     return (
@@ -48,7 +58,9 @@ export default function ListPage({
 
     // document.body.scrollTop = 0;
     // document.documentElement.scrollTop = 0;
-  }, [page]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, page]);
 
   if (page > pagination.last_visible_page) {
     return (
@@ -59,7 +71,11 @@ export default function ListPage({
     );
   }
 
-  if (error) {
+  // if (error) {
+  //   return <FetchError />;
+  // }
+
+  if (!Array.isArray(data)) {
     return <FetchError />;
   }
 
@@ -74,8 +90,8 @@ export default function ListPage({
         <CardsList
           data={
             producers
-              ? mappingDataProducerInArray(data)
-              : mappingDataInArray(data)
+              ? mappingDataProducerInArray(data as Producer[])
+              : mappingDataInArray(data as Anime[] | Manga[])
           }
         />
       </div>

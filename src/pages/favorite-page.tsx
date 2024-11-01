@@ -11,7 +11,7 @@ import { db } from "../utils/db";
 import NotFoundPage from "./not-found-page";
 
 export default function FavoritePage() {
-  const { type } = useParams();
+  const { type } = useParams() as { type: "anime" | "manga" };
   const data = useLiveQuery(() => db[type].toArray(), []) || null;
 
   if (!data) return <Loading />;

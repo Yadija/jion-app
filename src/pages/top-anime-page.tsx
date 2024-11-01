@@ -1,7 +1,7 @@
 // components
 import ListPage from "../components/list-page/list-page";
 // states
-import { asyncReceiveTopAnime } from "../states/topAnime/action";
+import { asyncReceiveTopAnime } from "../states/top-anime/action";
 
 export default function TopAnimePage() {
   document.title = "Top Anime | Jion";

@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // components
 import Carousel from "../components/carousel/carousel";
-import FetchError from "../components/error/fetch-error";
+// import FetchError from "../components/error/fetch-error";
 import Loading from "../components/loading/loading";
 import Navbar from "../components/navbar/navbar";
+// hooks
+import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states
 import { asyncReceiveNow } from "../states/now/action";
 import { asyncReceiveUpcoming } from "../states/upcoming/action";
@@ -14,20 +15,21 @@ import { asyncReceiveUpcoming } from "../states/upcoming/action";
 import { mappingDataInArray } from "../utils";
 
 export default function HomePage() {
-  const seasonNow = useSelector((states) => states.now.data) || [];
-  const errorInNow = useSelector((states) => states.now.error) || "";
-  const seasonUpcoming = useSelector((states) => states.upcoming.data) || [];
-  const errorInUpcoming = useSelector((states) => states.upcoming.error) || "";
-  const dispatch = useDispatch();
+  const { data: seasonNow } = useAppSelector((states) => states.now);
+  // const errorInNow = useAppSelector((states) => states.now.error) || "";
+  const { data: seasonUpcoming } = useAppSelector((states) => states.upcoming);
+  // const errorInUpcoming =
+  //   useAppSelector((states) => states.upcoming.error) || "";
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(asyncReceiveNow());
     dispatch(asyncReceiveUpcoming());
   }, [dispatch]);
 
-  if (errorInNow || errorInUpcoming) {
-    return <FetchError />;
-  }
+  // if (errorInNow || errorInUpcoming) {
+  //   return <FetchError />;
+  // }
 
   if (seasonNow.length === 0 || seasonUpcoming.length === 0) {
     return <Loading />;

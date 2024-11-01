@@ -1,11 +1,20 @@
+// types
+import { AnimeList } from "../../types/anime.type";
+// utils
 import api from "../../utils/api";
+// states
+import { AppDispatch } from "../index";
 
-const ActionType = {
-  RECEIVE_NOW: "RECEIVE_NOW",
-  CLEAR_NOW: "CLEAR_NOW",
-};
+enum ActionType {
+  RECEIVE_NOW = "now/receive",
+  CLEAR_NOW = "now/clear",
+}
 
-function receiveNowActionCreator(now) {
+export type NowAction =
+  | { type: ActionType.RECEIVE_NOW; payload: { now: AnimeList } }
+  | { type: ActionType.CLEAR_NOW };
+
+function receiveNowActionCreator(now: AnimeList) {
   return {
     type: ActionType.RECEIVE_NOW,
     payload: {
@@ -20,15 +29,16 @@ function clearNowActionCreator() {
   };
 }
 
-function asyncReceiveNow(page) {
-  return async (dispatch) => {
+function asyncReceiveNow(page?: number) {
+  return async (dispatch: AppDispatch) => {
     dispatch(clearNowActionCreator());
 
     try {
       const now = await api.getSeasonNow(page);
       dispatch(receiveNowActionCreator(now));
     } catch (error) {
-      dispatch(receiveNowActionCreator({ error: error.message }));
+      console.error("Error fetching now anime:", error);
+      // dispatch(receiveNowActionCreator({ error: error.message }));
     }
   };
 }
