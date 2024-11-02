@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
+import MessageError from "../components/error/message-error";
 import Loading from "../components/loading/loading";
 import Navbar from "../components/navbar/navbar";
 import Pagination from "../components/pagination/pagination";
@@ -14,28 +15,51 @@ import { asyncReceiveManga } from "../states/manga/action";
 import { mappingDataInArray } from "../utils";
 
 export default function MangaPage() {
-  const [searchParams] = useSearchParams();
   const { data: manga, isLoading } =
     useAppSelector((states) => states.manga) || [];
   const dispatch = useAppDispatch();
 
+  const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const sfw = searchParams.get("sfw") === "false" ? false : true;
 
   document.title = search ? `Search Manga: ${search} | Jion` : "Manga | Jion";
 
   useEffect(() => {
-    dispatch(asyncReceiveManga({ query: search, page: 1 }));
-  }, [dispatch, search]);
+    dispatch(asyncReceiveManga({ query: search, page, sfw }));
+  }, [dispatch, page, search, sfw]);
 
-  // const onPageChangeHandler = async (page: number) => {
-  //   dispatch(asyncReceiveBySearch(type, { query: search, page }));
-
-  //   document.body.scrollTop = 0;
-  //   document.documentElement.scrollTop = 0;
-  // };
+  if (page < 1) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="What you've done is illegal"
+      />
+    );
+  }
 
   if (isLoading || !manga?.data) {
     return <Loading />;
+  }
+
+  if (manga.pagination.last_visible_page < page) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="I know you're curious, but there's nothing here"
+      />
+    );
+  }
+
+  if (manga.data.length === 0 && search) {
+    return (
+      <MessageError title="No Result" message={`No result for "${search}"`} />
+    );
+  }
+
+  if (manga.data.length === 0) {
+    return <MessageError title="No Manga" message="No manga here" />;
   }
 
   return (
@@ -50,10 +74,7 @@ export default function MangaPage() {
         <div className="grow">
           <CardsList data={mappingDataInArray(manga.data)} />
         </div>
-        <Pagination
-          pagination={manga.pagination}
-          // onPageChange={onPageChangeHandler}
-        />
+        <Pagination pagination={manga.pagination} />
       </div>
     </>
   );

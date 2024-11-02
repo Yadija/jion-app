@@ -54,7 +54,7 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveManga(params: {
+function asyncReceiveManga(params?: {
   query?: string;
   page?: number;
   sfw?: boolean;
@@ -65,7 +65,7 @@ function asyncReceiveManga(params: {
     dispatch(setErrorActionCreator(null));
 
     try {
-      const manga = await api.getManga(params);
+      const manga = await api.getManga({ ...params });
       dispatch(receiveMangaActionCreator(manga));
     } catch (error: unknown) {
       if (error instanceof Error) {

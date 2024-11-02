@@ -43,13 +43,15 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getAnime(params: {
+  async function getAnime({
+    query = "",
+    page = 1,
+    sfw = true,
+  }: {
     query?: string;
     page?: number;
     sfw?: boolean;
   }): Promise<AnimeList> {
-    const { query = "", page = 1, sfw = true } = params;
-
     const response = await fetch(
       `${BASE_URL}/anime?q=${query}&page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );
@@ -58,13 +60,15 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getManga(params: {
+  async function getManga({
+    query = "",
+    page = 1,
+    sfw = true,
+  }: {
     query?: string;
     page?: number;
     sfw?: boolean;
   }): Promise<MangaList> {
-    const { query = "", page = 1, sfw = true } = params;
-
     const response = await fetch(
       `${BASE_URL}/manga?q=${query}&page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
+import MessageError from "../components/error/message-error";
 import Loading from "../components/loading/loading";
 import Navbar from "../components/navbar/navbar";
 import Pagination from "../components/pagination/pagination";
@@ -14,28 +15,51 @@ import { asyncReceiveAnime } from "../states/anime/action";
 import { mappingDataInArray } from "../utils";
 
 export default function AnimePage() {
-  const [searchParams] = useSearchParams();
   const { data: anime, isLoading } =
     useAppSelector((states) => states.anime) || [];
   const dispatch = useAppDispatch();
 
+  const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const sfw = searchParams.get("sfw") === "false" ? false : true;
 
   document.title = search ? `Search Anime: ${search} | Jion` : "Anime | Jion";
 
   useEffect(() => {
-    dispatch(asyncReceiveAnime({ query: search, page: 1 }));
-  }, [dispatch, search]);
+    dispatch(asyncReceiveAnime({ query: search, page, sfw }));
+  }, [dispatch, search, page, sfw]);
 
-  // const onPageChangeHandler = async (page: number) => {
-  //   dispatch(asyncReceiveBySearch(type, { query: search, page }));
-
-  //   document.body.scrollTop = 0;
-  //   document.documentElement.scrollTop = 0;
-  // };
+  if (page < 1) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="What you've done is illegal"
+      />
+    );
+  }
 
   if (isLoading || !anime?.data) {
     return <Loading />;
+  }
+
+  if (anime.pagination.last_visible_page < page) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="I know you're curious, but there's nothing here"
+      />
+    );
+  }
+
+  if (anime.data.length === 0 && search) {
+    return (
+      <MessageError title="No Result" message={`No result for "${search}"`} />
+    );
+  }
+
+  if (anime.data.length === 0) {
+    return <MessageError title="No Anime" message="No anime here" />;
   }
 
   return (
@@ -50,10 +74,7 @@ export default function AnimePage() {
         <div className="grow">
           <CardsList data={mappingDataInArray(anime.data)} />
         </div>
-        <Pagination
-          pagination={anime.pagination}
-          // onPageChange={onPageChangeHandler}
-        />
+        <Pagination pagination={anime.pagination} />
       </div>
     </>
   );

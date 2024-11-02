@@ -54,7 +54,7 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveAnime(params: {
+function asyncReceiveAnime(params?: {
   query?: string;
   page?: number;
   sfw?: boolean;
@@ -65,7 +65,7 @@ function asyncReceiveAnime(params: {
     dispatch(setErrorActionCreator(null));
 
     try {
-      const anime = await api.getAnime(params);
+      const anime = await api.getAnime({ ...params });
       dispatch(receiveAnimeActionCreator(anime));
     } catch (error: unknown) {
       if (error instanceof Error) {
