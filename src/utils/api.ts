@@ -43,27 +43,32 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getDetail(
-    type: string,
-    id: number,
-  ): Promise<AnimeDetail | MangaDetail | ProducerDetail> {
-    const response = await fetch(`${BASE_URL}/${type}/${id}/full`);
-    const responseJson: AnimeDetail | MangaDetail | ProducerDetail =
-      await response.json();
+  async function getAnime(params: {
+    query?: string;
+    page?: number;
+    sfw?: boolean;
+  }): Promise<AnimeList> {
+    const { query = "", page = 1, sfw = true } = params;
+
+    const response = await fetch(
+      `${BASE_URL}/anime?q=${query}&page=${page}&sfw=${sfw}&limit=${LIMIT}`,
+    );
+    const responseJson: AnimeList = await response.json();
 
     return responseJson;
   }
 
-  async function getBySearch(
-    type: string,
-    queryParams: { query: string; page: number },
-  ): Promise<AnimeList | MangaList> {
-    const { query = "", page = 1 } = queryParams;
+  async function getManga(params: {
+    query?: string;
+    page?: number;
+    sfw?: boolean;
+  }): Promise<MangaList> {
+    const { query = "", page = 1, sfw = true } = params;
 
     const response = await fetch(
-      `${BASE_URL}/${type}?q=${query}&page=${page}&limit=${LIMIT}`,
+      `${BASE_URL}/manga?q=${query}&page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );
-    const responseJson: AnimeList | MangaList = await response.json();
+    const responseJson: MangaList = await response.json();
 
     return responseJson;
   }
@@ -77,14 +82,59 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getDetailAnime(id: string): Promise<AnimeDetail> {
+    const response = await fetch(`${BASE_URL}/anime/${id}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Anime not found");
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseJson: AnimeDetail = await response.json();
+    return responseJson;
+  }
+
+  async function getDetailManga(id: string): Promise<MangaDetail> {
+    const response = await fetch(`${BASE_URL}/manga/${id}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Manga not found");
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseJson: MangaDetail = await response.json();
+    return responseJson;
+  }
+
+  async function getDetailProducer(id: string): Promise<ProducerDetail> {
+    const response = await fetch(`${BASE_URL}/producers/${id}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Producer not found");
+      }
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseJson: ProducerDetail = await response.json();
+    return responseJson;
+  }
+
   return {
     getSeasonNow,
     getSeasonUpcoming,
     getTopAnime,
     getTopManga,
-    getDetail,
-    getBySearch,
+    getAnime,
+    getManga,
     getProducers,
+    getDetailAnime,
+    getDetailManga,
+    getDetailProducer,
   };
 })();
 

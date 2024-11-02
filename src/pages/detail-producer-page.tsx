@@ -19,33 +19,32 @@ import NotFoundPage from "./not-found-page";
 export default function DetailProducerPage() {
   const [showModal, setShowModal] = useState(false);
 
-  const { id } = useParams();
+  const { id = "" } = useParams();
   const {
-    data: detailProducer,
+    data: detail,
     isLoading,
     error,
   } = useAppSelector((states) => states.detailProducer);
 
   const dispatch = useAppDispatch();
 
-  if (!id || !id.match(/^[0-9]+$/)) {
+  useEffect(() => {
+    dispatch(asyncReceiveDetailProducer(id));
+  }, [dispatch, id]);
+
+  if (error?.match(/not found/)) {
     return <NotFoundPage />;
   }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    dispatch(asyncReceiveDetailProducer("producers", Number(id)));
-  }, [dispatch, id]);
 
   if (error) {
     return <FetchError />;
   }
 
-  if (isLoading || !detailProducer?.data) {
+  if (isLoading || !detail?.data) {
     return <Loading />;
   }
 
-  const title = getTitleFromUrl(detailProducer.data.url);
+  const title = getTitleFromUrl(detail.data.url);
   document.title = `${title} | Jion`;
 
   const handleModal = () => {
@@ -57,7 +56,7 @@ export default function DetailProducerPage() {
       {/* start modal */}
       {showModal && (
         <Modal
-          image={detailProducer.data.images.jpg.image_url || ""}
+          image={detail.data.images.jpg.image_url || ""}
           title={title || ""}
           handleModal={handleModal}
         />
@@ -75,7 +74,7 @@ export default function DetailProducerPage() {
             >
               <img
                 className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
-                src={detailProducer.data.images.jpg.image_url}
+                src={detail.data.images.jpg.image_url}
                 alt={title}
               />
               <section className="absolute inset-y-0 flex w-full items-center justify-center rounded-md text-soft-peach opacity-0 hover:opacity-100">
@@ -88,31 +87,28 @@ export default function DetailProducerPage() {
               </h2>
               <p>
                 <b>Alternative Names:</b>{" "}
-                {detailProducer.data.titles
+                {detail.data.titles
                   .map((item) => `${item.title}(${item.type})`)
                   .join(" | ")}
               </p>
-              {detailProducer.data.favorites && (
+              {detail.data.favorites && (
                 <p>
-                  <b>Member Favorites:</b> {detailProducer.data.favorites}
+                  <b>Member Favorites:</b> {detail.data.favorites}
                 </p>
               )}
               <p>
                 <b>Established:</b>{" "}
-                {new Date(detailProducer.data.established).toLocaleDateString(
-                  "en-EN",
-                  {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  },
-                )}
+                {new Date(detail.data.established).toLocaleDateString("en-EN", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </p>
               {/* <p>
                 <b>External:</b>{" "}
                 <span>
-                  {detailProducer.data.external.map((item: any, index: number) => (
+                  {detail.data.external.map((item: any, index: number) => (
                     <span key={index}>
                       •{" "}
                       <a
@@ -134,21 +130,21 @@ export default function DetailProducerPage() {
             <article className="py-2">
               <h3 className="title-with-border">About</h3>
               <p>
-                {detailProducer.data.about ||
+                {detail.data.about ||
                   "No about information has been added to this title."}
               </p>
             </article>
           </section>
 
           {/* start url */}
-          {detailProducer.data.url && (
+          {detail.data.url && (
             <section>
               <article className="py-2">
                 <h3 className="title-with-border">Links</h3>
                 <p className="py-2">
                   •{" "}
                   <a
-                    href={detailProducer.data.url}
+                    href={detail.data.url}
                     target="_blank"
                     rel="noreferrer"
                     className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"

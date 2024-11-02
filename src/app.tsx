@@ -6,14 +6,16 @@ import SearchModal from "./components/modal/search-modal";
 // hooks
 import { useSearch } from "./hooks/use-search";
 // pages
-import DetailPage from "./pages/detail-page";
+import AnimePage from "./pages/anime-page";
+import DetailAnimePage from "./pages/detail-anime.page";
+import DetailMangaPage from "./pages/detail-manga.page";
 import DetailProducerPage from "./pages/detail-producer-page";
 import FavoritePage from "./pages/favorite-page";
 import HomePage from "./pages/home-page";
+import MangaPage from "./pages/manga-page";
 import NotFoundPage from "./pages/not-found-page";
 import NowPage from "./pages/now-page";
 import ProducersPage from "./pages/producers-page";
-import SearchPage from "./pages/search-page";
 import TopAnimePage from "./pages/top-anime-page";
 import TopMangaPage from "./pages/top-manga-page";
 import TopPage from "./pages/top-page";
@@ -38,11 +40,13 @@ export default function App() {
         <Route path="/top" element={<TopPage />} />
         <Route path="/top-anime" element={<TopAnimePage />} />
         <Route path="/top-manga" element={<TopMangaPage />} />
+        <Route path="/anime" element={<AnimePage />} />
+        <Route path="/manga" element={<MangaPage />} />
         <Route path="/producers" element={<ProducersPage />} />
+        <Route path="/anime/:id" element={<DetailAnimePage />} />
+        <Route path="/manga/:id" element={<DetailMangaPage />} />
         <Route path="/producers/:id" element={<DetailProducerPage />} />
         <Route path="/favorite/:type" element={<FavoritePage />} />
-        <Route path="/:type" element={<SearchPage />} />
-        <Route path="/:type/:id" element={<DetailPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </main>

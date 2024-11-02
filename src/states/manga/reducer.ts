@@ -1,22 +1,21 @@
 // types
-import { AnimeListState } from "../../types/anime.type";
 import { MangaListState } from "../../types/manga.type";
-import { ActionType, BySearchAction } from "./action";
+import { ActionType, MangaAction } from "./action";
 
-const initialState: AnimeListState | MangaListState = {
+const initialState: MangaListState = {
   data: null,
   isLoading: true,
   error: null,
 };
 
-function bySearchReducer(state = initialState, action: BySearchAction) {
+function mangaReducer(state = initialState, action: MangaAction) {
   switch (action.type) {
-    case ActionType.RECEIVE_BY_SEARCH:
+    case ActionType.RECEIVE_MANGA:
       return {
         ...state,
-        data: action.payload.bySearch,
+        data: action.payload.manga,
       };
-    case ActionType.CLEAR_BY_SEARCH:
+    case ActionType.CLEAR_MANGA:
       return initialState;
     case ActionType.SET_LOADING:
       return {
@@ -35,4 +34,4 @@ function bySearchReducer(state = initialState, action: BySearchAction) {
   }
 }
 
-export default bySearchReducer;
+export default mangaReducer;

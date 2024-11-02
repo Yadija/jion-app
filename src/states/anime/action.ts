@@ -1,38 +1,42 @@
 // types
-import { ProducerDetail } from "../../types/producer.type";
+import { AnimeList } from "../../types/anime.type";
 // utils
 import api from "../../utils/api";
 // states
 import { AppDispatch } from "../index";
 
 enum ActionType {
-  RECEIVE_DETAIL_PRODUCER = "detail-producer/receive",
-  CLEAR_DETAIL_PRODUCER = "detail-producer/clear",
+  RECEIVE_ANIME = "anime/receive",
+  CLEAR_ANIME = "anime/clear",
   SET_LOADING = "loading/set",
   SET_ERROR = "error/set",
 }
 
-export type DetailProducerAction =
+export type AnimeAction =
   | {
-      type: ActionType.RECEIVE_DETAIL_PRODUCER;
-      payload: { detailProducer: ProducerDetail };
+      type: ActionType.RECEIVE_ANIME;
+      payload: {
+        anime: AnimeList;
+      };
     }
-  | { type: ActionType.CLEAR_DETAIL_PRODUCER }
+  | {
+      type: ActionType.CLEAR_ANIME;
+    }
   | { type: ActionType.SET_LOADING; payload: boolean }
   | { type: ActionType.SET_ERROR; payload: string | null };
 
-function receiveDetailProducerActionCreator(detailProducer: ProducerDetail) {
+function receiveAnimeActionCreator(anime: AnimeList) {
   return {
-    type: ActionType.RECEIVE_DETAIL_PRODUCER,
+    type: ActionType.RECEIVE_ANIME,
     payload: {
-      detailProducer,
+      anime,
     },
   };
 }
 
-function clearDetailProducerActionCreator() {
+function clearAnimeActionCreator() {
   return {
-    type: ActionType.CLEAR_DETAIL_PRODUCER,
+    type: ActionType.CLEAR_ANIME,
   };
 }
 
@@ -50,18 +54,22 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveDetailProducer(id: string) {
+function asyncReceiveAnime(params: {
+  query?: string;
+  page?: number;
+  sfw?: boolean;
+}) {
   return async (dispatch: AppDispatch) => {
-    dispatch(clearDetailProducerActionCreator());
+    dispatch(clearAnimeActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const detailProducer = await api.getDetailProducer(id);
-      dispatch(receiveDetailProducerActionCreator(detailProducer));
+      const anime = await api.getAnime(params);
+      dispatch(receiveAnimeActionCreator(anime));
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Error fetching detail producer:", error);
+        console.error("Error fetching anime:", error);
         dispatch(setErrorActionCreator(error.message));
       } else {
         console.error("Unknown error:", error);
@@ -73,8 +81,4 @@ function asyncReceiveDetailProducer(id: string) {
   };
 }
 
-export {
-  ActionType,
-  asyncReceiveDetailProducer,
-  receiveDetailProducerActionCreator,
-};
+export { ActionType, asyncReceiveAnime, receiveAnimeActionCreator };

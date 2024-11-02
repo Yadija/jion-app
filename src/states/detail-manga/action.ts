@@ -1,43 +1,39 @@
 // types
-import { AnimeList } from "../../types/anime.type";
-import { MangaList } from "../../types/manga.type";
+import { AnimeDetail } from "../../types/anime.type";
+import { MangaDetail } from "../../types/manga.type";
 // utils
 import api from "../../utils/api";
 // states
-import { AppDispatch } from "../index";
+import { AppDispatch } from "..";
 
 enum ActionType {
-  RECEIVE_BY_SEARCH = "by-search/receive",
-  CLEAR_BY_SEARCH = "by-search/clear",
+  RECEIVE_DETAIL_MANGA = "detail-manga/receive",
+  CLEAR_DETAIL_MANGA = "detail-manga/clear",
   SET_LOADING = "loading/set",
   SET_ERROR = "error/set",
 }
 
-export type BySearchAction =
+export type DetailMangaAction =
   | {
-      type: ActionType.RECEIVE_BY_SEARCH;
-      payload: {
-        bySearch: AnimeList | MangaList;
-      };
+      type: ActionType.RECEIVE_DETAIL_MANGA;
+      payload: { detail: MangaDetail };
     }
-  | {
-      type: ActionType.CLEAR_BY_SEARCH;
-    }
+  | { type: ActionType.CLEAR_DETAIL_MANGA }
   | { type: ActionType.SET_LOADING; payload: boolean }
   | { type: ActionType.SET_ERROR; payload: string | null };
 
-function receiveBySearchActionCreator(bySearch: AnimeList | MangaList) {
+function receiveDetailMangaActionCreator(detail: AnimeDetail | MangaDetail) {
   return {
-    type: ActionType.RECEIVE_BY_SEARCH,
+    type: ActionType.RECEIVE_DETAIL_MANGA,
     payload: {
-      bySearch,
+      detail,
     },
   };
 }
 
-function clearBySearchActionCreator() {
+function clearDetailMangaActionCreator() {
   return {
-    type: ActionType.CLEAR_BY_SEARCH,
+    type: ActionType.CLEAR_DETAIL_MANGA,
   };
 }
 
@@ -55,21 +51,18 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveBySearch(
-  type: string,
-  queryParams: { query: string; page: number },
-) {
+function asyncReceiveDetailManga(id: string) {
   return async (dispatch: AppDispatch) => {
-    dispatch(clearBySearchActionCreator());
+    dispatch(clearDetailMangaActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const bySearch = await api.getBySearch(type, queryParams);
-      dispatch(receiveBySearchActionCreator(bySearch));
+      const detail = await api.getDetailManga(id);
+      dispatch(receiveDetailMangaActionCreator(detail));
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Error fetching by search:", error);
+        console.error("Error fetching detail manga:", error);
         dispatch(setErrorActionCreator(error.message));
       } else {
         console.error("Unknown error:", error);
@@ -81,4 +74,4 @@ function asyncReceiveBySearch(
   };
 }
 
-export { ActionType, asyncReceiveBySearch, receiveBySearchActionCreator };
+export { ActionType, asyncReceiveDetailManga, receiveDetailMangaActionCreator };

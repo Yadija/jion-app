@@ -1,39 +1,42 @@
 // types
-import { AnimeDetail } from "../../types/anime.type";
-import { MangaDetail } from "../../types/manga.type";
+import { MangaList } from "../../types/manga.type";
 // utils
 import api from "../../utils/api";
 // states
-import { AppDispatch } from "..";
+import { AppDispatch } from "../index";
 
 enum ActionType {
-  RECEIVE_DETAIL = "detail/receive",
-  CLEAR_DETAIL = "detail/clear",
+  RECEIVE_MANGA = "manga/receive",
+  CLEAR_MANGA = "manga/clear",
   SET_LOADING = "loading/set",
   SET_ERROR = "error/set",
 }
 
-export type DetailAction =
+export type MangaAction =
   | {
-      type: ActionType.RECEIVE_DETAIL;
-      payload: { detail: AnimeDetail | MangaDetail };
+      type: ActionType.RECEIVE_MANGA;
+      payload: {
+        manga: MangaList;
+      };
     }
-  | { type: ActionType.CLEAR_DETAIL }
+  | {
+      type: ActionType.CLEAR_MANGA;
+    }
   | { type: ActionType.SET_LOADING; payload: boolean }
   | { type: ActionType.SET_ERROR; payload: string | null };
 
-function receiveDetailActionCreator(detail: AnimeDetail | MangaDetail) {
+function receiveMangaActionCreator(manga: MangaList) {
   return {
-    type: ActionType.RECEIVE_DETAIL,
+    type: ActionType.RECEIVE_MANGA,
     payload: {
-      detail,
+      manga,
     },
   };
 }
 
-function clearDetailActionCreator() {
+function clearMangaActionCreator() {
   return {
-    type: ActionType.CLEAR_DETAIL,
+    type: ActionType.CLEAR_MANGA,
   };
 }
 
@@ -51,18 +54,22 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveDetail(type: string, id: number) {
+function asyncReceiveManga(params: {
+  query?: string;
+  page?: number;
+  sfw?: boolean;
+}) {
   return async (dispatch: AppDispatch) => {
-    dispatch(clearDetailActionCreator());
+    dispatch(clearMangaActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const detail = await api.getDetail(type, id);
-      dispatch(receiveDetailActionCreator(detail as AnimeDetail | MangaDetail));
+      const manga = await api.getManga(params);
+      dispatch(receiveMangaActionCreator(manga));
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Error fetching detail:", error);
+        console.error("Error fetching manga:", error);
         dispatch(setErrorActionCreator(error.message));
       } else {
         console.error("Unknown error:", error);
@@ -74,4 +81,4 @@ function asyncReceiveDetail(type: string, id: number) {
   };
 }
 
-export { ActionType, asyncReceiveDetail, receiveDetailActionCreator };
+export { ActionType, asyncReceiveManga, receiveMangaActionCreator };

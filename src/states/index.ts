@@ -7,10 +7,12 @@ import {
   ProducerDetailState,
   ProducersListState,
 } from "../types/producer.type";
+import animeReducer from "./anime/reducer";
 // reducers
-import bySearchReducer from "./bySearch/reducer";
-import detailReducer from "./detail/reducer";
+import detailAnimeReducer from "./detail-anime/reducer";
+import detailMangaReducer from "./detail-manga/reducer";
 import detailProducerReducer from "./detail-producer/reducer";
+import mangaReducer from "./manga/reducer";
 import nowReducer from "./now/reducer";
 import producersReducer from "./producers/reducer";
 import topAnimeReducer from "./top-anime/reducer";
@@ -23,17 +25,13 @@ const store = configureStore({
     upcoming: upcomingReducer as Reducer<AnimeListState, UnknownAction>,
     topAnime: topAnimeReducer as Reducer<AnimeListState, UnknownAction>,
     topManga: topMangaReducer as Reducer<MangaListState, UnknownAction>,
+    anime: animeReducer as Reducer<AnimeListState, UnknownAction>,
+    manga: mangaReducer as Reducer<MangaListState, UnknownAction>,
     producers: producersReducer as Reducer<ProducersListState, UnknownAction>,
-    detail: detailReducer as Reducer<
-      AnimeDetailState | MangaDetailState,
-      UnknownAction
-    >,
+    detailAnime: detailAnimeReducer as Reducer<AnimeDetailState, UnknownAction>,
+    detailManga: detailMangaReducer as Reducer<MangaDetailState, UnknownAction>,
     detailProducer: detailProducerReducer as Reducer<
       ProducerDetailState,
-      UnknownAction
-    >,
-    bySearch: bySearchReducer as Reducer<
-      AnimeListState | MangaListState,
       UnknownAction
     >,
   },
