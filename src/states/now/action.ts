@@ -47,14 +47,14 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveNow(page?: number) {
+function asyncReceiveNow(params?: { page?: number; sfw?: boolean }) {
   return async (dispatch: AppDispatch) => {
     dispatch(clearNowActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const now = await api.getSeasonNow(page);
+      const now = await api.getSeasonNow({ ...params });
       dispatch(receiveNowActionCreator(now));
     } catch (error: unknown) {
       if (error instanceof Error) {

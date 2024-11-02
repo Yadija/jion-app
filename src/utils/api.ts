@@ -7,18 +7,30 @@ const api = (() => {
   const BASE_URL = "https://api.jikan.moe/v4";
   const LIMIT = 24;
 
-  async function getSeasonNow(page: number = 1): Promise<AnimeList> {
+  async function getSeasonNow({
+    page = 1,
+    sfw = true,
+  }: {
+    page?: number;
+    sfw?: boolean;
+  }): Promise<AnimeList> {
     const response = await fetch(
-      `${BASE_URL}/seasons/now?page=${page}&limit=${LIMIT}`,
+      `${BASE_URL}/seasons/now?page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );
     const responseJson: AnimeList = await response.json();
 
     return responseJson;
   }
 
-  async function getSeasonUpcoming(page: number = 1): Promise<AnimeList> {
+  async function getSeasonUpcoming({
+    page = 1,
+    sfw = true,
+  }: {
+    page?: number;
+    sfw?: boolean;
+  }): Promise<AnimeList> {
     const response = await fetch(
-      `${BASE_URL}/seasons/upcoming?page=${page}&limit=${LIMIT}`,
+      `${BASE_URL}/seasons/upcoming?page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );
     const responseJson: AnimeList = await response.json();
 

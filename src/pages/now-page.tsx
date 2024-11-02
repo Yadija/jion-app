@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
+import MessageError from "../components/error/message-error";
 import Loading from "../components/loading/loading";
 import Pagination from "../components/pagination/pagination";
 // hooks
@@ -20,16 +21,41 @@ export default function NowPage() {
 
   const [searchParams] = useSearchParams();
   const page = parseInt(searchParams.get("page") || "1", 10);
+  const sfw = searchParams.get("sfw") === "false" ? false : true;
 
   useEffect(() => {
-    dispatch(asyncReceiveNow(page));
+    dispatch(asyncReceiveNow({ page, sfw }));
+  }, [dispatch, page, sfw]);
 
-    // document.body.scrollTop = 0;
-    // document.documentElement.scrollTop = 0;
-  }, [dispatch, page]);
+  if (page < 1) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="What you've done is illegal"
+      />
+    );
+  }
 
-  if (isLoading || !now) {
+  if (isLoading || !now?.data) {
     return <Loading />;
+  }
+
+  if (now.pagination.last_visible_page < page) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="I know you're curious, but there's nothing here"
+      />
+    );
+  }
+
+  if (now.data.length === 0) {
+    return (
+      <MessageError
+        title="Nothing Here"
+        message="Nothing here, please try again later"
+      />
+    );
   }
 
   return (

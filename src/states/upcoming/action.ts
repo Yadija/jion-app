@@ -43,14 +43,14 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-const asyncReceiveUpcoming = (page?: number) => {
+const asyncReceiveUpcoming = (params?: { page?: number; sfw?: boolean }) => {
   return async (dispatch: AppDispatch) => {
     dispatch(clearUpcomingActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const upcoming = await api.getSeasonUpcoming(page);
+      const upcoming = await api.getSeasonUpcoming({ ...params });
       dispatch(receiveUpcomingActionCreator(upcoming));
     } catch (error: unknown) {
       if (error instanceof Error) {
