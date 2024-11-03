@@ -3,30 +3,42 @@ import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 // utils
 import { db } from "../../utils/db";
+// types
+import { Anime, Manga } from "../../utils/db";
 
-export default function FavoriteButton({ data }: any) {
+interface FavoriteButtonProps {
+  data: Anime | Manga;
+}
+
+export default function FavoriteButton({ data }: FavoriteButtonProps) {
   const item = useLiveQuery(
-    () => db.anime.where("mal_id").equals(data.mal_id).first(),
+    () =>
+      db[data.type as "anime" | "manga"]
+        .where("mal_id")
+        .equals(data.mal_id)
+        .first(),
     [],
   );
 
-  async function saveFavorite(data) {
+  async function saveFavorite(data: Anime | Manga) {
     try {
-      await db[data.type].add(data);
+      await db[data.type as "anime" | "manga"].add(data);
     } catch (error) {
-      alert(error.message);
+      alert((error as Error).message);
     }
   }
 
-  async function removeFavorite(data) {
+  async function removeFavorite(data: Anime | Manga) {
     try {
-      await db[data.type].delete(data.mal_id);
+      await db[data.type as "anime" | "manga"].delete(
+        data.mal_id as unknown as "mal_id",
+      );
     } catch (error) {
-      alert(error.message);
+      alert((error as Error).message);
     }
   }
 
-  async function onFavoriteHandler(data) {
+  async function onFavoriteHandler(data: Anime | Manga) {
     if (item) {
       await removeFavorite(data);
     } else {
