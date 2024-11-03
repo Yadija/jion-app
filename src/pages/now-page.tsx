@@ -1,5 +1,5 @@
+import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
@@ -19,13 +19,12 @@ export default function NowPage() {
   const { data: now, isLoading } = useAppSelector((states) => states.now);
   const dispatch = useAppDispatch();
 
-  const [searchParams] = useSearchParams();
-  const page = parseInt(searchParams.get("page") || "1", 10);
-  const sfw = searchParams.get("sfw") === "false" ? false : true;
+  const [page] = useQueryState("page", parseAsInteger.withDefault(1));
+  const [nsfw] = useQueryState("nsfw", parseAsBoolean.withDefault(false));
 
   useEffect(() => {
-    dispatch(asyncReceiveNow({ page, sfw }));
-  }, [dispatch, page, sfw]);
+    dispatch(asyncReceiveNow({ page, sfw: !nsfw }));
+  }, [dispatch, page, nsfw]);
 
   if (page < 1) {
     return (

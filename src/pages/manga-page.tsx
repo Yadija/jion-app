@@ -1,5 +1,5 @@
+import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
@@ -19,16 +19,15 @@ export default function MangaPage() {
     useAppSelector((states) => states.manga) || [];
   const dispatch = useAppDispatch();
 
-  const [searchParams] = useSearchParams();
-  const search = searchParams.get("search") || "";
-  const page = parseInt(searchParams.get("page") || "1", 10);
-  const sfw = searchParams.get("sfw") === "false" ? false : true;
+  const [search] = useQueryState("search", { defaultValue: "" });
+  const [page] = useQueryState("page", parseAsInteger.withDefault(1));
+  const [nsfw] = useQueryState("nsfw", parseAsBoolean.withDefault(false));
 
   document.title = search ? `Search Manga: ${search} | Jion` : "Manga | Jion";
 
   useEffect(() => {
-    dispatch(asyncReceiveManga({ query: search, page, sfw }));
-  }, [dispatch, page, search, sfw]);
+    dispatch(asyncReceiveManga({ query: search, page, sfw: !nsfw }));
+  }, [dispatch, page, search, nsfw]);
 
   if (page < 1) {
     return (

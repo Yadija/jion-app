@@ -1,6 +1,6 @@
 // components
+import { parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
@@ -21,8 +21,7 @@ export default function TopMangaPage() {
   );
   const dispatch = useAppDispatch();
 
-  const [searchParams] = useSearchParams();
-  const page = parseInt(searchParams.get("page") || "1", 10);
+  const [page] = useQueryState("page", parseAsInteger.withDefault(1));
 
   useEffect(() => {
     dispatch(asyncReceiveTopManga({ page }));
