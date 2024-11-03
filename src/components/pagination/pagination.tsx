@@ -1,5 +1,5 @@
+import { parseAsInteger, useQueryState } from "nuqs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useLocation, useNavigate } from "react-router-dom";
 
 // hooks
 import { DOTS, usePagination } from "../../hooks/use-pagination";
@@ -14,8 +14,10 @@ export default function Pagination({ pagination }: PaginationProps) {
   const { current_page: currentPage, last_visible_page: lastVisiblePage } =
     pagination;
 
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const [, setPage] = useQueryState(
+    "page",
+    parseAsInteger.withDefault(1).withOptions({ history: "push" }),
+  );
 
   const paginationRange = usePagination({
     currentPage,
@@ -36,9 +38,7 @@ export default function Pagination({ pagination }: PaginationProps) {
               currentPage === 1 ? "cursor-default" : "hover:text-color-blue"
             }`}
             onClick={
-              currentPage === 1
-                ? undefined
-                : () => navigate(`${pathname}?page=${currentPage - 1}`)
+              currentPage === 1 ? undefined : () => setPage(currentPage - 1)
             }
           >
             <FiChevronLeft />
@@ -67,7 +67,7 @@ export default function Pagination({ pagination }: PaginationProps) {
                   typeof pageNumber === "number" &&
                   (pageNumber === currentPage || pageNumber > lastVisiblePage)
                     ? undefined
-                    : () => navigate(`${pathname}?page=${pageNumber}`)
+                    : () => setPage(Number(pageNumber))
                 }
               >
                 {pageNumber}
@@ -86,7 +86,7 @@ export default function Pagination({ pagination }: PaginationProps) {
             onClick={
               currentPage === lastVisiblePage
                 ? undefined
-                : () => navigate(`${pathname}?page=${currentPage + 1}`)
+                : () => setPage(currentPage + 1)
             }
           >
             <FiChevronRight />
