@@ -69,7 +69,7 @@ export default function DetailMangaPage() {
       )}
       {/* end modal */}
 
-      <div className="text-color-black relative flex min-h-screen flex-col">
+      <section className="text-color-black relative flex min-h-screen flex-col">
         <nav className="flex py-9" />
 
         <FavoriteButton data={mappingData({ ...detail.data, type: "manga" })} />
@@ -135,10 +135,10 @@ export default function DetailMangaPage() {
           <LinkSection title="More Information" url={detail.data.url} />
         </section>
 
-        <div className="relative">
+        <section className="relative">
           <Footer />
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   );
 }

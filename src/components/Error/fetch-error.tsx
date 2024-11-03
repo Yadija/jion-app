@@ -1,7 +1,7 @@
 export default function FetchError() {
   return (
-    <div className="background-color-white grid h-screen">
-      <div className="m-auto flex flex-col p-14 text-center">
+    <section className="background-color-white grid h-screen">
+      <section className="m-auto flex flex-col p-14 text-center">
         <h1 className="text-color-blue m-auto text-2xl font-bold md:text-4xl">
           Failed to Retrieve Data
         </h1>
@@ -19,7 +19,7 @@ export default function FetchError() {
             refresh
           </button>
         </section>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }

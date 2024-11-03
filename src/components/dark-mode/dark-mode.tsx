@@ -13,7 +13,7 @@ export default function DarkMode() {
     >
       <TbMoon />
       <TbSunHigh />
-      <div
+      <span
         className={`background-color-white absolute size-4 rounded-full ${
           mode === "dark" ? "right-[2px]" : "left-[2px]"
         }`}

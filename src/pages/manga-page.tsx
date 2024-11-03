@@ -64,17 +64,17 @@ export default function MangaPage() {
   return (
     <>
       <Navbar />
-      <div className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
+      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
         {search ? (
           <h1 className="mb-4 pt-8 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
         ) : (
           <h1 className="title-page">Manga</h1>
         )}
-        <div className="grow">
+        <section className="grow">
           <CardsList data={mappingDataInArray(manga.data)} />
-        </div>
+        </section>
         <Pagination pagination={manga.pagination} />
-      </div>
+      </section>
     </>
   );
 }

@@ -63,7 +63,7 @@ export default function DetailProducerPage() {
       )}
       {/* end modal */}
 
-      <div className="text-color-black relative flex min-h-screen flex-col">
+      <section className="text-color-black relative flex min-h-screen flex-col">
         <nav className="flex py-9" />
         <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
           <section className="flex gap-2 md:gap-4">
@@ -158,10 +158,10 @@ export default function DetailProducerPage() {
           {/* end url */}
         </section>
 
-        <div className="relative">
+        <section className="relative">
           <Footer />
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   );
 }

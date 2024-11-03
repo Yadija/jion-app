@@ -47,7 +47,7 @@ function TopPage() {
       <Navbar />
       <section>
         <article>
-          <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+          <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Top Anime</h2>
             <Link
               to="/top/anime"
@@ -55,12 +55,12 @@ function TopPage() {
             >
               See All
             </Link>
-          </div>
+          </section>
           <Carousel data={mappingDataInArray(topAnime.data)} />
         </article>
 
         <article className="pb-10">
-          <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+          <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Top Manga</h2>
             <Link
               to="/top/manga"
@@ -68,7 +68,7 @@ function TopPage() {
             >
               See All
             </Link>
-          </div>
+          </section>
           <Carousel data={mappingDataInArray(topManga.data)} />
         </article>
       </section>

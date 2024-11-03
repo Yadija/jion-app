@@ -61,7 +61,7 @@ const drawer = [
 export default function Drawer() {
   return (
     <>
-      <div className="text-center">
+      <section className="text-center">
         <button
           onFocus={() => {
             document
@@ -73,8 +73,8 @@ export default function Drawer() {
         >
           <RxHamburgerMenu />
         </button>
-      </div>
-      <div
+      </section>
+      <section
         id="drawer-navigation"
         className="fixed right-0 top-0 z-40 flex h-screen w-full translate-x-full overflow-y-auto transition-transform"
         tabIndex="-1"
@@ -87,8 +87,8 @@ export default function Drawer() {
               .classList.add("translate-x-full")
           }
         ></button>
-        <div className="background-color-blue w-72 p-4 shadow-xl">
-          <div>
+        <section className="background-color-blue w-72 p-4 shadow-xl">
+          <section>
             <h5
               id="drawer-navigation-label"
               className="text-base font-semibold uppercase"
@@ -109,12 +109,12 @@ export default function Drawer() {
               <RxCross1 />
               <span className="sr-only">Close menu</span>
             </button>
-          </div>
-          <div className="overflow-y-auto py-4">
+          </section>
+          <section className="overflow-y-auto py-4">
             <ul className="space-y-2 font-medium">
               {drawer.map((item) => (
                 <li key={item.id}>
-                  <div className="hover:text-color-blue hover:background-color-white flex items-center justify-between rounded-lg p-2">
+                  <section className="hover:text-color-blue hover:background-color-white flex items-center justify-between rounded-lg p-2">
                     {item.path ? (
                       <Link to={item.path}>
                         <span className="ml-3">{item.name}</span>
@@ -155,7 +155,7 @@ export default function Drawer() {
                         </svg>
                       </button>
                     )}
-                  </div>
+                  </section>
                   {item.content && (
                     <ul
                       id={`dropdown-${item.id}`}
@@ -176,9 +176,9 @@ export default function Drawer() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-      </div>
+          </section>
+        </section>
+      </section>
     </>
   );
 }

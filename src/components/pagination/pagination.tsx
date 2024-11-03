@@ -29,7 +29,7 @@ export default function Pagination({ pagination }: PaginationProps) {
   }
 
   return (
-    <div className="text-color-black flex justify-center py-10">
+    <section className="text-color-black flex justify-center py-10">
       <ul className="inline-flex text-xl">
         <li className="flex px-3">
           <button
@@ -93,6 +93,6 @@ export default function Pagination({ pagination }: PaginationProps) {
           </button>
         </li>
       </ul>
-    </div>
+    </section>
   );
 }

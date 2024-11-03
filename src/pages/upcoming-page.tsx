@@ -59,14 +59,14 @@ export default function UpcomingPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <div className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
+    <section className="min-h-screen">
+      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
         <h1 className="title-page">Upcoming</h1>
-        <div className="grow">
+        <section className="grow">
           <CardsList data={mappingDataInArray(upcoming.data)} />
-        </div>
+        </section>
         <Pagination pagination={upcoming.pagination} />
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }

@@ -45,7 +45,7 @@ export default function HomePage() {
       <Navbar />
       <section>
         <article>
-          <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+          <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Now</h2>
             <Link
               to="/now"
@@ -53,12 +53,12 @@ export default function HomePage() {
             >
               See All
             </Link>
-          </div>
+          </section>
           <Carousel data={mappingDataInArray(seasonNow.data)} />
         </article>
 
         <article className="pb-10">
-          <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+          <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Upcoming</h2>
             <Link
               to="/upcoming"
@@ -66,7 +66,7 @@ export default function HomePage() {
             >
               See All
             </Link>
-          </div>
+          </section>
           <Carousel data={mappingDataInArray(seasonUpcoming.data)} />
         </article>
       </section>

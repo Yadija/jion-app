@@ -71,7 +71,7 @@ export default function DetailAnimePage() {
       )}
       {/* end modal */}
 
-      <div className="text-color-black relative flex min-h-screen flex-col">
+      <section className="text-color-black relative flex min-h-screen flex-col">
         <nav className="flex py-9" />
 
         <FavoriteButton data={mappingData({ ...detail.data, type: "anime" })} />
@@ -146,10 +146,10 @@ export default function DetailAnimePage() {
           <LinkSection title="More Information" url={detail.data.url} />
         </section>
 
-        <div className="relative">
+        <section className="relative">
           <Footer />
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   );
 }

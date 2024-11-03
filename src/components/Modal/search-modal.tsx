@@ -18,9 +18,9 @@ export default function SearchModal() {
 
   return (
     <>
-      <div className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto overflow-x-hidden">
-        <div className="relative mx-auto my-40 w-auto max-w-3xl px-4">
-          <div className="flex w-[250px] justify-center font-bold sm:w-[400px] md:w-[600px]">
+      <section className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto overflow-x-hidden">
+        <section className="relative mx-auto my-40 w-auto max-w-3xl px-4">
+          <section className="flex w-[250px] justify-center font-bold sm:w-[400px] md:w-[600px]">
             <select
               defaultValue={selectedType}
               className="text-color-blue rounded-l-lg p-2"
@@ -50,10 +50,10 @@ export default function SearchModal() {
             >
               <GoSearch />
             </button>
-          </div>
-        </div>
-      </div>
-      <div className="fixed inset-0 z-40 bg-slate-600 opacity-50" />
+          </section>
+        </section>
+      </section>
+      <section className="fixed inset-0 z-40 bg-slate-600 opacity-50" />
     </>
   );
 }

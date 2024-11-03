@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
-    <div className="background-color-white grid h-screen">
-      <div className="m-auto flex">
+    <section className="background-color-white grid h-screen">
+      <section className="m-auto flex">
         <h1 className="text-color-black m-auto hidden text-4xl md:inline-block">
           Loading
         </h1>
@@ -16,7 +16,7 @@ export default function Loading() {
             style={{ animationDelay: ".32s" }}
           />
         </section>
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }

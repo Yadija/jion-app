@@ -64,17 +64,17 @@ export default function AnimePage() {
   return (
     <>
       <Navbar />
-      <div className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
+      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
         {search ? (
           <h1 className="mb-4 pt-8 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
         ) : (
           <h1 className="title-page">Anime</h1>
         )}
-        <div className="grow">
+        <section className="grow">
           <CardsList data={mappingDataInArray(anime.data)} />
-        </div>
+        </section>
         <Pagination pagination={anime.pagination} />
-      </div>
+      </section>
     </>
   );
 }

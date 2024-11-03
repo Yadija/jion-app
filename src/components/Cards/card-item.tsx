@@ -41,7 +41,7 @@ export default function CardItem({
 
   return (
     <Link to={`/${type}/${mal_id}`}>
-      <div
+      <section
         className="text-color-white select-none overflow-hidden rounded-lg shadow-md"
         title={title}
       >
@@ -58,7 +58,7 @@ export default function CardItem({
         <h2 className="bg-fun-blue p-0.5 text-center font-semibold transition-all duration-1000 dark:bg-soft-peach">
           {trimTitle(title, 12)}
         </h2>
-      </div>
+      </section>
     </Link>
   );
 }

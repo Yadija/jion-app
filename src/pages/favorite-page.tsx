@@ -39,11 +39,11 @@ export default function FavoritePage() {
   document.title = `Favorite ${type.charAt(0).toUpperCase() + type.slice(1)} | Jion`;
 
   return (
-    <div className="flex flex-col justify-between px-16 xs:px-12">
+    <section className="flex flex-col justify-between px-16 xs:px-12">
       <h1 className="title-page">{`Favorite ${type.charAt(0).toUpperCase() + type.slice(1)}`}</h1>
-      <div className="grow">
+      <section className="grow">
         <CardsList data={data} />
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }

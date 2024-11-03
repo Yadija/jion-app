@@ -26,7 +26,7 @@ export default function Navbar() {
           />
         </Link>
       </h2>
-      <div className="flex items-center gap-3">
+      <section className="flex items-center gap-3">
         <button
           className={`${
             isShowSearchModal && "background-color-white text-color-blue"
@@ -37,7 +37,7 @@ export default function Navbar() {
         </button>
         <DarkMode />
         <Drawer />
-      </div>
+      </section>
     </nav>
   );
 }
