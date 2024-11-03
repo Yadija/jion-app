@@ -47,14 +47,14 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveTopManga(page?: number) {
+function asyncReceiveTopManga(params?: { page?: number }) {
   return async (dispatch: AppDispatch) => {
     dispatch(clearTopMangaActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const topManga = await api.getTopManga(page);
+      const topManga = await api.getTopManga({ ...params });
       dispatch(receiveTopMangaActionCreator(topManga));
     } catch (error: unknown) {
       if (error instanceof Error) {

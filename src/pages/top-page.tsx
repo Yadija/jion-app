@@ -30,8 +30,8 @@ function TopPage() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(asyncReceiveTopAnime(1));
-    dispatch(asyncReceiveTopManga(1));
+    dispatch(asyncReceiveTopAnime());
+    dispatch(asyncReceiveTopManga());
   }, [dispatch]);
 
   if (errorInTopAnime || errorInTopManga) {
@@ -50,7 +50,7 @@ function TopPage() {
           <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Top Anime</h2>
             <Link
-              to="/top-anime"
+              to="/top/anime"
               className="hover:text-color-blue active:text-color-blue"
             >
               See All
@@ -63,7 +63,7 @@ function TopPage() {
           <div className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
             <h2 className="text-xl font-bold">Top Manga</h2>
             <Link
-              to="/top-manga"
+              to="/top/manga"
               className="hover:text-color-blue active:text-color-blue"
             >
               See All

@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 // components
 import CardsList from "../components/cards/cards-list";
+import MessageError from "../components/error/message-error";
 import Loading from "../components/loading/loading";
 import Pagination from "../components/pagination/pagination";
 // hooks
@@ -24,14 +25,38 @@ export default function TopMangaPage() {
   const page = parseInt(searchParams.get("page") || "1", 10);
 
   useEffect(() => {
-    dispatch(asyncReceiveTopManga(page));
-
-    // document.body.scrollTop = 0;
-    // document.documentElement.scrollTop = 0;
+    dispatch(asyncReceiveTopManga({ page }));
   }, [dispatch, page]);
 
-  if (isLoading || !topManga) {
+  if (page < 1) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="What you've done is illegal"
+      />
+    );
+  }
+
+  if (isLoading || !topManga?.data) {
     return <Loading />;
+  }
+
+  if (topManga.pagination.last_visible_page < page) {
+    return (
+      <MessageError
+        title="What Did You Do?"
+        message="I know you're curious, but there's nothing here"
+      />
+    );
+  }
+
+  if (topManga.data.length === 0) {
+    return (
+      <MessageError
+        title="Nothing Here"
+        message="Nothing here, please try again later"
+      />
+    );
   }
 
   return (

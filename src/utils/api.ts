@@ -37,16 +37,26 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getTopAnime(page: number = 1): Promise<AnimeList> {
+  async function getTopAnime({
+    page = 1,
+    sfw = true,
+  }: {
+    page?: number;
+    sfw?: boolean;
+  }): Promise<AnimeList> {
     const response = await fetch(
-      `${BASE_URL}/top/anime?page=${page}&limit=${LIMIT}`,
+      `${BASE_URL}/top/anime?page=${page}&sfw=${sfw}&limit=${LIMIT}`,
     );
     const responseJson: AnimeList = await response.json();
 
     return responseJson;
   }
 
-  async function getTopManga(page: number = 1): Promise<MangaList> {
+  async function getTopManga({
+    page = 1,
+  }: {
+    page?: number;
+  }): Promise<MangaList> {
     const response = await fetch(
       `${BASE_URL}/top/manga?page=${page}&limit=${LIMIT}`,
     );

@@ -47,14 +47,14 @@ function setErrorActionCreator(error: string | null) {
   };
 }
 
-function asyncReceiveTopAnime(page?: number) {
+function asyncReceiveTopAnime(params?: { page?: number; sfw?: boolean }) {
   return async (dispatch: AppDispatch) => {
     dispatch(clearTopAnimeActionCreator());
     dispatch(setLoadingActionCreator(true));
     dispatch(setErrorActionCreator(null));
 
     try {
-      const topAnime = await api.getTopAnime(page);
+      const topAnime = await api.getTopAnime({ ...params });
       dispatch(receiveTopAnimeActionCreator(topAnime));
     } catch (error: unknown) {
       if (error instanceof Error) {

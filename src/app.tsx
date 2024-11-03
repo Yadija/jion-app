@@ -38,8 +38,8 @@ export default function App() {
         <Route path="/now" element={<NowPage />} />
         <Route path="/upcoming" element={<UpcomingPage />} />
         <Route path="/top" element={<TopPage />} />
-        <Route path="/top-anime" element={<TopAnimePage />} />
-        <Route path="/top-manga" element={<TopMangaPage />} />
+        <Route path="/top/anime" element={<TopAnimePage />} />
+        <Route path="/top/manga" element={<TopMangaPage />} />
         <Route path="/anime" element={<AnimePage />} />
         <Route path="/manga" element={<MangaPage />} />
         <Route path="/producers" element={<ProducersPage />} />
