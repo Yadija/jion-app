@@ -2,16 +2,16 @@ import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
 // components
-import CardsList from "../components/common/cards-list";
-import Loading from "../components/common/loading";
-import MessageError from "../components/common/message-error";
-import Pagination from "../components/common/pagination";
+import CardsList from "@/components/common/cards-list";
+import Loading from "@/components/common/loading";
+import MessageError from "@/components/common/message-error";
+import Pagination from "@/components/common/pagination";
 // hooks
-import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
-import { asyncReceiveNow } from "../states/now/action";
+import { asyncReceiveNow } from "@/states/now/action";
 // utils
-import { mappingDataInArray } from "../utils";
+import { mappingDataInArray } from "@/utils";
 
 export default function NowPage() {
   document.title = "Now | Jion";

@@ -2,9 +2,9 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 // lib
-import { db } from "../../lib/db";
+import { db } from "@/lib/db";
 // types
-import { Anime, Manga } from "../../lib/db";
+import { Anime, Manga } from "@/lib/db";
 
 interface FavoriteButtonProps {
   data: Anime | Manga;

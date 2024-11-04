@@ -1,9 +1,9 @@
 // lib
-import api from "../../lib/api";
-// types
-import { ProducerDetail } from "../../types/producer.type";
+import api from "@/lib/api";
 // states
-import { AppDispatch } from "../index";
+import { AppDispatch } from "@/states";
+// types
+import { ProducerDetail } from "@/types/producer.type";
 
 enum ActionType {
   RECEIVE_DETAIL_PRODUCER = "detail-producer/receive",

@@ -3,7 +3,7 @@ import { GoSearch } from "react-icons/go";
 import { useNavigate } from "react-router";
 
 // hooks
-import { useSearch } from "../../hooks/use-search";
+import { useSearch } from "@/hooks/use-search";
 
 export default function SearchModal() {
   const navigate = useNavigate();

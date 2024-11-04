@@ -2,15 +2,15 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useParams } from "react-router";
 
 // components
-import CardsList from "../components/common/cards-list";
-import Loading from "../components/common/loading";
-import MessageError from "../components/common/message-error";
+import CardsList from "@/components/common/cards-list";
+import Loading from "@/components/common/loading";
+import MessageError from "@/components/common/message-error";
 // lib
-import { db } from "../lib/db";
+import { db } from "@/lib/db";
 // types
-import { Anime, Manga } from "../lib/db";
+import { Anime, Manga } from "@/lib/db";
 // pages
-import NotFoundPage from "./not-found-page";
+import NotFoundPage from "@/pages/not-found-page";
 
 export default function FavoritePage() {
   const { type } = useParams<{ type: "anime" | "manga" }>() as {

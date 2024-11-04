@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // components
-import CardsList from "../components/common/cards-list";
-import Loading from "../components/common/loading";
-import Pagination from "../components/common/pagination";
+import CardsList from "@/components/common/cards-list";
+import Loading from "@/components/common/loading";
+import Pagination from "@/components/common/pagination";
 // hooks
-import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
-import { asyncReceiveProducers } from "../states/producers/action";
+import { asyncReceiveProducers } from "@/states/producers/action";
 // utils
-import { mappingDataProducerInArray } from "../utils";
+import { mappingDataProducerInArray } from "@/utils";
 
 export default function ProducersPage() {
   document.title = "Producers | Jion";

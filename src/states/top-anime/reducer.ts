@@ -1,7 +1,7 @@
-// types
-import { AnimeListState } from "../../types/anime.type";
 // actions
-import { ActionType, TopAnimeAction } from "./action";
+import { ActionType, TopAnimeAction } from "@/states/top-anime/action";
+// types
+import { AnimeListState } from "@/types/anime.type";
 
 const initialState: AnimeListState = {
   data: null,

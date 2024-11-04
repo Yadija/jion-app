@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // utils
-import { trimTitle } from "../../utils";
+import { trimTitle } from "@/utils";
 
 export interface CardItemProps {
   title: string;

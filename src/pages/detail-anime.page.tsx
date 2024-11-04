@@ -3,27 +3,27 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
-import AnimeInformation from "../components/common/anime-information";
-import FavoriteButton from "../components/common/favorite-button";
-import FetchError from "../components/common/fetch-error";
-import Footer from "../components/common/footer";
-import GenreList from "../components/common/genre-list";
-import InfoList from "../components/common/info-list";
-import LinkSection from "../components/common/link-section";
-import Loading from "../components/common/loading";
-import Modal from "../components/common/modal";
-import ScoreBoard from "../components/common/score-board";
-import SummarySection from "../components/common/summary-section";
-import TrailerSection from "../components/common/trailer-section";
+import AnimeInformation from "@/components/common/anime-information";
+import FavoriteButton from "@/components/common/favorite-button";
+import FetchError from "@/components/common/fetch-error";
+import Footer from "@/components/common/footer";
+import GenreList from "@/components/common/genre-list";
+import InfoList from "@/components/common/info-list";
+import LinkSection from "@/components/common/link-section";
+import Loading from "@/components/common/loading";
+import Modal from "@/components/common/modal";
+import ScoreBoard from "@/components/common/score-board";
+import SummarySection from "@/components/common/summary-section";
+import TrailerSection from "@/components/common/trailer-section";
 // hooks
-import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
-// states
-import { AppDispatch } from "../states";
-import { asyncReceiveDetailAnime } from "../states/detail-anime/action";
-// utils
-import { mappingData } from "../utils";
+import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // pages
-import NotFoundPage from "./not-found-page";
+import NotFoundPage from "@/pages/not-found-page";
+// states
+import { AppDispatch } from "@/states";
+import { asyncReceiveDetailAnime } from "@/states/detail-anime/action";
+// utils
+import { mappingData } from "@/utils";
 
 export default function DetailAnimePage() {
   const [showModal, setShowModal] = useState(false);

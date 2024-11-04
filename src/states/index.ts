@@ -1,23 +1,20 @@
 import { configureStore, Reducer, UnknownAction } from "@reduxjs/toolkit";
 
-// types
-import { AnimeDetailState, AnimeListState } from "../types/anime.type";
-import { MangaDetailState, MangaListState } from "../types/manga.type";
-import {
-  ProducerDetailState,
-  ProducersListState,
-} from "../types/producer.type";
-import animeReducer from "./anime/reducer";
 // reducers
-import detailAnimeReducer from "./detail-anime/reducer";
-import detailMangaReducer from "./detail-manga/reducer";
-import detailProducerReducer from "./detail-producer/reducer";
-import mangaReducer from "./manga/reducer";
-import nowReducer from "./now/reducer";
-import producersReducer from "./producers/reducer";
-import topAnimeReducer from "./top-anime/reducer";
-import topMangaReducer from "./top-manga/reducer";
-import upcomingReducer from "./upcoming/reducer";
+import animeReducer from "@/states/anime/reducer";
+import detailAnimeReducer from "@/states/detail-anime/reducer";
+import detailMangaReducer from "@/states/detail-manga/reducer";
+import detailProducerReducer from "@/states/detail-producer/reducer";
+import mangaReducer from "@/states/manga/reducer";
+import nowReducer from "@/states/now/reducer";
+import producersReducer from "@/states/producers/reducer";
+import topAnimeReducer from "@/states/top-anime/reducer";
+import topMangaReducer from "@/states/top-manga/reducer";
+import upcomingReducer from "@/states/upcoming/reducer";
+// types
+import { AnimeDetailState, AnimeListState } from "@/types/anime.type";
+import { MangaDetailState, MangaListState } from "@/types/manga.type";
+import { ProducerDetailState, ProducersListState } from "@/types/producer.type";
 
 const store = configureStore({
   reducer: {

@@ -7,7 +7,7 @@ import { Autoplay, FreeMode, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
-import CardItem, { CardItemProps } from "../common/card-item";
+import CardItem, { CardItemProps } from "@/components/common/card-item";
 
 interface CarouselProps {
   data: CardItemProps[];

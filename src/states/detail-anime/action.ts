@@ -1,9 +1,9 @@
 // lib
-import api from "../../lib/api";
-// types
-import { AnimeDetail } from "../../types/anime.type";
+import api from "@/lib/api";
 // states
-import { AppDispatch } from "..";
+import { AppDispatch } from "@/states";
+// types
+import { AnimeDetail } from "@/types/anime.type";
 
 enum ActionType {
   RECEIVE_DETAIL_ANIME = "detail-anime/receive",

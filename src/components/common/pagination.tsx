@@ -2,9 +2,9 @@ import { parseAsInteger, useQueryState } from "nuqs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 // hooks
-import { DOTS, usePagination } from "../../hooks/use-pagination";
+import { DOTS, usePagination } from "@/hooks/use-pagination";
 // types
-import type { Pagination } from "../../types/pagination.type";
+import type { Pagination } from "@/types/pagination.type";
 
 interface PaginationProps {
   pagination: Pagination;

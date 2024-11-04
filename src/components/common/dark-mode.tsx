@@ -1,7 +1,7 @@
 import { TbMoon, TbSunHigh } from "react-icons/tb";
 
 // hooks
-import { useTheme } from "../../hooks/use-theme";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function DarkMode() {
   const { mode, toggle } = useTheme();

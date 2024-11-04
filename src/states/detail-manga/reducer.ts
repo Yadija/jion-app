@@ -1,7 +1,7 @@
-// types
-import { MangaDetailState } from "../../types/manga.type";
 // actions
-import { ActionType, DetailMangaAction } from "./action";
+import { ActionType, DetailMangaAction } from "@/states/detail-manga/action";
+// types
+import { MangaDetailState } from "@/types/manga.type";
 
 const initialState: MangaDetailState = {
   data: null,

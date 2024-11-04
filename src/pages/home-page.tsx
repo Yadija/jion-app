@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // components
-import Carousel from "../components/common/carousel";
-import FetchError from "../components/common/fetch-error";
-import Loading from "../components/common/loading";
-import Navbar from "../components/common/navbar";
+import Carousel from "@/components/common/carousel";
+import FetchError from "@/components/common/fetch-error";
+import Loading from "@/components/common/loading";
+import Navbar from "@/components/common/navbar";
 // hooks
-import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
-import { asyncReceiveNow } from "../states/now/action";
-import { asyncReceiveUpcoming } from "../states/upcoming/action";
+import { asyncReceiveNow } from "@/states/now/action";
+import { asyncReceiveUpcoming } from "@/states/upcoming/action";
 // utils
-import { mappingDataInArray } from "../utils";
+import { mappingDataInArray } from "@/utils";
 
 export default function HomePage() {
   const {

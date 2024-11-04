@@ -1,9 +1,9 @@
 // lib
-import api from "../../lib/api";
-// types
-import { AnimeList } from "../../types/anime.type";
+import api from "@/lib/api";
 // states
-import { AppDispatch } from "../index";
+import { AppDispatch } from "@/states";
+// types
+import { AnimeList } from "@/types/anime.type";
 
 enum ActionType {
   RECEIVE_TOP_ANIME = "top-anime/receive",

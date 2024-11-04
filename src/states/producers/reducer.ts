@@ -1,7 +1,7 @@
-// types
 // actions
-import { ProducersListState } from "../../types/producer.type";
-import { ActionType, ProducersAction } from "./action";
+import { ActionType, ProducersAction } from "@/states/producers/action";
+// types
+import { ProducersListState } from "@/types/producer.type";
 
 const initialState: ProducersListState = {
   data: null,

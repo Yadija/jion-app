@@ -2,24 +2,24 @@ import { useEffect } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 
 // components
-import SearchModal from "./components/common/search-modal";
+import SearchModal from "@/components/common/search-modal";
 // hooks
-import { useSearch } from "./hooks/use-search";
+import { useSearch } from "@/hooks/use-search";
 // pages
-import AnimePage from "./pages/anime-page";
-import DetailAnimePage from "./pages/detail-anime.page";
-import DetailMangaPage from "./pages/detail-manga.page";
-import DetailProducerPage from "./pages/detail-producer-page";
-import FavoritePage from "./pages/favorite-page";
-import HomePage from "./pages/home-page";
-import MangaPage from "./pages/manga-page";
-import NotFoundPage from "./pages/not-found-page";
-import NowPage from "./pages/now-page";
-import ProducersPage from "./pages/producers-page";
-import TopAnimePage from "./pages/top-anime-page";
-import TopMangaPage from "./pages/top-manga-page";
-import TopPage from "./pages/top-page";
-import UpcomingPage from "./pages/upcoming-page";
+import AnimePage from "@/pages/anime-page";
+import DetailAnimePage from "@/pages/detail-anime.page";
+import DetailMangaPage from "@/pages/detail-manga.page";
+import DetailProducerPage from "@/pages/detail-producer-page";
+import FavoritePage from "@/pages/favorite-page";
+import HomePage from "@/pages/home-page";
+import MangaPage from "@/pages/manga-page";
+import NotFoundPage from "@/pages/not-found-page";
+import NowPage from "@/pages/now-page";
+import ProducersPage from "@/pages/producers-page";
+import TopAnimePage from "@/pages/top-anime-page";
+import TopMangaPage from "@/pages/top-manga-page";
+import TopPage from "@/pages/top-page";
+import UpcomingPage from "@/pages/upcoming-page";
 
 export default function App() {
   const { isShowSearchModal, toggleCloseSearchModal } = useSearch();

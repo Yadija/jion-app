@@ -1,7 +1,7 @@
 // types
-import { AnimeDetail, AnimeList } from "../types/anime.type";
-import { MangaDetail, MangaList } from "../types/manga.type";
-import { ProducerDetail, ProducersList } from "../types/producer.type";
+import { AnimeDetail, AnimeList } from "@/types/anime.type";
+import { MangaDetail, MangaList } from "@/types/manga.type";
+import { ProducerDetail, ProducersList } from "@/types/producer.type";
 
 const api = (() => {
   const BASE_URL = "https://api.jikan.moe/v4";

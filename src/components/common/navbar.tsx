@@ -1,15 +1,15 @@
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-// images
-import jionBlack from "../../assets/images/jion-black.png";
-import jionWhite from "../../assets/images/jion-white.png";
-// hooks
-import { useSearch } from "../../hooks/use-search";
-import { useTheme } from "../../hooks/use-theme";
+// assets
+import jionBlack from "@/assets/images/jion-black.png";
+import jionWhite from "@/assets/images/jion-white.png";
 // components
-import DarkMode from "./dark-mode";
-import Drawer from "./drawer";
+import DarkMode from "@/components/common/dark-mode";
+import Drawer from "@/components/common/drawer";
+// hooks
+import { useSearch } from "@/hooks/use-search";
+import { useTheme } from "@/hooks/use-theme";
 
 export default function Navbar() {
   const { isShowSearchModal, toggleSearchModal } = useSearch();

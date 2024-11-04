@@ -3,18 +3,18 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/common/fetch-error";
-import Footer from "../components/common/footer";
-import Loading from "../components/common/loading";
-import Modal from "../components/common/modal";
+import FetchError from "@/components/common/fetch-error";
+import Footer from "@/components/common/footer";
+import Loading from "@/components/common/loading";
+import Modal from "@/components/common/modal";
 // hooks
-import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
-// states
-import { asyncReceiveDetailProducer } from "../states/detail-producer/action";
-// utils
-import { getTitleFromUrl } from "../utils";
+import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // pages
-import NotFoundPage from "./not-found-page";
+import NotFoundPage from "@/pages/not-found-page";
+// states
+import { asyncReceiveDetailProducer } from "@/states/detail-producer/action";
+// utils
+import { getTitleFromUrl } from "@/utils";
 
 export default function DetailProducerPage() {
   const [showModal, setShowModal] = useState(false);
