@@ -1,6 +1,5 @@
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/swiper-bundle.css";
 
 // import Swiper core and required modules
 import { Autoplay, FreeMode, Mousewheel } from "swiper/modules";
