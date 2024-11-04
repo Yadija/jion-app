@@ -10,12 +10,12 @@ const drawer = [
       {
         id: "top-anime-1",
         name: "Top Anime",
-        path: "/top-anime",
+        path: "/top/anime",
       },
       {
         id: "top-manga-1",
         name: "Top Manga",
-        path: "/top-manga",
+        path: "/top/manga",
       },
     ],
   },
@@ -66,7 +66,7 @@ export default function Drawer() {
           onFocus={() => {
             document
               .getElementById("drawer-navigation")
-              .classList.remove("translate-x-full");
+              ?.classList.remove("translate-x-full");
           }}
           className="text-color-white hover:text-color-blue hover:background-color-white ml-5 rounded-full p-2 text-2xl font-medium"
           type="button"
@@ -77,14 +77,14 @@ export default function Drawer() {
       <section
         id="drawer-navigation"
         className="fixed right-0 top-0 z-40 flex h-screen w-full translate-x-full overflow-y-auto transition-transform"
-        tabIndex="-1"
+        tabIndex={-1}
       >
         <button
           className="w-full cursor-default"
           onClick={() =>
             document
               .getElementById("drawer-navigation")
-              .classList.add("translate-x-full")
+              ?.classList.add("translate-x-full")
           }
         ></button>
         <section className="background-color-blue w-72 p-4 shadow-xl">
@@ -100,7 +100,7 @@ export default function Drawer() {
               onFocus={() => {
                 document
                   .getElementById("drawer-navigation")
-                  .classList.add("translate-x-full");
+                  ?.classList.add("translate-x-full");
               }}
               data-drawer-hide="drawer-navigation"
               aria-controls="drawer-navigation"
@@ -130,10 +130,10 @@ export default function Drawer() {
                             `dropdown-${item.id}`,
                           );
 
-                          if (dropdown.classList.contains("hidden")) {
-                            dropdown.classList.remove("hidden");
+                          if (dropdown?.classList.contains("hidden")) {
+                            dropdown?.classList.remove("hidden");
                           } else {
-                            dropdown.classList.add("hidden");
+                            dropdown?.classList.add("hidden");
                           }
                         }}
                         className="hover:text-color-white hover:background-color-blue rounded-full p-2"
