@@ -1,7 +1,7 @@
+// lib
+import api from "../../lib/api";
 // types
 import { AnimeDetail } from "../../types/anime.type";
-// utils
-import api from "../../utils/api";
 // states
 import { AppDispatch } from "..";
 

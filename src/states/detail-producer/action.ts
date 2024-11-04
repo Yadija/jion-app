@@ -1,7 +1,7 @@
+// lib
+import api from "../../lib/api";
 // types
 import { ProducerDetail } from "../../types/producer.type";
-// utils
-import api from "../../utils/api";
 // states
 import { AppDispatch } from "../index";
 

@@ -5,10 +5,10 @@ import { useParams } from "react-router";
 import CardsList from "../components/common/cards-list";
 import Loading from "../components/common/loading";
 import MessageError from "../components/common/message-error";
-// utils
-import { db } from "../utils/db";
+// lib
+import { db } from "../lib/db";
 // types
-import { Anime, Manga } from "../utils/db";
+import { Anime, Manga } from "../lib/db";
 // pages
 import NotFoundPage from "./not-found-page";
 
