@@ -1,5 +1,4 @@
-// components
-import { parseAsInteger, useQueryState } from "nuqs";
+import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
 // components
@@ -9,23 +8,23 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
-import { asyncReceiveTopManga } from "@/states/top-manga/action";
 // states
+import { asyncReceiveNow } from "@/states/now/action";
+// utils
 import { mappingDataInArray } from "@/utils";
 
-export default function TopMangaPage() {
-  document.title = "Top Manga | Jion";
+export default function Now() {
+  document.title = "Now | Jion";
 
-  const { data: topManga, isLoading } = useAppSelector(
-    (states) => states.topManga,
-  );
+  const { data: now, isLoading } = useAppSelector((states) => states.now);
   const dispatch = useAppDispatch();
 
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
+  const [nsfw] = useQueryState("nsfw", parseAsBoolean.withDefault(false));
 
   useEffect(() => {
-    dispatch(asyncReceiveTopManga({ page }));
-  }, [dispatch, page]);
+    dispatch(asyncReceiveNow({ page, sfw: !nsfw }));
+  }, [dispatch, page, nsfw]);
 
   if (page < 1) {
     return (
@@ -36,11 +35,11 @@ export default function TopMangaPage() {
     );
   }
 
-  if (isLoading || !topManga?.data) {
+  if (isLoading || !now?.data) {
     return <Loading />;
   }
 
-  if (topManga.pagination.last_visible_page < page) {
+  if (now.pagination.last_visible_page < page) {
     return (
       <MessageError
         title="What Did You Do?"
@@ -49,7 +48,7 @@ export default function TopMangaPage() {
     );
   }
 
-  if (topManga.data.length === 0) {
+  if (now.data.length === 0) {
     return (
       <MessageError
         title="Nothing Here"
@@ -61,11 +60,11 @@ export default function TopMangaPage() {
   return (
     <section className="min-h-screen">
       <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        <h1 className="title-page">Top Manga</h1>
+        <h1 className="title-page">Now</h1>
         <section className="grow">
-          <CardsList data={mappingDataInArray(topManga.data)} />
+          <CardsList data={mappingDataInArray(now.data)} />
         </section>
-        <Pagination pagination={topManga.pagination} />
+        <Pagination pagination={now.pagination} />
       </section>
     </section>
   );

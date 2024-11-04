@@ -10,13 +10,13 @@ import Modal from "@/components/common/modal";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // pages
-import NotFoundPage from "@/pages/not-found-page";
+import NotFound from "@/pages/not-found";
 // states
 import { asyncReceiveDetailProducer } from "@/states/detail-producer/action";
 // utils
 import { getTitleFromUrl } from "@/utils";
 
-export default function DetailProducerPage() {
+export default function DetailProducer() {
   const [showModal, setShowModal] = useState(false);
 
   const { id = "" } = useParams();
@@ -33,7 +33,7 @@ export default function DetailProducerPage() {
   }, [dispatch, id]);
 
   if (error?.match(/not found/)) {
-    return <NotFoundPage />;
+    return <NotFound />;
   }
 
   if (error) {

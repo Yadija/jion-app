@@ -3,27 +3,29 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
+import AnimeInformation from "@/components/common/anime-information";
 import FavoriteButton from "@/components/common/favorite-button";
 import FetchError from "@/components/common/fetch-error";
 import Footer from "@/components/common/footer";
 import GenreList from "@/components/common/genre-list";
+import InfoList from "@/components/common/info-list";
 import LinkSection from "@/components/common/link-section";
 import Loading from "@/components/common/loading";
-import MangaInformation from "@/components/common/manga-information";
 import Modal from "@/components/common/modal";
 import ScoreBoard from "@/components/common/score-board";
 import SummarySection from "@/components/common/summary-section";
+import TrailerSection from "@/components/common/trailer-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // pages
-import NotFoundPage from "@/pages/not-found-page";
+import NotFound from "@/pages/not-found";
 // states
 import { AppDispatch } from "@/states";
-import { asyncReceiveDetailManga } from "@/states/detail-manga/action";
+import { asyncReceiveDetailAnime } from "@/states/detail-anime/action";
 // utils
 import { mappingData } from "@/utils";
 
-export default function DetailMangaPage() {
+export default function DetailAnime() {
   const [showModal, setShowModal] = useState(false);
 
   const { id = "" } = useParams();
@@ -31,16 +33,16 @@ export default function DetailMangaPage() {
     data: detail,
     isLoading,
     error,
-  } = useAppSelector((states) => states.detailManga);
+  } = useAppSelector((states) => states.detailAnime);
 
   const dispatch = useAppDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(asyncReceiveDetailManga(id));
+    dispatch(asyncReceiveDetailAnime(id));
   }, [dispatch, id]);
 
   if (error?.match(/not found/)) {
-    return <NotFoundPage />;
+    return <NotFound />;
   }
 
   if (error) {
@@ -72,7 +74,7 @@ export default function DetailMangaPage() {
       <section className="text-color-black relative flex min-h-screen flex-col">
         <nav className="flex py-9" />
 
-        <FavoriteButton data={mappingData({ ...detail.data, type: "manga" })} />
+        <FavoriteButton data={mappingData({ ...detail.data, type: "anime" })} />
 
         {/* start backgorund image */}
         <section>
@@ -130,7 +132,16 @@ export default function DetailMangaPage() {
             }
           />
 
-          <MangaInformation {...detail.data} />
+          <AnimeInformation {...detail.data} />
+
+          <TrailerSection
+            title="Trailer"
+            embedUrl={detail.data.trailer.embed_url}
+          />
+
+          <InfoList title="Producers" items={detail.data.producers} />
+          <InfoList title="Licensors" items={detail.data.licensors} />
+          <InfoList title="Studios" items={detail.data.studios} />
 
           <LinkSection title="More Information" url={detail.data.url} />
         </section>

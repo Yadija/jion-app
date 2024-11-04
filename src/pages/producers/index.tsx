@@ -12,7 +12,7 @@ import { asyncReceiveProducers } from "@/states/producers/action";
 // utils
 import { mappingDataProducerInArray } from "@/utils";
 
-export default function ProducersPage() {
+export default function Producers() {
   document.title = "Producers | Jion";
 
   const { data: producers, isLoading } = useAppSelector(

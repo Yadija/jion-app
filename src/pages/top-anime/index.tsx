@@ -1,3 +1,4 @@
+// components
 import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
@@ -9,21 +10,22 @@ import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
-import { asyncReceiveNow } from "@/states/now/action";
-// utils
+import { asyncReceiveTopAnime } from "@/states/top-anime/action";
 import { mappingDataInArray } from "@/utils";
 
-export default function NowPage() {
-  document.title = "Now | Jion";
+export default function TopAnime() {
+  document.title = "Top Anime | Jion";
 
-  const { data: now, isLoading } = useAppSelector((states) => states.now);
+  const { data: topAnime, isLoading } = useAppSelector(
+    (states) => states.topAnime,
+  );
   const dispatch = useAppDispatch();
 
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
   const [nsfw] = useQueryState("nsfw", parseAsBoolean.withDefault(false));
 
   useEffect(() => {
-    dispatch(asyncReceiveNow({ page, sfw: !nsfw }));
+    dispatch(asyncReceiveTopAnime({ page, sfw: !nsfw }));
   }, [dispatch, page, nsfw]);
 
   if (page < 1) {
@@ -35,11 +37,11 @@ export default function NowPage() {
     );
   }
 
-  if (isLoading || !now?.data) {
+  if (isLoading || !topAnime) {
     return <Loading />;
   }
 
-  if (now.pagination.last_visible_page < page) {
+  if (topAnime.pagination.last_visible_page < page) {
     return (
       <MessageError
         title="What Did You Do?"
@@ -48,7 +50,7 @@ export default function NowPage() {
     );
   }
 
-  if (now.data.length === 0) {
+  if (topAnime.data.length === 0) {
     return (
       <MessageError
         title="Nothing Here"
@@ -60,11 +62,11 @@ export default function NowPage() {
   return (
     <section className="min-h-screen">
       <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        <h1 className="title-page">Now</h1>
+        <h1 className="title-page">Top Anime</h1>
         <section className="grow">
-          <CardsList data={mappingDataInArray(now.data)} />
+          <CardsList data={mappingDataInArray(topAnime.data)} />
         </section>
-        <Pagination pagination={now.pagination} />
+        <Pagination pagination={topAnime.pagination} />
       </section>
     </section>
   );

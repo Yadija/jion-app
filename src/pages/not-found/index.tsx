@@ -1,4 +1,4 @@
-export default function NotFoundPage() {
+export default function NotFound() {
   document.title = "Not Found";
 
   return (

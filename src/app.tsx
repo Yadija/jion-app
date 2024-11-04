@@ -6,20 +6,20 @@ import SearchModal from "@/components/common/search-modal";
 // hooks
 import { useSearch } from "@/hooks/use-search";
 // pages
-import AnimePage from "@/pages/anime-page";
-import DetailAnimePage from "@/pages/detail-anime.page";
-import DetailMangaPage from "@/pages/detail-manga.page";
-import DetailProducerPage from "@/pages/detail-producer-page";
-import FavoritePage from "@/pages/favorite-page";
-import HomePage from "@/pages/home-page";
-import MangaPage from "@/pages/manga-page";
-import NotFoundPage from "@/pages/not-found-page";
-import NowPage from "@/pages/now-page";
-import ProducersPage from "@/pages/producers-page";
-import TopAnimePage from "@/pages/top-anime-page";
-import TopMangaPage from "@/pages/top-manga-page";
-import TopPage from "@/pages/top-page";
-import UpcomingPage from "@/pages/upcoming-page";
+import Anime from "@/pages/anime";
+import DetailAnime from "@/pages/detail-anime";
+import DetailManga from "@/pages/detail-manga";
+import DetailProducer from "@/pages/detail-producer";
+import Favorite from "@/pages/favorite";
+import Home from "@/pages/home";
+import Manga from "@/pages/manga";
+import NotFound from "@/pages/not-found";
+import Now from "@/pages/now";
+import Producers from "@/pages/producers";
+import TopAnime from "@/pages/top-anime";
+import TopManga from "@/pages/top-manga";
+import Top from "@/pages/top";
+import Upcoming from "@/pages/upcoming";
 
 export default function App() {
   const { isShowSearchModal, toggleCloseSearchModal } = useSearch();
@@ -33,59 +33,59 @@ export default function App() {
   const element = useRoutes([
     {
       path: "/",
-      element: <HomePage />,
+      element: <Home />,
     },
     {
       path: "/now",
-      element: <NowPage />,
+      element: <Now />,
     },
     {
       path: "/upcoming",
-      element: <UpcomingPage />,
+      element: <Upcoming />,
     },
     {
       path: "/top",
-      element: <TopPage />,
+      element: <Top />,
     },
     {
       path: "/top/anime",
-      element: <TopAnimePage />,
+      element: <TopAnime />,
     },
     {
       path: "/top/manga",
-      element: <TopMangaPage />,
+      element: <TopManga />,
     },
     {
       path: "/anime",
-      element: <AnimePage />,
+      element: <Anime />,
     },
     {
       path: "/manga",
-      element: <MangaPage />,
+      element: <Manga />,
     },
     {
       path: "/producers",
-      element: <ProducersPage />,
+      element: <Producers />,
     },
     {
       path: "/anime/:id",
-      element: <DetailAnimePage />,
+      element: <DetailAnime />,
     },
     {
       path: "/manga/:id",
-      element: <DetailMangaPage />,
+      element: <DetailManga />,
     },
     {
-      path: "/producer/:id",
-      element: <DetailProducerPage />,
+      path: "/producers/:id",
+      element: <DetailProducer />,
     },
     {
       path: "/favorite/:type",
-      element: <FavoritePage />,
+      element: <Favorite />,
     },
     {
       path: "*",
-      element: <NotFoundPage />,
+      element: <NotFound />,
     },
   ]);
 

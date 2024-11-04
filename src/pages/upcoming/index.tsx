@@ -5,29 +5,27 @@ import { useEffect } from "react";
 import CardsList from "@/components/common/cards-list";
 import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
-import Navbar from "@/components/common/navbar";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
-import { asyncReceiveManga } from "@/states/manga/action";
-// utils
+import { asyncReceiveUpcoming } from "@/states/upcoming/action";
 import { mappingDataInArray } from "@/utils";
 
-export default function MangaPage() {
-  const { data: manga, isLoading } =
-    useAppSelector((states) => states.manga) || [];
+export default function Upcoming() {
+  document.title = "Upcoming | Jion";
+
+  const { data: upcoming, isLoading } = useAppSelector(
+    (states) => states.upcoming,
+  );
   const dispatch = useAppDispatch();
 
-  const [search] = useQueryState("search", { defaultValue: "" });
   const [page] = useQueryState("page", parseAsInteger.withDefault(1));
   const [nsfw] = useQueryState("nsfw", parseAsBoolean.withDefault(false));
 
-  document.title = search ? `Search Manga: ${search} | Jion` : "Manga | Jion";
-
   useEffect(() => {
-    dispatch(asyncReceiveManga({ query: search, page, sfw: !nsfw }));
-  }, [dispatch, page, search, nsfw]);
+    dispatch(asyncReceiveUpcoming({ page, sfw: !nsfw }));
+  }, [dispatch, page, nsfw]);
 
   if (page < 1) {
     return (
@@ -38,11 +36,11 @@ export default function MangaPage() {
     );
   }
 
-  if (isLoading || !manga?.data) {
+  if (isLoading || !upcoming) {
     return <Loading />;
   }
 
-  if (manga.pagination.last_visible_page < page) {
+  if (upcoming.pagination.last_visible_page < page) {
     return (
       <MessageError
         title="What Did You Do?"
@@ -51,30 +49,24 @@ export default function MangaPage() {
     );
   }
 
-  if (manga.data.length === 0 && search) {
+  if (upcoming.data.length === 0) {
     return (
-      <MessageError title="No Result" message={`No result for "${search}"`} />
+      <MessageError
+        title="Nothing Here"
+        message="Nothing here, please try again later"
+      />
     );
   }
 
-  if (manga.data.length === 0) {
-    return <MessageError title="No Manga" message="No manga here" />;
-  }
-
   return (
-    <>
-      <Navbar />
+    <section className="min-h-screen">
       <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        {search ? (
-          <h1 className="mb-4 pt-8 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
-        ) : (
-          <h1 className="title-page">Manga</h1>
-        )}
+        <h1 className="title-page">Upcoming</h1>
         <section className="grow">
-          <CardsList data={mappingDataInArray(manga.data)} />
+          <CardsList data={mappingDataInArray(upcoming.data)} />
         </section>
-        <Pagination pagination={manga.pagination} />
+        <Pagination pagination={upcoming.pagination} />
       </section>
-    </>
+    </section>
   );
 }

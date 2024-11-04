@@ -10,9 +10,9 @@ import { db } from "@/lib/db";
 // types
 import { Anime, Manga } from "@/lib/db";
 // pages
-import NotFoundPage from "@/pages/not-found-page";
+import NotFound from "@/pages/not-found";
 
-export default function FavoritePage() {
+export default function Favorite() {
   const { type } = useParams<{ type: "anime" | "manga" }>() as {
     type: "anime" | "manga";
   };
@@ -33,7 +33,7 @@ export default function FavoritePage() {
   }
 
   if (!["anime", "manga"].includes(type)) {
-    return <NotFoundPage />;
+    return <NotFound />;
   }
 
   document.title = `Favorite ${type.charAt(0).toUpperCase() + type.slice(1)} | Jion`;
