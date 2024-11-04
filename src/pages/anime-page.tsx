@@ -2,11 +2,11 @@ import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
 // components
-import CardsList from "../components/cards/cards-list";
-import MessageError from "../components/error/message-error";
-import Loading from "../components/loading/loading";
-import Navbar from "../components/navbar/navbar";
-import Pagination from "../components/pagination/pagination";
+import CardsList from "../components/common/cards-list";
+import Loading from "../components/common/loading";
+import MessageError from "../components/common/message-error";
+import Navbar from "../components/common/navbar";
+import Pagination from "../components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states

@@ -8,8 +8,8 @@ import jionWhite from "../../assets/images/jion-white.png";
 import { useSearch } from "../../hooks/use-search";
 import { useTheme } from "../../hooks/use-theme";
 // components
-import DarkMode from "../dark-mode/dark-mode";
-import Drawer from "../drawer/drawer";
+import DarkMode from "./dark-mode";
+import Drawer from "./drawer";
 
 export default function Navbar() {
   const { isShowSearchModal, toggleSearchModal } = useSearch();

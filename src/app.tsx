@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 
 // components
-import SearchModal from "./components/modal/search-modal";
+import SearchModal from "./components/common/search-modal";
 // hooks
 import { useSearch } from "./hooks/use-search";
 // pages

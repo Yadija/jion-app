@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // components
-import Carousel from "../components/carousel/carousel";
-import FetchError from "../components/error/fetch-error";
-import Loading from "../components/loading/loading";
-import Navbar from "../components/navbar/navbar";
+import Carousel from "../components/common/carousel";
+import FetchError from "../components/common/fetch-error";
+import Loading from "../components/common/loading";
+import Navbar from "../components/common/navbar";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states

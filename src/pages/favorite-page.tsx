@@ -2,9 +2,9 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { useParams } from "react-router";
 
 // components
-import CardsList from "../components/cards/cards-list";
-import MessageError from "../components/error/message-error";
-import Loading from "../components/loading/loading";
+import CardsList from "../components/common/cards-list";
+import Loading from "../components/common/loading";
+import MessageError from "../components/common/message-error";
 // utils
 import { db } from "../utils/db";
 // types

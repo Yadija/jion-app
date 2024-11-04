@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // components
-import CardsList from "../components/cards/cards-list";
-import Loading from "../components/loading/loading";
-import Pagination from "../components/pagination/pagination";
+import CardsList from "../components/common/cards-list";
+import Loading from "../components/common/loading";
+import Pagination from "../components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states

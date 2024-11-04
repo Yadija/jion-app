@@ -1,5 +1,5 @@
 // component
-import CardItem, { CardItemProps } from "./card-item";
+import CardItem, { CardItemProps } from "../common/card-item";
 
 interface CardsListProps {
   data: CardItemProps[];

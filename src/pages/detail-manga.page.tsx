@@ -3,16 +3,16 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/error/fetch-error";
-import FavoriteButton from "../components/favorite-button/favorite-button";
-import Footer from "../components/footer/footer";
-import GenreList from "../components/genre-list/genre-list";
-import LinkSection from "../components/link-section/link-section";
-import Loading from "../components/loading/loading";
-import MangaInformation from "../components/manga-information/manga-information";
-import Modal from "../components/modal/modal";
-import ScoreBoard from "../components/score-board/score-board";
-import SummarySection from "../components/summary-section/summary-section";
+import FavoriteButton from "../components/common/favorite-button";
+import FetchError from "../components/common/fetch-error";
+import Footer from "../components/common/footer";
+import GenreList from "../components/common/genre-list";
+import LinkSection from "../components/common/link-section";
+import Loading from "../components/common/loading";
+import MangaInformation from "../components/common/manga-information";
+import Modal from "../components/common/modal";
+import ScoreBoard from "../components/common/score-board";
+import SummarySection from "../components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states

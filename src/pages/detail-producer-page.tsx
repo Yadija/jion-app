@@ -3,10 +3,10 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
 // components
-import FetchError from "../components/error/fetch-error";
-import Footer from "../components/footer/footer";
-import Loading from "../components/loading/loading";
-import Modal from "../components/modal/modal";
+import FetchError from "../components/common/fetch-error";
+import Footer from "../components/common/footer";
+import Loading from "../components/common/loading";
+import Modal from "../components/common/modal";
 // hooks
 import { useAppDispatch, useAppSelector } from "../hooks/use-redux";
 // states
