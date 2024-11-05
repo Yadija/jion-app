@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 
-// utils
-import { trimTitle } from "@/utils";
-
 export interface CardItemProps {
   title: string;
   image: string;
@@ -55,8 +52,8 @@ export default function CardItem({
             type === "producers" ? "h-[140px]" : "h-[260px]"
           } pointer-events-none w-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
         />
-        <h2 className="bg-fun-blue p-0.5 text-center font-semibold transition-all duration-1000 dark:bg-soft-peach">
-          {trimTitle(title, 12)}
+        <h2 className="line-clamp-1 bg-fun-blue p-1 text-center font-semibold transition-all duration-1000 dark:bg-soft-peach">
+          {title}
         </h2>
       </section>
     </Link>

@@ -3,12 +3,6 @@ import { Anime } from "../types/anime.type";
 import { Manga } from "../types/manga.type";
 import { Producer } from "../types/producer.type";
 
-function trimTitle(title: string, limit = 20) {
-  if (title.length > limit) return `${title.substring(0, limit)} ...`;
-
-  return title;
-}
-
 function mappingData(data: Anime | Manga) {
   const rating = (genres: any[]) => {
     return genres.some((genre) =>
@@ -56,5 +50,4 @@ export {
   mappingDataInArray,
   mappingDataProducer,
   mappingDataProducerInArray,
-  trimTitle,
 };
