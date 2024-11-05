@@ -1,36 +1,66 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-type ThemeMode = "light" | "dark";
+type Theme = "dark" | "light" | "system";
 
-interface ThemeContextProps {
-  mode: ThemeMode;
-  toggle: () => void;
-}
+type ThemeProviderProps = {
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+};
+
+type ThemeProviderState = {
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
+
+const initialState: ThemeProviderState = {
+  theme: "system",
+  setTheme: () => null,
+};
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const ThemeContext = createContext<ThemeContextProps | null>(null);
+export const ThemeProviderContext =
+  createContext<ThemeProviderState>(initialState);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>(() => {
-    const savedMode = localStorage.getItem("mode") as ThemeMode | null;
-    return savedMode
-      ? savedMode
-      : window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-  });
+export function ThemeProvider({
+  children,
+  defaultTheme = "system",
+  storageKey = "jion-ui-theme",
+  ...props
+}: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>(
+    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+  );
 
   useEffect(() => {
-    localStorage.setItem("mode", mode);
-  }, [mode]);
+    const root = window.document.documentElement;
 
-  const toggle = () => {
-    setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
+    root.classList.remove("light", "dark");
+
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
+
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (theme: Theme) => {
+      localStorage.setItem(storageKey, theme);
+      setTheme(theme);
+    },
   };
 
   return (
-    <ThemeContext.Provider value={{ mode, toggle }}>
-      <div className={mode}>{children}</div>
-    </ThemeContext.Provider>
+    <ThemeProviderContext.Provider {...props} value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
   );
-};
+}
