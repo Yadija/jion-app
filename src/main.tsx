@@ -9,6 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 
 // components
 import App from "@/app";
+import { SidebarProvider } from "@/components/ui/sidebar";
 // contexts
 import { SearchProvider } from "@/contexts/search-provider";
 import { ThemeProvider } from "@/contexts/theme-provider";
@@ -20,11 +21,13 @@ createRoot(document.getElementById("root")!).render(
     <ThemeProvider>
       <SearchProvider>
         <BrowserRouter>
-          <StrictMode>
-            <NuqsAdapter>
-              <App />
-            </NuqsAdapter>
-          </StrictMode>
+          <SidebarProvider>
+            <StrictMode>
+              <NuqsAdapter>
+                <App />
+              </NuqsAdapter>
+            </StrictMode>
+          </SidebarProvider>
         </BrowserRouter>
       </SearchProvider>
     </ThemeProvider>

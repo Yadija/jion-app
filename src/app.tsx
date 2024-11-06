@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useLocation, useRoutes } from "react-router-dom";
 
 // components
+import Navbar from "@/components/common/navbar";
 import SearchModal from "@/components/common/search-modal";
+import Sidebar from "@/components/common/sidebar";
 // hooks
 import { useSearch } from "@/hooks/use-search";
 // pages
@@ -90,9 +92,13 @@ export default function App() {
   ]);
 
   return (
-    <main className="background-color-white min-h-screen transition-all duration-1000 selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
-      {isShowSearchModal && <SearchModal />}
-      {element}
-    </main>
+    <>
+      <Sidebar />
+      <main className="background-color-white w-[100vh] flex-[1] selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
+        <Navbar />
+        {isShowSearchModal && <SearchModal />}
+        {element}
+      </main>
+    </>
   );
 }
