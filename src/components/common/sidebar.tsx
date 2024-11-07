@@ -8,6 +8,7 @@ import jionWhite from "@/assets/images/jion-white.png";
 import {
   Sidebar as UISidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -131,6 +132,16 @@ export default function Sidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter>
+        <p className="text-sm">
+          this source data comes from{" "}
+          <a href="https://jikan.moe/" className="underline">
+            Jikan
+          </a>
+        </p>
+        <p>&copy; {new Date().getFullYear()} JION</p>
+      </SidebarFooter>
     </UISidebar>
   );
 }
