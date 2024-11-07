@@ -25,7 +25,7 @@
     @apply transition-all duration-1000;
   }
   .title-page {
-    @apply mb-4 pt-8 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach;
+    @apply mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach;
   }
   .title-with-border {
     @apply border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue;

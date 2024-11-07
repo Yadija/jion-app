@@ -1,6 +1,6 @@
 export default function FetchError() {
   return (
-    <section className="background-color-white grid h-screen">
+    <section className="background-color-white grid h-full">
       <section className="m-auto flex flex-col p-14 text-center">
         <h1 className="text-color-blue m-auto text-2xl font-bold md:text-4xl">
           Failed to Retrieve Data

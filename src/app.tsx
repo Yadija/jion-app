@@ -94,10 +94,10 @@ export default function App() {
   return (
     <>
       <Sidebar />
-      <main className="background-color-white w-[100vh] flex-[1] selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
+      <main className="background-color-white flex w-[100vh] flex-[1] flex-col selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
         <Navbar />
         {isShowSearchModal && <SearchModal />}
-        {element}
+        <section className="grow">{element}</section>
       </main>
     </>
   );

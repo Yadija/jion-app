@@ -35,14 +35,12 @@ export default function Producers() {
   }
 
   return (
-    <section className="min-h-screen">
-      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        <h1 className="title-page">Producers</h1>
-        <section className="grow">
-          <CardsList data={mappingDataProducerInArray(producers.data)} />
-        </section>
-        <Pagination pagination={producers.pagination} />
+    <section className="flex flex-col justify-between px-16 xs:px-12">
+      <h1 className="title-page">Producers</h1>
+      <section className="grow">
+        <CardsList data={mappingDataProducerInArray(producers.data)} />
       </section>
+      <Pagination pagination={producers.pagination} />
     </section>
   );
 }

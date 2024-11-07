@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Carousel from "@/components/common/carousel";
 import FetchError from "@/components/common/fetch-error";
 import Loading from "@/components/common/loading";
-import Navbar from "@/components/common/navbar";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
@@ -27,6 +26,8 @@ export default function Home() {
   } = useAppSelector((states) => states.upcoming);
   const dispatch = useAppDispatch();
 
+  document.title = "Jion";
+
   useEffect(() => {
     dispatch(asyncReceiveNow());
     dispatch(asyncReceiveUpcoming());
@@ -42,9 +43,8 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-      <article>
-        <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+      <section className="mx-4 mb-4">
+        <section className="text-color-black mb-2 flex justify-between">
           <h2 className="text-xl font-bold">Now</h2>
           <Link
             to="/now"
@@ -53,11 +53,12 @@ export default function Home() {
             See All
           </Link>
         </section>
-        <Carousel data={mappingDataInArray(seasonNow.data)} />
-      </article>
 
-      <article className="pb-10">
-        <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+        <Carousel data={mappingDataInArray(seasonNow.data)} />
+      </section>
+
+      <section className="mx-4">
+        <section className="text-color-black mb-2 flex justify-between">
           <h2 className="text-xl font-bold">Upcoming</h2>
           <Link
             to="/upcoming"
@@ -66,8 +67,9 @@ export default function Home() {
             See All
           </Link>
         </section>
+
         <Carousel data={mappingDataInArray(seasonUpcoming.data)} />
-      </article>
+      </section>
     </>
   );
 }

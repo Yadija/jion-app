@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <section className="background-color-white grid h-screen">
+    <section className="background-color-white grid h-full">
       <section className="m-auto flex">
         <h1 className="text-color-black m-auto hidden text-4xl md:inline-block">
           Loading

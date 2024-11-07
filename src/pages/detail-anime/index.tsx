@@ -53,9 +53,7 @@ export default function DetailAnime() {
   document.title = `${detail.data.title} | Jion`;
 
   return (
-    <section className="text-color-black relative flex min-h-screen flex-col">
-      <nav className="flex py-9" />
-
+    <section className="text-color-black relative flex h-full flex-col">
       <FavoriteButton data={mappingData({ ...detail.data, type: "anime" })} />
 
       {/* start backgorund image */}

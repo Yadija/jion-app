@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import CardsList from "@/components/common/cards-list";
 import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
-import Navbar from "@/components/common/navbar";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
@@ -62,19 +61,16 @@ export default function Manga() {
   }
 
   return (
-    <>
-      <Navbar />
-      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        {search ? (
-          <h1 className="mb-4 pt-8 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
-        ) : (
-          <h1 className="title-page">Manga</h1>
-        )}
-        <section className="grow">
-          <CardsList data={mappingDataInArray(manga.data)} />
-        </section>
-        <Pagination pagination={manga.pagination} />
+    <section className="flex flex-col justify-between px-16 xs:px-12">
+      {search ? (
+        <h1 className="mb-4 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
+      ) : (
+        <h1 className="title-page">Manga</h1>
+      )}
+      <section className="grow">
+        <CardsList data={mappingDataInArray(manga.data)} />
       </section>
-    </>
+      <Pagination pagination={manga.pagination} />
+    </section>
   );
 }

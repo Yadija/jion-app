@@ -60,14 +60,12 @@ export default function TopAnime() {
   }
 
   return (
-    <section className="min-h-screen">
-      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        <h1 className="title-page">Top Anime</h1>
-        <section className="grow">
-          <CardsList data={mappingDataInArray(topAnime.data)} />
-        </section>
-        <Pagination pagination={topAnime.pagination} />
+    <section className="flex h-full flex-col justify-between px-16 xs:px-12">
+      <h1 className="title-page">Top Anime</h1>
+      <section className="grow">
+        <CardsList data={mappingDataInArray(topAnime.data)} />
       </section>
+      <Pagination pagination={topAnime.pagination} />
     </section>
   );
 }

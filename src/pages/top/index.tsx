@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import Carousel from "@/components/common/carousel";
 import FetchError from "@/components/common/fetch-error";
 import Loading from "@/components/common/loading";
-import Navbar from "@/components/common/navbar";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // states
@@ -44,9 +43,8 @@ export default function Top() {
 
   return (
     <>
-      <Navbar />
-      <article>
-        <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+      <section className="mx-4 mb-4">
+        <section className="text-color-black mb-2 flex justify-between">
           <h2 className="text-xl font-bold">Top Anime</h2>
           <Link
             to="/top/anime"
@@ -56,10 +54,10 @@ export default function Top() {
           </Link>
         </section>
         <Carousel data={mappingDataInArray(topAnime.data)} />
-      </article>
+      </section>
 
-      <article className="pb-10">
-        <section className="text-color-black mx-2 mb-2 flex justify-between px-4 pt-4 xs:px-4">
+      <section className="mx-4">
+        <section className="text-color-black mb-2 flex justify-between">
           <h2 className="text-xl font-bold">Top Manga</h2>
           <Link
             to="/top/manga"
@@ -69,7 +67,7 @@ export default function Top() {
           </Link>
         </section>
         <Carousel data={mappingDataInArray(topManga.data)} />
-      </article>
+      </section>
     </>
   );
 }

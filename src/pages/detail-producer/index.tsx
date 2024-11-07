@@ -45,8 +45,7 @@ export default function DetailProducer() {
   document.title = `${title} | Jion`;
 
   return (
-    <section className="text-color-black relative flex min-h-screen flex-col">
-      <nav className="flex py-9" />
+    <section className="text-color-black relative flex h-full flex-col">
       <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
         <section className="flex gap-2 md:gap-4">
           <section>

@@ -58,14 +58,12 @@ export default function Now() {
   }
 
   return (
-    <section className="min-h-screen">
-      <section className="flex min-h-screen flex-col justify-between px-16 xs:px-12">
-        <h1 className="title-page">Now</h1>
-        <section className="grow">
-          <CardsList data={mappingDataInArray(now.data)} />
-        </section>
-        <Pagination pagination={now.pagination} />
+    <section className="flex h-full flex-col justify-between px-16 xs:px-12">
+      <h1 className="title-page">Now</h1>
+      <section className="grow">
+        <CardsList data={mappingDataInArray(now.data)} />
       </section>
+      <Pagination pagination={now.pagination} />
     </section>
   );
 }
