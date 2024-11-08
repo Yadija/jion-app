@@ -16,7 +16,7 @@ export default function Navbar() {
   const { isShowSearchModal, toggleSearchModal } = useSearch();
   const { theme } = useTheme();
 
-  const { open } = useSidebar();
+  const { open, isMobile } = useSidebar();
 
   // state to track scroll position
   const [scrolled, setScrolled] = useState(false);
@@ -44,9 +44,9 @@ export default function Navbar() {
     <nav
       className={`${
         scrolled ? "background-color-blue" : "text-color-black bg-transparent"
-      } text-color-white sticky top-0 z-10 flex items-center ${open ? "justify-end" : "justify-between"} px-6 py-3 transition-all duration-300`}
+      } text-color-white sticky top-0 z-10 flex items-center ${open ? "justify-end" : "justify-between"} ${isMobile && "justify-between"} px-6 py-3 transition-all duration-300`}
     >
-      {!open && (
+      {(!open || isMobile) && (
         <section className="flex items-center gap-3">
           <SidebarTrigger />
           <Link to="/">
