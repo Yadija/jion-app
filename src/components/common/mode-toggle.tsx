@@ -11,7 +11,7 @@ import {
 // hooks
 import { useTheme } from "@/hooks/use-theme";
 
-export function ModeToggle() {
+export default function ModeToggle() {
   const { setTheme } = useTheme();
 
   return (

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import jionBlack from "@/assets/images/jion-black.png";
 import jionWhite from "@/assets/images/jion-white.png";
 // components
-import { ModeToggle } from "@/components/common/mode-toggle";
+import ModeToggle from "@/components/common/mode-toggle";\
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 // hooks
 import { useSearch } from "@/hooks/use-search";
