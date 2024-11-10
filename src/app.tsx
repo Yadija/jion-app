@@ -1,12 +1,8 @@
-import { useEffect } from "react";
-import { useLocation, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 
 // components
 import Navbar from "@/components/common/navbar";
-import SearchModal from "@/components/common/search-modal";
 import Sidebar from "@/components/common/sidebar";
-// hooks
-import { useSearch } from "@/hooks/use-search";
 // pages
 import Anime from "@/pages/anime";
 import DetailAnime from "@/pages/detail-anime";
@@ -24,14 +20,6 @@ import TopManga from "@/pages/top-manga";
 import Upcoming from "@/pages/upcoming";
 
 export default function App() {
-  const { isShowSearchModal, toggleCloseSearchModal } = useSearch();
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    toggleCloseSearchModal();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
   const element = useRoutes([
     {
       path: "/",
@@ -96,7 +84,6 @@ export default function App() {
       <Sidebar />
       <main className="background-color-white flex w-full flex-col overflow-x-hidden selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
         <Navbar />
-        {isShowSearchModal && <SearchModal />}
         <section className="mt-16 grow">{element}</section>
       </main>
     </>
