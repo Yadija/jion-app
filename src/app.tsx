@@ -97,7 +97,7 @@ export default function App() {
       <main className="background-color-white flex w-full flex-col overflow-x-hidden selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
         <Navbar />
         {isShowSearchModal && <SearchModal />}
-        {element}
+        <section className="mt-16 grow">{element}</section>
       </main>
     </>
   );

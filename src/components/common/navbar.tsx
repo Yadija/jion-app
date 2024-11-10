@@ -44,7 +44,7 @@ export default function Navbar() {
     <nav
       className={`${
         scrolled ? "background-color-blue" : "text-color-black bg-transparent"
-      } text-color-white sticky top-0 z-10 flex items-center ${open ? "justify-end" : "justify-between"} ${isMobile && "justify-between"} px-6 py-3 transition-all duration-300`}
+      } text-color-white fixed right-0 top-0 z-10 flex items-center ${open ? "w-[calc(100%-16rem)] justify-end" : "w-full justify-between"} ${isMobile && "w-full justify-between"} h-16 px-6 py-3 transition-all duration-300`}
     >
       {(!open || isMobile) && (
         <section className="flex items-center gap-3">
