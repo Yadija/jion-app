@@ -4,7 +4,7 @@ import { BsArrowsAngleExpand } from "react-icons/bs";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -37,13 +37,13 @@ export default function ImagePreview({
         </section>
       </DialogTrigger>
       <DialogContent
-        className="border-none bg-transparent p-4 shadow-none md:p-10"
+        className="border-none bg-transparent p-4 shadow-none focus-visible:outline-none focus-visible:ring-0 md:p-10"
         onClick={() => setOpen(false)}
+        hideClose
       >
-        <DialogHeader className="">
-          <DialogTitle hidden>{title}</DialogTitle>
-          <img src={largeImage} alt={title} className="rounded-md" />
-        </DialogHeader>
+        <DialogTitle hidden />
+        <DialogDescription hidden />
+        <img src={largeImage} alt={title} className="rounded-md" />
       </DialogContent>
     </Dialog>
   );
