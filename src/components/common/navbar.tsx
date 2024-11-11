@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import jionBlack from "@/assets/images/jion-black.png";
 import jionWhite from "@/assets/images/jion-white.png";
 // components
+import ButtonSearch from "@/components/common/button-search";
 import ModeToggle from "@/components/common/mode-toggle";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 // hooks
@@ -61,6 +62,7 @@ export default function Navbar() {
         </section>
       )}
       <section className="flex items-center gap-3">
+        <ButtonSearch />
         <ModeToggle />
       </section>
     </nav>
