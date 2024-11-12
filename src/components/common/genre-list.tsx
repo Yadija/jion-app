@@ -14,7 +14,7 @@ export default function GenreList({ genres }: GenreListProps) {
       {genres.map((genre, index) => (
         <p
           key={index}
-          className="background-color-blue text-color-white rounded-lg px-2 font-bold mix-blend-darken dark:mix-blend-screen"
+          className="rounded-lg bg-fun-blue px-2 font-bold text-soft-peach mix-blend-darken dark:bg-denim-blue dark:text-baltic-sea dark:mix-blend-screen"
         >
           {genre.name}
         </p>

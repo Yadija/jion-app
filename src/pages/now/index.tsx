@@ -59,7 +59,9 @@ export default function Now() {
 
   return (
     <section className="flex h-full flex-col justify-between px-16 xs:px-12">
-      <h1 className="title-page">Now</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">
+        Now
+      </h1>
       <section className="grow">
         <CardsList data={mappingDataInArray(now.data)} />
       </section>

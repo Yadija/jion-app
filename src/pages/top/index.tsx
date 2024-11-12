@@ -44,11 +44,11 @@ export default function Top() {
   return (
     <>
       <section className="mx-4 mb-4">
-        <section className="text-color-black mb-2 flex justify-between">
+        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
           <h2 className="text-xl font-bold">Top Anime</h2>
           <Link
             to="/top/anime"
-            className="hover:text-color-blue active:text-color-blue"
+            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
           >
             See All
           </Link>
@@ -57,11 +57,11 @@ export default function Top() {
       </section>
 
       <section className="mx-4">
-        <section className="text-color-black mb-2 flex justify-between">
+        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
           <h2 className="text-xl font-bold">Top Manga</h2>
           <Link
             to="/top/manga"
-            className="hover:text-color-blue active:text-color-blue"
+            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
           >
             See All
           </Link>

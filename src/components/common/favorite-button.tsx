@@ -47,7 +47,7 @@ export default function FavoriteButton({ data }: FavoriteButtonProps) {
   }
 
   return (
-    <section className="text-color-white background-color-blue fixed bottom-0 right-0 z-[2] mx-10 my-6 flex size-12 items-center justify-center rounded-full text-2xl shadow-md">
+    <section className="fixed bottom-0 right-0 z-[2] mx-10 my-6 flex size-12 items-center justify-center rounded-full bg-fun-blue text-2xl text-soft-peach shadow-md dark:bg-denim-blue dark:text-baltic-sea">
       <button onClick={() => onFavoriteHandler(data)}>
         {item ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
       </button>

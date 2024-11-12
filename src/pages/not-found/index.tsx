@@ -3,8 +3,11 @@ export default function NotFound() {
 
   return (
     <section className="grid h-full">
-      <h1 className="text-color-black m-auto text-4xl">
-        Not Found <span className="text-color-blue font-bold">404</span>
+      <h1 className="m-auto text-4xl text-baltic-sea dark:text-soft-peach">
+        Not Found{" "}
+        <span className="font-bold text-fun-blue dark:text-denim-blue">
+          404
+        </span>
       </h1>
     </section>
   );

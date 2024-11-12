@@ -29,13 +29,15 @@ export default function Pagination({ pagination }: PaginationProps) {
   }
 
   return (
-    <section className="text-color-black flex justify-center py-10">
+    <section className="flex justify-center py-10 text-baltic-sea dark:text-soft-peach">
       <ul className="inline-flex text-xl">
         <li className="flex px-3">
           <button
             type="button"
             className={`m-auto ${
-              currentPage === 1 ? "cursor-default" : "hover:text-color-blue"
+              currentPage === 1
+                ? "cursor-default"
+                : "hover:text-fun-blue hover:dark:text-denim-blue"
             }`}
             onClick={
               currentPage === 1 ? undefined : () => setPage(currentPage - 1)
@@ -56,8 +58,9 @@ export default function Pagination({ pagination }: PaginationProps) {
           return (
             <li
               key={pageNumber}
-              className={`hover:text-color-blue px-3 ${
-                pageNumber === currentPage && "text-color-blue"
+              className={`px-3 hover:hover:text-fun-blue hover:dark:text-denim-blue ${
+                pageNumber === currentPage &&
+                "text-fun-blue dark:text-denim-blue"
               }`}
             >
               <button
@@ -81,7 +84,7 @@ export default function Pagination({ pagination }: PaginationProps) {
             className={`m-auto ${
               currentPage === lastVisiblePage
                 ? "cursor-default"
-                : "hover:text-color-blue"
+                : "hover:hover:text-fun-blue hover:dark:text-denim-blue"
             }`}
             onClick={
               currentPage === lastVisiblePage

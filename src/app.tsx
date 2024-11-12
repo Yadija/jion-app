@@ -82,7 +82,7 @@ export default function App() {
   return (
     <>
       <Sidebar />
-      <main className="background-color-white flex w-full flex-col overflow-x-hidden selection:bg-fun-blue selection:text-soft-peach selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
+      <main className="flex w-full flex-col overflow-x-hidden bg-soft-peach selection:bg-fun-blue selection:text-soft-peach dark:bg-baltic-sea selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
         <Navbar />
         <section className="mt-16 grow">{element}</section>
       </main>

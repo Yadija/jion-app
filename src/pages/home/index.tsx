@@ -44,11 +44,11 @@ export default function Home() {
   return (
     <>
       <section className="mx-4 mb-4">
-        <section className="text-color-black mb-2 flex justify-between">
+        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
           <h2 className="text-xl font-bold">Now</h2>
           <Link
             to="/now"
-            className="hover:text-color-blue active:text-color-blue"
+            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
           >
             See All
           </Link>
@@ -58,11 +58,11 @@ export default function Home() {
       </section>
 
       <section className="mx-4">
-        <section className="text-color-black mb-2 flex justify-between">
+        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
           <h2 className="text-xl font-bold">Upcoming</h2>
           <Link
             to="/upcoming"
-            className="hover:text-color-blue active:text-color-blue"
+            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
           >
             See All
           </Link>

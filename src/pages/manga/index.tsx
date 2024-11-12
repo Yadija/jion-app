@@ -63,9 +63,11 @@ export default function Manga() {
   return (
     <section className="flex flex-col justify-between px-16 xs:px-12">
       {search ? (
-        <h1 className="mb-4 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Anime: ${search}`}</h1>
+        <h1 className="mb-4 text-xl font-bold text-baltic-sea dark:text-soft-peach">{`Search Manga: ${search}`}</h1>
       ) : (
-        <h1 className="title-page">Manga</h1>
+        <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">
+          Manga
+        </h1>
       )}
       <section className="grow">
         <CardsList data={mappingDataInArray(manga.data)} />

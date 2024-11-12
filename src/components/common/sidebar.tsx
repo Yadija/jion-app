@@ -131,6 +131,47 @@ export default function Sidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* <SidebarMenu>
+                <Collapsible defaultOpen className="group/collapsible">
+                  <SidebarMenuItem>
+                    <CollapsibleTrigger
+                      asChild
+                      className="hover:cursor-pointer"
+                    >
+                      <SidebarMenuButton asChild>
+                        <SidebarGroupLabel>
+                          <Bookmark />
+                          <span className="text-lg">Favorite</span>
+                        </SidebarGroupLabel>
+                      </SidebarMenuButton>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenuSub>
+                        <SidebarMenuSubItem>
+                          <SidebarMenuSubButton asChild>
+                            <Link to="/favorite/anime">
+                              <span className="text-lg text-soft-peach">
+                                Anime
+                              </span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                        <SidebarMenuSubItem>
+                          <SidebarMenuSubButton asChild>
+                            <Link to="/favorite/manga">
+                              <span className="text-lg text-soft-peach">
+                                Manga
+                              </span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
+                  </SidebarMenuItem>
+                </Collapsible>
+              </SidebarMenu> */}
+        {/* </SidebarGroup> */}
       </SidebarContent>
 
       <SidebarFooter>

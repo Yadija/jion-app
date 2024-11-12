@@ -61,7 +61,9 @@ export default function TopAnime() {
 
   return (
     <section className="flex h-full flex-col justify-between px-16 xs:px-12">
-      <h1 className="title-page">Top Anime</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">
+        Top Anime
+      </h1>
       <section className="grow">
         <CardsList data={mappingDataInArray(topAnime.data)} />
       </section>

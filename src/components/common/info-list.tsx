@@ -15,7 +15,9 @@ export default function InfoList({ title, items }: InfoListProps) {
 
   return (
     <article className="py-2">
-      <h3 className="title-with-border">{title}</h3>
+      <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">
+        {title}
+      </h3>
       <section className="flex flex-wrap gap-2 py-2">
         {items.map((item) => (
           <p key={item.mal_id}>
@@ -23,7 +25,7 @@ export default function InfoList({ title, items }: InfoListProps) {
             <Link
               to={`/producers/${item.mal_id}`}
               target="_blank"
-              className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+              className="border-b border-fun-blue text-fun-blue hover:border-0 dark:border-denim-blue dark:text-denim-blue"
             >
               {item.name}
             </Link>

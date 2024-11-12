@@ -40,7 +40,7 @@ export default function Favorite() {
 
   return (
     <section className="flex flex-col justify-between px-16 xs:px-12">
-      <h1 className="title-page">{`Favorite ${type.charAt(0).toUpperCase() + type.slice(1)}`}</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">{`Favorite ${type.charAt(0).toUpperCase() + type.slice(1)}`}</h1>
       <section className="grow">
         <CardsList data={data} />
       </section>

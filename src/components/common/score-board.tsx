@@ -16,10 +16,10 @@ export default function ScoreBoard({
   return (
     <section className="flex flex-wrap gap-2">
       <article className="text-center">
-        <h4 className="background-color-blue text-color-white px-2 py-0.5 font-bold mix-blend-darken dark:mix-blend-screen">
+        <h4 className="bg-fun-blue px-2 py-0.5 font-bold text-soft-peach mix-blend-darken dark:bg-denim-blue dark:text-baltic-sea dark:mix-blend-screen">
           SCORE
         </h4>
-        <p className="text-color-blue text-lg font-bold">
+        <p className="text-lg font-bold text-fun-blue dark:text-denim-blue">
           {score ? score : "N/A"}
         </p>
         <p className="text-xs">
@@ -30,7 +30,7 @@ export default function ScoreBoard({
         <article>
           <p>
             Ranked{" "}
-            <b className="text-color-blue">
+            <b className="text-fun-blue dark:text-denim-blue">
               {rank === null ? "N/A" : `#${rank}`}
             </b>
           </p>
@@ -38,7 +38,7 @@ export default function ScoreBoard({
         <article>
           <p>
             Popularity{" "}
-            <b className="text-color-blue">
+            <b className="text-fun-blue dark:text-denim-blue">
               {popularity === null ? "N/A" : `#${popularity}`}
             </b>
           </p>
@@ -46,7 +46,7 @@ export default function ScoreBoard({
         <article>
           <p>
             Members{" "}
-            <b className="text-color-blue">
+            <b className="text-fun-blue dark:text-denim-blue">
               {members === null ? "N/A" : `#${members}`}
             </b>
           </p>

@@ -45,7 +45,7 @@ export default function DetailProducer() {
   document.title = `${title} | Jion`;
 
   return (
-    <section className="text-color-black relative flex h-full flex-col">
+    <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
       <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
         <section className="flex gap-2 md:gap-4">
           <section>
@@ -57,7 +57,7 @@ export default function DetailProducer() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="text-color-blue text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl">
+            <h2 className="text-xl font-bold text-fun-blue dark:text-denim-blue sm:text-2xl md:text-3xl lg:text-4xl">
               {title}
             </h2>
             <p>
@@ -90,7 +90,7 @@ export default function DetailProducer() {
                         href={item.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+                        className="text-fun-blue dark:text-denim-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
                       >
                         {item.name}
                       </a>{" "}
@@ -103,7 +103,9 @@ export default function DetailProducer() {
 
         <section>
           <article className="py-2">
-            <h3 className="title-with-border">About</h3>
+            <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">
+              About
+            </h3>
             <p>
               {detail.data.about ||
                 "No about information has been added to this title."}
@@ -115,14 +117,16 @@ export default function DetailProducer() {
         {detail.data.url && (
           <section>
             <article className="py-2">
-              <h3 className="title-with-border">Links</h3>
+              <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">
+                Links
+              </h3>
               <p className="py-2">
                 •{" "}
                 <a
                   href={detail.data.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-color-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
+                  className="border-b border-fun-blue text-fun-blue hover:border-0 dark:border-denim-blue dark:text-denim-blue"
                 >
                   MAL
                 </a>

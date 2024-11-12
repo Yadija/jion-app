@@ -60,7 +60,9 @@ export default function Upcoming() {
 
   return (
     <section className="flex h-full flex-col justify-between px-16 xs:px-12">
-      <h1 className="title-page">Upcoming</h1>
+      <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">
+        Upcoming
+      </h1>
       <section className="grow">
         <CardsList data={mappingDataInArray(upcoming.data)} />
       </section>

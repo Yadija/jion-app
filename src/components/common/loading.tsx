@@ -1,18 +1,18 @@
 export default function Loading() {
   return (
-    <section className="background-color-white grid h-full">
+    <section className="grid h-full bg-soft-peach dark:bg-baltic-sea">
       <section className="m-auto flex">
-        <h1 className="text-color-black m-auto hidden text-4xl md:inline-block">
+        <h1 className="m-auto hidden text-4xl text-baltic-sea dark:text-soft-peach md:inline-block">
           Loading
         </h1>
         <section className="m-auto translate-x-1 translate-y-3">
-          <span className="loading-ball bg-fun-blue" />
+          <span className="mx-1 inline-block size-3 animate-bounce rounded-full bg-fun-blue" />
           <span
-            className="loading-ball bg-cyan-500"
+            className="mx-1 inline-block size-3 animate-bounce rounded-full bg-cyan-500"
             style={{ animationDelay: ".16s" }}
           />
           <span
-            className="loading-ball bg-denim-blue"
+            className="mx-1 inline-block size-3 animate-bounce rounded-full bg-denim-blue"
             style={{ animationDelay: ".32s" }}
           />
         </section>

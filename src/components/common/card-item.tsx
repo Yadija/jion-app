@@ -39,7 +39,7 @@ export default function CardItem({
   return (
     <Link to={`/${type}/${mal_id}`}>
       <section
-        className="text-color-white select-none overflow-hidden rounded-lg shadow-md"
+        className="select-none overflow-hidden rounded-lg text-soft-peach shadow-md dark:text-baltic-sea"
         title={title}
       >
         <img

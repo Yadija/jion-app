@@ -51,7 +51,7 @@ export default function DetailManga() {
   document.title = `${detail.data.title} | Jion`;
 
   return (
-    <section className="text-color-black relative flex h-full flex-col">
+    <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
       <FavoriteButton data={mappingData({ ...detail.data, type: "manga" })} />
 
       {/* start backgorund image */}
@@ -65,7 +65,7 @@ export default function DetailManga() {
           />
         </section>
         <section className="fixed top-0 h-[220px] w-full bg-gradient-to-br from-zinc-300 to-transparent bg-fixed dark:bg-gradient-to-br dark:from-slate-800 dark:to-transparent lg:h-[260px]" />
-        <section className="background-color-white absolute bottom-0 top-[220px] w-full lg:top-[260px]" />
+        <section className="absolute bottom-0 top-[220px] w-full text-soft-peach dark:text-baltic-sea lg:top-[260px]" />
       </section>
       {/* end backgorund image */}
 
@@ -80,7 +80,7 @@ export default function DetailManga() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="text-color-blue text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl">
+            <h2 className="text-xl font-bold text-fun-blue dark:text-denim-blue sm:text-2xl md:text-3xl lg:text-4xl">
               {detail.data.title}
             </h2>
 
