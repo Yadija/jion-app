@@ -1,4 +1,4 @@
-interface AnimeInformationProps {
+interface AnimeInformationSectionProps {
   status?: string;
   season?: string;
   rating?: string;
@@ -9,7 +9,7 @@ interface AnimeInformationProps {
   type?: string;
 }
 
-export default function AnimeInformation({
+export default function AnimeInformationSection({
   status,
   season,
   rating,
@@ -18,7 +18,7 @@ export default function AnimeInformation({
   duration,
   source,
   type,
-}: AnimeInformationProps) {
+}: AnimeInformationSectionProps) {
   return (
     <article className="py-2">
       <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">

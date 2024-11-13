@@ -1,16 +1,16 @@
-interface MangaInformationProps {
+interface MangaInformationSectionProps {
   status?: string;
   published?: { string: string };
   volumes?: number;
   type?: string;
 }
 
-export default function MangaInformation({
+export default function MangaInformationSection({
   status,
   published,
   volumes,
   type,
-}: MangaInformationProps) {
+}: MangaInformationSectionProps) {
   return (
     <article className="py-2">
       <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">

@@ -9,11 +9,12 @@ import GenreList from "@/components/common/genre-list";
 import ImagePreview from "@/components/common/image-preview";
 import LinkSection from "@/components/common/link-section";
 import Loading from "@/components/common/loading";
-import MangaInformation from "@/components/common/manga-information";
 import ScoreBoard from "@/components/common/score-board";
 import SummarySection from "@/components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// section
+import MangaInformationSection from "@/pages/detail-manga/section/manga-information.section";
 // pages
 import NotFound from "@/pages/not-found";
 // states
@@ -104,7 +105,7 @@ export default function DetailManga() {
           }
         />
 
-        <MangaInformation {...detail.data} />
+        <MangaInformationSection {...detail.data} />
 
         <LinkSection title="More Information" url={detail.data.url} />
       </section>

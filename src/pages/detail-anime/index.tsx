@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // components
-import AnimeInformation from "@/components/common/anime-information";
 import FavoriteButton from "@/components/common/favorite-button";
 import FetchError from "@/components/common/fetch-error";
 import Footer from "@/components/common/footer";
@@ -13,9 +12,11 @@ import LinkSection from "@/components/common/link-section";
 import Loading from "@/components/common/loading";
 import ScoreBoard from "@/components/common/score-board";
 import SummarySection from "@/components/common/summary-section";
-import TrailerSection from "@/components/common/trailer-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// section
+import AnimeInformationSection from "@/pages/detail-anime/section/anime-information.section";
+import TrailerSection from "@/pages/detail-anime/section/trailer.section";
 // pages
 import NotFound from "@/pages/not-found";
 // states
@@ -106,7 +107,7 @@ export default function DetailAnime() {
           }
         />
 
-        <AnimeInformation {...detail.data} />
+        <AnimeInformationSection {...detail.data} />
 
         <TrailerSection
           title="Trailer"

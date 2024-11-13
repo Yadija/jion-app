@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import FetchError from "@/components/common/fetch-error";
 import Footer from "@/components/common/footer";
 import ImagePreview from "@/components/common/image-preview";
+import LinkSection from "@/components/common/link-section";
 import Loading from "@/components/common/loading";
+import SummarySection from "@/components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // pages
@@ -80,61 +82,12 @@ export default function DetailProducer() {
                 day: "numeric",
               })}
             </p>
-            {/* <p>
-                <b>External:</b>{" "}
-                <span>
-                  {detail.data.external.map((item: any, index: number) => (
-                    <span key={index}>
-                      •{" "}
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-fun-blue dark:text-denim-blue border-b border-fun-blue hover:border-0 dark:border-denim-blue"
-                      >
-                        {item.name}
-                      </a>{" "}
-                    </span>
-                  ))}
-                </span>
-              </p> */}
           </section>
         </section>
 
-        <section>
-          <article className="py-2">
-            <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">
-              About
-            </h3>
-            <p>
-              {detail.data.about ||
-                "No about information has been added to this title."}
-            </p>
-          </article>
-        </section>
+        <SummarySection title="About" content={detail.data.about} />
 
-        {/* start url */}
-        {detail.data.url && (
-          <section>
-            <article className="py-2">
-              <h3 className="border-b border-fun-blue text-xl font-bold text-fun-blue dark:border-denim-blue dark:text-denim-blue">
-                Links
-              </h3>
-              <p className="py-2">
-                •{" "}
-                <a
-                  href={detail.data.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="border-b border-fun-blue text-fun-blue hover:border-0 dark:border-denim-blue dark:text-denim-blue"
-                >
-                  MAL
-                </a>
-              </p>
-            </article>
-          </section>
-        )}
-        {/* end url */}
+        <LinkSection title="More Information" url={detail.data.url} />
       </section>
 
       <section className="relative">
