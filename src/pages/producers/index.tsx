@@ -7,10 +7,10 @@ import Loading from "@/components/common/loading";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapProducerArray } from "@/lib/utils";
 // states
 import { asyncReceiveProducers } from "@/states/producers/action";
-// utils
-import { mappingDataProducerInArray } from "@/utils";
 
 export default function Producers() {
   document.title = "Producers | Jion";
@@ -25,9 +25,6 @@ export default function Producers() {
 
   useEffect(() => {
     dispatch(asyncReceiveProducers(page));
-
-    // document.body.scrollTop = 0;
-    // document.documentElement.scrollTop = 0;
   }, [dispatch, page]);
 
   if (isLoading || !producers) {
@@ -40,7 +37,7 @@ export default function Producers() {
         Producers
       </h1>
       <section className="grow">
-        <CardsList data={mappingDataProducerInArray(producers.data)} />
+        <CardsList data={mapProducerArray(producers.data)} />
       </section>
       <Pagination pagination={producers.pagination} />
     </section>

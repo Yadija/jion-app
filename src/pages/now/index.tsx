@@ -8,10 +8,10 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveNow } from "@/states/now/action";
-// utils
-import { mappingDataInArray } from "@/utils";
 
 export default function Now() {
   document.title = "Now | Jion";
@@ -63,7 +63,7 @@ export default function Now() {
         Now
       </h1>
       <section className="grow">
-        <CardsList data={mappingDataInArray(now.data)} />
+        <CardsList data={mapAnimeArray(now.data)} />
       </section>
       <Pagination pagination={now.pagination} />
     </section>

@@ -8,10 +8,10 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveAnime } from "@/states/anime/action";
-// utils
-import { mappingDataInArray } from "@/utils";
 
 export default function Anime() {
   const { data: anime, isLoading } =
@@ -70,7 +70,7 @@ export default function Anime() {
         </h1>
       )}
       <section className="grow">
-        <CardsList data={mappingDataInArray(anime.data)} />
+        <CardsList data={mapAnimeArray(anime.data)} />
       </section>
       <Pagination pagination={anime.pagination} />
     </section>

@@ -10,12 +10,12 @@ import Loading from "@/components/common/loading";
 import SummarySection from "@/components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { getProducerTitleFromUrl } from "@/lib/utils";
 // pages
 import NotFound from "@/pages/not-found";
 // states
 import { asyncReceiveDetailProducer } from "@/states/detail-producer/action";
-// utils
-import { getTitleFromUrl } from "@/utils";
 
 export default function DetailProducer() {
   const { id = "" } = useParams();
@@ -43,7 +43,7 @@ export default function DetailProducer() {
     return <Loading />;
   }
 
-  const title = getTitleFromUrl(detail.data.url);
+  const title = getProducerTitleFromUrl(detail.data.url);
   document.title = `${title} | Jion`;
 
   return (

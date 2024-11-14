@@ -26,7 +26,7 @@ export default function Carousel({ data }: CarouselProps) {
     >
       {data.map((item) => (
         <SwiperSlide
-          key={item.mal_id}
+          key={item.id}
           style={{ width: "80%", maxWidth: "180px", marginRight: "20px" }} // and this the second
         >
           <CardItem {...item} />

@@ -7,11 +7,11 @@ import FetchError from "@/components/common/fetch-error";
 import Loading from "@/components/common/loading";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// utils
+import { mapAnimeArray, mapMangaArray } from "@/lib/utils";
 // states
 import { asyncReceiveTopAnime } from "@/states/top-anime/action";
 import { asyncReceiveTopManga } from "@/states/top-manga/action";
-// utils
-import { mappingDataInArray } from "@/utils";
 
 export default function Top() {
   document.title = "Top | Jion";
@@ -53,7 +53,7 @@ export default function Top() {
             See All
           </Link>
         </section>
-        <Carousel data={mappingDataInArray(topAnime.data)} />
+        <Carousel data={mapAnimeArray(topAnime.data)} />
       </section>
 
       <section className="mx-4">
@@ -66,7 +66,7 @@ export default function Top() {
             See All
           </Link>
         </section>
-        <Carousel data={mappingDataInArray(topManga.data)} />
+        <Carousel data={mapMangaArray(topManga.data)} />
       </section>
     </>
   );

@@ -1,43 +1,19 @@
 import { Link } from "react-router-dom";
 
-export interface CardItemProps {
-  title: string;
-  image: string;
-  type: string;
-  mal_id: number;
-  rating?: string;
-}
+// types
+import { Card } from "@/types/card.type";
+
+export type CardItemProps = Card;
 
 export default function CardItem({
   title,
   image,
   type,
-  mal_id,
+  link,
   rating = "",
 }: CardItemProps) {
-  // const typesManga = ['Manga', 'Light Novel', 'Manhwa', 'Manhua', 'Novel', 'One-shot'];
-
-  switch (type.toLowerCase()) {
-    case "manga":
-    case "light novel":
-    case "manhwa":
-    case "manhua":
-    case "novel":
-    case "one-shot":
-      type = "manga";
-      break;
-
-    case "producer":
-      type = "producers";
-      break;
-
-    default:
-      type = "anime";
-      break;
-  }
-
   return (
-    <Link to={`/${type}/${mal_id}`}>
+    <Link to={link}>
       <section
         className="select-none overflow-hidden rounded-lg text-soft-peach shadow-md dark:text-baltic-sea"
         title={title}
@@ -46,7 +22,7 @@ export default function CardItem({
           src={image}
           alt={title}
           className={`${
-            rating.toLowerCase().includes("rx") &&
+            rating?.toLowerCase().includes("rx") &&
             "blur-md" /* filter for nsfw */
           } ${
             type === "producers" ? "h-[140px]" : "h-[260px]"

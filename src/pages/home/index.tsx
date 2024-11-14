@@ -7,11 +7,11 @@ import FetchError from "@/components/common/fetch-error";
 import Loading from "@/components/common/loading";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveNow } from "@/states/now/action";
 import { asyncReceiveUpcoming } from "@/states/upcoming/action";
-// utils
-import { mappingDataInArray } from "@/utils";
 
 export default function Home() {
   const {
@@ -54,7 +54,7 @@ export default function Home() {
           </Link>
         </section>
 
-        <Carousel data={mappingDataInArray(seasonNow.data)} />
+        <Carousel data={mapAnimeArray(seasonNow.data)} />
       </section>
 
       <section className="mx-4">
@@ -68,7 +68,7 @@ export default function Home() {
           </Link>
         </section>
 
-        <Carousel data={mappingDataInArray(seasonUpcoming.data)} />
+        <Carousel data={mapAnimeArray(seasonUpcoming.data)} />
       </section>
     </>
   );

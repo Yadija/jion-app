@@ -9,9 +9,10 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveTopAnime } from "@/states/top-anime/action";
-import { mappingDataInArray } from "@/utils";
 
 export default function TopAnime() {
   document.title = "Top Anime | Jion";
@@ -65,7 +66,7 @@ export default function TopAnime() {
         Top Anime
       </h1>
       <section className="grow">
-        <CardsList data={mappingDataInArray(topAnime.data)} />
+        <CardsList data={mapAnimeArray(topAnime.data)} />
       </section>
       <Pagination pagination={topAnime.pagination} />
     </section>

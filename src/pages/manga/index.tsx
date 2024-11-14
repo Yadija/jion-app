@@ -8,10 +8,10 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapMangaArray } from "@/lib/utils";
 // states
 import { asyncReceiveManga } from "@/states/manga/action";
-// utils
-import { mappingDataInArray } from "@/utils";
 
 export default function Manga() {
   const { data: manga, isLoading } =
@@ -70,7 +70,7 @@ export default function Manga() {
         </h1>
       )}
       <section className="grow">
-        <CardsList data={mappingDataInArray(manga.data)} />
+        <CardsList data={mapMangaArray(manga.data)} />
       </section>
       <Pagination pagination={manga.pagination} />
     </section>

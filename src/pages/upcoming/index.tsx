@@ -8,9 +8,10 @@ import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveUpcoming } from "@/states/upcoming/action";
-import { mappingDataInArray } from "@/utils";
 
 export default function Upcoming() {
   document.title = "Upcoming | Jion";
@@ -64,7 +65,7 @@ export default function Upcoming() {
         Upcoming
       </h1>
       <section className="grow">
-        <CardsList data={mappingDataInArray(upcoming.data)} />
+        <CardsList data={mapAnimeArray(upcoming.data)} />
       </section>
       <Pagination pagination={upcoming.pagination} />
     </section>

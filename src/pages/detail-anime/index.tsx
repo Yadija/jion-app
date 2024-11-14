@@ -14,6 +14,8 @@ import ScoreBoard from "@/components/common/score-board";
 import SummarySection from "@/components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapAnimeData } from "@/lib/utils";
 // section
 import AnimeInformationSection from "@/pages/detail-anime/section/anime-information.section";
 import TrailerSection from "@/pages/detail-anime/section/trailer.section";
@@ -22,8 +24,6 @@ import NotFound from "@/pages/not-found";
 // states
 import { AppDispatch } from "@/states";
 import { asyncReceiveDetailAnime } from "@/states/detail-anime/action";
-// utils
-import { mappingData } from "@/utils";
 
 export default function DetailAnime() {
   const { id = "" } = useParams();
@@ -55,7 +55,7 @@ export default function DetailAnime() {
 
   return (
     <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
-      <FavoriteButton data={mappingData({ ...detail.data, type: "anime" })} />
+      <FavoriteButton data={mapAnimeData(detail.data)} />
 
       {/* start backgorund image */}
       <section>

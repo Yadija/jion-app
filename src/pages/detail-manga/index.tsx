@@ -13,6 +13,8 @@ import ScoreBoard from "@/components/common/score-board";
 import SummarySection from "@/components/common/summary-section";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
+// lib
+import { mapMangaData } from "@/lib/utils";
 // section
 import MangaInformationSection from "@/pages/detail-manga/section/manga-information.section";
 // pages
@@ -20,8 +22,6 @@ import NotFound from "@/pages/not-found";
 // states
 import { AppDispatch } from "@/states";
 import { asyncReceiveDetailManga } from "@/states/detail-manga/action";
-// utils
-import { mappingData } from "@/utils";
 
 export default function DetailManga() {
   const { id = "" } = useParams();
@@ -53,7 +53,7 @@ export default function DetailManga() {
 
   return (
     <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
-      <FavoriteButton data={mappingData({ ...detail.data, type: "manga" })} />
+      <FavoriteButton data={mapMangaData(detail.data)} />
 
       {/* start backgorund image */}
       <section>

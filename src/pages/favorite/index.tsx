@@ -7,19 +7,17 @@ import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
 // lib
 import { db } from "@/lib/db";
-// types
-import { Anime, Manga } from "@/lib/db";
 // pages
 import NotFound from "@/pages/not-found";
+// types
+import { Card } from "@/types/card.type";
 
 export default function Favorite() {
   const { type } = useParams<{ type: "anime" | "manga" }>() as {
     type: "anime" | "manga";
   };
 
-  const data = useLiveQuery(() => db[type].toArray(), []) as
-    | (Anime | Manga)[]
-    | null;
+  const data = useLiveQuery(() => db[type].toArray(), []) as Card[] | null;
 
   if (!data) return <Loading />;
 
