@@ -44,7 +44,7 @@ export default function Navbar() {
         scrolled
           ? "bg-fun-blue text-soft-peach dark:bg-denim-blue dark:text-baltic-sea"
           : "bg-transparent text-baltic-sea dark:text-soft-peach"
-      } fixed right-0 top-0 z-10 flex items-center ${open ? "w-[calc(100%_-_var(--sidebar-width))] justify-end" : "w-full justify-between"} ${isMobile && "w-full justify-between"} h-16 px-6 py-3 transition-all duration-300`}
+      } fixed right-0 top-0 z-10 flex items-center ${open ? "w-[calc(100%_-_var(--sidebar-width))] justify-end" : "w-full justify-between"} ${isMobile && "w-full justify-between"} h-[var(--navbar-height)] px-6 py-3 transition-all duration-300`}
     >
       {(!open || isMobile) && (
         <section className="flex items-center gap-3">

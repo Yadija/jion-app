@@ -84,7 +84,7 @@ export default function App() {
       <Sidebar />
       <main className="flex w-full flex-col overflow-x-hidden bg-soft-peach selection:bg-fun-blue selection:text-soft-peach dark:bg-baltic-sea selection:dark:bg-denim-blue dark:selection:text-baltic-sea">
         <Navbar />
-        <section className="mt-16 grow">{element}</section>
+        <section className="mt-[var(--navbar-height)] grow">{element}</section>
       </main>
     </>
   );
