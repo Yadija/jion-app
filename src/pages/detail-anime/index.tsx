@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // components
+import BannerImage from "@/components/common/banner-image";
 import FavoriteButton from "@/components/common/favorite-button";
 import FetchError from "@/components/common/fetch-error";
 import Footer from "@/components/common/footer";
@@ -57,22 +58,9 @@ export default function DetailAnime() {
     <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
       <FavoriteButton data={mapAnimeData(detail.data)} />
 
-      {/* start backgorund image */}
-      <section>
-        <section className="fixed top-0 block w-full">
-          <section
-            className="h-[220px] w-full bg-cover bg-[center_top_35%] blur-[1px] lg:h-[260px]"
-            style={{
-              backgroundImage: `url(${detail.data.images.jpg.large_image_url})`,
-            }}
-          />
-        </section>
-        <section className="fixed top-0 h-[220px] w-full bg-gradient-to-br from-zinc-300 to-transparent bg-fixed dark:bg-gradient-to-br dark:from-slate-800 dark:to-transparent lg:h-[260px]" />
-        <section className="absolute bottom-0 top-[220px] w-full bg-soft-peach dark:bg-baltic-sea lg:top-[260px]" />
-      </section>
-      {/* end backgorund image */}
+      <BannerImage image={detail.data.images.jpg.large_image_url} />
 
-      <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
+      <section className="relative  mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
         <section className="flex gap-2 md:gap-4">
           <section>
             <ImagePreview
