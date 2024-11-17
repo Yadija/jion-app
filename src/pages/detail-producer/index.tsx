@@ -50,13 +50,11 @@ export default function DetailProducer() {
     <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
       <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
         <section className="flex gap-2 md:gap-4">
-          <section>
-            <ImagePreview
-              title={title}
-              image={detail.data.images.jpg.image_url}
-              largeImage={detail.data.images.jpg.image_url}
-            />
-          </section>
+          <ImagePreview
+            title={title}
+            image={detail.data.images.jpg.image_url}
+            largeImage={detail.data.images.jpg.image_url}
+          />
 
           <section className="flex flex-col gap-2">
             <h2 className="text-xl font-bold text-fun-blue dark:text-denim-blue sm:text-2xl md:text-3xl lg:text-4xl">

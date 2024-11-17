@@ -24,15 +24,17 @@ export default function ImagePreview({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <section className="group relative hover:cursor-pointer">
-          <img
-            className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
-            src={image}
-            alt={title}
-          />
+        <section>
+          <section className="group relative hover:cursor-pointer">
+            <img
+              className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
+              src={image}
+              alt={title}
+            />
 
-          <section className="absolute inset-0 flex items-center justify-center rounded bg-white/25 p-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-            <BsArrowsAngleExpand size={50} color="white" />
+            <section className="absolute inset-0 flex items-center justify-center rounded bg-white/25 p-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <BsArrowsAngleExpand size={50} color="white" />
+            </section>
           </section>
         </section>
       </DialogTrigger>
