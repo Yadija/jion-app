@@ -1,5 +1,4 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import { useParams } from "react-router";
 
 // components
 import CardsList from "@/components/common/cards-list";
@@ -12,12 +11,12 @@ import NotFound from "@/pages/not-found";
 // types
 import { Card } from "@/types/card.type";
 
-export default function Favorite() {
-  const { type } = useParams<{ type: "anime" | "manga" }>() as {
-    type: "anime" | "manga";
-  };
+interface FavoriteProps {
+  type: "anime" | "manga";
+}
 
-  const data = useLiveQuery(() => db[type].toArray(), []) as Card[] | null;
+export default function Favorite({ type }: FavoriteProps) {
+  const data = useLiveQuery(() => db[type].toArray(), [type]) as Card[] | null;
 
   if (!data) return <Loading />;
 

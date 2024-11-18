@@ -70,8 +70,12 @@ export default function App() {
       element: <DetailProducer />,
     },
     {
-      path: "/favorite/:type",
-      element: <Favorite />,
+      path: "/favorite/anime",
+      element: <Favorite type="anime" />,
+    },
+    {
+      path: "/favorite/manga",
+      element: <Favorite type="manga" />,
     },
     {
       path: "*",
