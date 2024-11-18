@@ -58,20 +58,25 @@ export default function DetailManga() {
 
       <BannerImage image={detail.data.images.jpg.large_image_url} />
 
-      <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
-        <section className="flex gap-2 md:gap-4">
-          <ImagePreview
-            title={detail.data.title}
-            image={detail.data.images.jpg.image_url}
-            largeImage={detail.data.images.jpg.large_image_url}
-          />
+      <section className="relative mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
+        <section className="grid gap-5 [grid-template-areas:'image_title''score_score'] [grid-template-columns:auto_1fr] md:[grid-template-areas:'image_title''image_score']">
+          <section className="[grid-area:image]">
+            <ImagePreview
+              title={detail.data.title}
+              image={detail.data.images.jpg.image_url}
+              largeImage={detail.data.images.jpg.large_image_url}
+            />
+          </section>
 
-          <section className="flex flex-col gap-2">
+          <section className="min-h-[var(--banner-height)] [grid-area:title]">
             <h2 className="text-xl font-bold text-fun-blue dark:text-denim-blue sm:text-2xl md:text-3xl lg:text-4xl">
               {detail.data.title}
             </h2>
 
             <GenreList genres={detail.data.genres} />
+          </section>
+
+          <section className="[grid-area:score]">
             <ScoreBoard {...detail.data} />
           </section>
         </section>

@@ -48,7 +48,7 @@ export default function DetailProducer() {
 
   return (
     <section className="relative flex h-full flex-col text-baltic-sea dark:text-soft-peach">
-      <section className="relative z-[1] mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
+      <section className="relative mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
         <section className="flex gap-2 md:gap-4">
           <ImagePreview
             title={title}

@@ -14,7 +14,7 @@ export default function ScoreBoard({
   members,
 }: ScoreBoardProps) {
   return (
-    <section className="flex flex-wrap gap-2">
+    <section className="flex flex-wrap gap-5">
       <article className="text-center">
         <h4 className="bg-fun-blue px-2 py-0.5 font-bold text-soft-peach mix-blend-darken dark:bg-denim-blue dark:text-baltic-sea dark:mix-blend-screen">
           SCORE
@@ -26,7 +26,7 @@ export default function ScoreBoard({
           {scored_by !== null ? `${scored_by} users` : "-"}
         </p>
       </article>
-      <section className="px-2 text-sm sm:text-base">
+      <section className="text-sm sm:text-base">
         <article>
           <p>
             Ranked{" "}

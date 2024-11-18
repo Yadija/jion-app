@@ -27,7 +27,7 @@ export default function ImagePreview({
         <section>
           <section className="group relative hover:cursor-pointer">
             <img
-              className="rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm md:w-[225px]"
+              className="w-[120px] rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm sm:w-[150px] md:w-[225px]"
               src={image}
               alt={title}
             />
