@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 // components
-import Carousel from "@/components/common/carousel";
+import CardSlider from "@/components/common/card-slider";
 import FetchError from "@/components/common/fetch-error";
 import Loading from "@/components/common/loading";
 // hooks
@@ -43,31 +42,17 @@ export default function Top() {
 
   return (
     <>
-      <section className="mx-4 mb-4">
-        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
-          <h2 className="text-xl font-bold">Top Anime</h2>
-          <Link
-            to="/top/anime"
-            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
-          >
-            See All
-          </Link>
-        </section>
-        <Carousel data={mapAnimeArray(topAnime.data)} />
-      </section>
+      <CardSlider
+        title="Top Anime"
+        link="/top/anime"
+        data={mapAnimeArray(topAnime.data)}
+      />
 
-      <section className="mx-4">
-        <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
-          <h2 className="text-xl font-bold">Top Manga</h2>
-          <Link
-            to="/top/manga"
-            className="hover:text-fun-blue active:text-fun-blue hover:dark:text-denim-blue active:dark:text-denim-blue"
-          >
-            See All
-          </Link>
-        </section>
-        <Carousel data={mapMangaArray(topManga.data)} />
-      </section>
+      <CardSlider
+        title="Top Manga"
+        link="/top/manga"
+        data={mapMangaArray(topManga.data)}
+      />
     </>
   );
 }
