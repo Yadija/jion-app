@@ -1,7 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 
 // components
-import CardsList from "@/components/common/cards-list";
+import CardList from "@/components/common/card-list";
 import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
 // lib
@@ -39,7 +39,7 @@ export default function Favorite({ type }: FavoriteProps) {
     <section className="flex flex-col justify-between px-16 xs:px-12">
       <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">{`Favorite ${type.charAt(0).toUpperCase() + type.slice(1)}`}</h1>
       <section className="grow">
-        <CardsList data={data} />
+        <CardList data={data} />
       </section>
     </section>
   );

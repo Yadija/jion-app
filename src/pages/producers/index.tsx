@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // components
-import CardsList from "@/components/common/cards-list";
+import CardList from "@/components/common/card-list";
 import Loading from "@/components/common/loading";
 import Pagination from "@/components/common/pagination";
 // hooks
@@ -37,7 +37,7 @@ export default function Producers() {
         Producers
       </h1>
       <section className="grow">
-        <CardsList data={mapProducerArray(producers.data)} />
+        <CardList data={mapProducerArray(producers.data)} />
       </section>
       <Pagination pagination={producers.pagination} />
     </section>

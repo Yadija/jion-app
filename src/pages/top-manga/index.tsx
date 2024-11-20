@@ -3,7 +3,7 @@ import { parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
 // components
-import CardsList from "@/components/common/cards-list";
+import CardList from "@/components/common/card-list";
 import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
@@ -65,7 +65,7 @@ export default function TopManga() {
         Top Manga
       </h1>
       <section className="grow">
-        <CardsList data={mapMangaArray(topManga.data)} />
+        <CardList data={mapMangaArray(topManga.data)} />
       </section>
       <Pagination pagination={topManga.pagination} />
     </section>

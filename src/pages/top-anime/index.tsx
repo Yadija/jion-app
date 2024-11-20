@@ -3,7 +3,7 @@ import { parseAsBoolean, parseAsInteger, useQueryState } from "nuqs";
 import { useEffect } from "react";
 
 // components
-import CardsList from "@/components/common/cards-list";
+import CardList from "@/components/common/card-list";
 import Loading from "@/components/common/loading";
 import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
@@ -66,7 +66,7 @@ export default function TopAnime() {
         Top Anime
       </h1>
       <section className="grow">
-        <CardsList data={mapAnimeArray(topAnime.data)} />
+        <CardList data={mapAnimeArray(topAnime.data)} />
       </section>
       <Pagination pagination={topAnime.pagination} />
     </section>
