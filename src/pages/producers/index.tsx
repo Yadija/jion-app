@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // components
-import CardList from "@/components/common/card-list";
-import Loading from "@/components/common/loading";
-import Pagination from "@/components/common/pagination";
+import ContentGallery from "@/components/common/content-gallery";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // lib
@@ -27,19 +25,20 @@ export default function Producers() {
     dispatch(asyncReceiveProducers(page));
   }, [dispatch, page]);
 
-  if (isLoading || !producers) {
-    return <Loading />;
-  }
-
   return (
-    <section className="flex flex-col justify-between px-16 xs:px-12">
-      <h1 className="mb-4 text-center text-2xl font-bold text-baltic-sea dark:text-soft-peach">
-        Producers
-      </h1>
-      <section className="grow">
-        <CardList data={mapProducerArray(producers.data)} />
-      </section>
-      <Pagination pagination={producers.pagination} />
-    </section>
+    <ContentGallery
+      title="Producers"
+      page={page}
+      content={
+        producers
+          ? {
+              data: mapProducerArray(producers.data),
+              pagination: producers.pagination,
+            }
+          : null
+      }
+      isLoading={isLoading}
+      type="Producer"
+    />
   );
 }
