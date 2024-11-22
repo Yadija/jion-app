@@ -66,7 +66,7 @@ export default function DetailProducer() {
                 .map((item) => `${item.title}(${item.type})`)
                 .join(" | ")}
             </p>
-            {detail.data.favorites && (
+            {detail.data.favorites !== null && (
               <p>
                 <b>Member Favorites:</b> {detail.data.favorites}
               </p>
