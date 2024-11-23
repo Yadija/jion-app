@@ -65,7 +65,7 @@ export default function ContentGallery({
   }
 
   return (
-    <section className="flex flex-col justify-between px-16 xs:px-12">
+    <section className="mx-auto flex h-full max-w-7xl flex-col justify-between px-5">
       <h1
         className={`mb-4 text-xl font-bold ${search ? "text-baltic-sea dark:text-soft-peach" : "text-center text-2xl"}`}
       >
