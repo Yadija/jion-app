@@ -19,7 +19,7 @@ export default function CardItem({
     <UICard>
       <Link to={link}>
         <section
-          className="select-none overflow-hidden rounded-lg text-soft-peach shadow-md dark:text-baltic-sea"
+          className="relative select-none overflow-hidden rounded-lg text-soft-peach shadow-md dark:text-baltic-sea"
           title={title}
         >
           <AspectRatio ratio={type === "producer" ? 1 / 1 : 4 / 5} asChild>
@@ -34,9 +34,11 @@ export default function CardItem({
               } pointer-events-none size-full bg-gradient-to-tl from-gray-300 to-white object-cover object-center`}
             />
           </AspectRatio>
-          <h2 className="line-clamp-1 bg-fun-blue p-1 text-center font-semibold transition-all duration-1000 dark:bg-soft-peach">
-            {title}
-          </h2>
+          <section className="absolute bottom-0 z-[1] w-full">
+            <h2 className="line-clamp-1 bg-gradient-to-t from-baltic-sea/75 to-transparent px-2 pt-2.5 font-semibold text-soft-peach">
+              {title}
+            </h2>
+          </section>
         </section>
       </Link>
     </UICard>
