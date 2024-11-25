@@ -1,6 +1,6 @@
 // components
 import CardList from "@/components/common/card-list";
-import Loading from "@/components/common/loading";
+import ContentGallerySkeleton from "@/components/common/content-gallery-skeleton";
 import MessageError from "@/components/common/message-error";
 import Pagination from "@/components/common/pagination";
 // types
@@ -39,7 +39,7 @@ export default function ContentGallery({
   }
 
   if (isLoading || !content?.data) {
-    return <Loading />;
+    return <ContentGallerySkeleton type={type} />;
   }
 
   const { data, pagination } = content;
@@ -64,10 +64,11 @@ export default function ContentGallery({
     return <MessageError title="No content" message="No content here" />;
   }
 
+  window.scrollTo(0, 0);
   return (
     <section className="mx-auto flex h-full max-w-7xl flex-col justify-between px-5">
       <h1
-        className={`mb-4 text-xl font-bold ${search ? "text-baltic-sea dark:text-soft-peach" : "text-center text-2xl"}`}
+        className={`mb-2 font-bold ${search ? "text-xl text-baltic-sea dark:text-soft-peach" : "text-center text-3xl"}`}
       >
         {search ? `Search ${type}: ${search}` : title}
       </h1>
