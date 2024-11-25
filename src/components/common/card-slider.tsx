@@ -3,7 +3,7 @@ import "swiper/swiper-bundle.css";
 
 import { Link } from "react-router-dom";
 // import Swiper core and required modules
-import { Autoplay, FreeMode, Mousewheel } from "swiper/modules";
+import { Autoplay, Mousewheel } from "swiper/modules";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -18,7 +18,7 @@ interface CardSliderProps {
 
 export default function CardSlider({ data, title, link }: CardSliderProps) {
   return (
-    <section className="mx-4 mb-4">
+    <section className="mx-auto max-w-7xl px-5">
       <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
         <h2 className="text-xl font-bold">{title}</h2>
         {link && (
@@ -32,7 +32,7 @@ export default function CardSlider({ data, title, link }: CardSliderProps) {
       </section>
 
       <Swiper
-        modules={[Autoplay, Mousewheel, FreeMode]}
+        modules={[Autoplay, Mousewheel]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
         mousewheel={true}
