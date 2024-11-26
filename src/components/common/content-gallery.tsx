@@ -64,7 +64,6 @@ export default function ContentGallery({
     return <MessageError title="No content" message="No content here" />;
   }
 
-  window.scrollTo(0, 0);
   return (
     <section className="mx-auto flex h-full max-w-7xl flex-col justify-between px-5">
       <h1

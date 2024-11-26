@@ -10,8 +10,10 @@ export default function ContentGallerySkeleton({
   type,
 }: ContentGallerySkeletonProps) {
   return (
-    <section className="mx-auto flex h-full max-w-7xl flex-col justify-between px-5">
-      <Skeleton className="mb-2 h-9" />
+    <section className="mx-auto flex h-[calc(100vh_-_var(--navbar-height))] max-w-7xl flex-col justify-between overflow-hidden px-5">
+      <section>
+        <Skeleton className="mb-2 h-9" />
+      </section>
 
       <section className="grow">
         <section className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
