@@ -3,7 +3,6 @@ import { useEffect } from "react";
 // components
 import CardSlider from "@/components/common/card-slider";
 import FetchError from "@/components/common/fetch-error";
-import Loading from "@/components/common/loading";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // lib
@@ -36,22 +35,30 @@ export default function Home() {
     return <FetchError />;
   }
 
-  if (loadingInNow || loadingInUpcoming || !seasonNow || !seasonUpcoming) {
-    return <Loading />;
-  }
-
   return (
     <>
       <CardSlider
         title="Now"
         link="/now"
-        data={mapAnimeArray(seasonNow.data)}
+        data={seasonNow ? mapAnimeArray(seasonNow.data) : null}
+        isLoading={loadingInNow}
       />
 
       <CardSlider
         title="Upcoming"
         link="/upcoming"
-        data={mapAnimeArray(seasonUpcoming.data)}
+        data={
+          seasonUpcoming
+            ? mapAnimeArray(
+                seasonUpcoming.data.filter(
+                  (value, index, self) =>
+                    self.findIndex((item) => item.mal_id === value.mal_id) ===
+                    index,
+                ),
+              )
+            : null
+        }
+        isLoading={loadingInUpcoming}
       />
     </>
   );

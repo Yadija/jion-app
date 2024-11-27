@@ -8,15 +8,27 @@ import { Autoplay, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
+import CardSliderSkeleton from "@/components/common/card-slider-skeleton";
+// types
 import { Card } from "@/types/card.type";
 
 interface CardSliderProps {
-  data: Card[];
   title: string;
   link?: string;
+  data: Card[] | null;
+  isLoading: boolean;
 }
 
-export default function CardSlider({ data, title, link }: CardSliderProps) {
+export default function CardSlider({
+  title,
+  link,
+  data,
+  isLoading,
+}: CardSliderProps) {
+  if (isLoading || !data) {
+    return <CardSliderSkeleton />;
+  }
+
   return (
     <section className="mx-auto max-w-7xl px-5">
       <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
