@@ -9,6 +9,7 @@ import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 // components
+import BannerSliderSkeleton from "@/components/common/banner-slider-skeleton";
 import GenreList from "@/components/common/genre-list";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -20,8 +21,8 @@ function Navigation() {
   const swiper = useSwiper();
 
   return (
-    <section className="absolute bottom-0 z-[1] w-full gap-2">
-      <section className="mx-auto flex w-full max-w-7xl justify-end px-5">
+    <section className="absolute bottom-0 z-[1] w-full">
+      <section className="mx-auto flex w-full max-w-7xl justify-end space-x-2 px-5">
         <Button
           onClick={() => swiper.slidePrev()}
           variant="ghost"
@@ -47,15 +48,25 @@ function Navigation() {
 interface BannerSliderProps {
   title: string;
   link: string;
-  data: Anime[];
+  data: Anime[] | null;
+  isLoading: boolean;
 }
 
-export default function BannerSlider({ title, link, data }: BannerSliderProps) {
+export default function BannerSlider({
+  title,
+  link,
+  data,
+  isLoading,
+}: BannerSliderProps) {
+  if (isLoading || !data) {
+    return <BannerSliderSkeleton />;
+  }
+
   return (
     <section className="relative top-[calc(var(--navbar-height)_*_-1)]">
       <Swiper
         modules={[Autoplay]}
-        className="mr-0 h-[calc(var(--banner-height)_+_var(--navbar-height)_+_150px)]"
+        className="h-[calc(var(--banner-height)_+_var(--navbar-height)_+_150px)]"
         slidesPerView={1}
         loop={true}
         autoplay={{ delay: 8000, disableOnInteraction: false }}
@@ -84,8 +95,7 @@ export default function BannerSlider({ title, link, data }: BannerSliderProps) {
                 <section className="shrink-0">
                   <Card className="w-full max-w-[200px] border-none">
                     <img
-                      className="w-[120px] rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm sm:w-[150px] md:w-[225px]"
-                      // src={item.image}
+                      className="w-[120px] rounded-md bg-gradient-to-tl from-gray-300 to-white shadow-sm sm:w-[150px] md:w-[200px]"
                       src={item.images.jpg.large_image_url}
                       alt={item.title}
                     />
