@@ -64,3 +64,21 @@ export function mapMangaArray(data: Manga[]): Card[] {
 export function mapProducerArray(data: Producer[]): Card[] {
   return data.map(mapProducerData);
 }
+
+export function getCurrentSeason() {
+  const now = new Date();
+  const month = now.getMonth() + 1;
+  const year = now.getFullYear();
+
+  if (month >= 3 && month <= 5) {
+    return `Spring ${year}`;
+  } else if (month >= 6 && month <= 8) {
+    return `Summer ${year}`;
+  } else if (month >= 9 && month <= 11) {
+    return `Fall ${year}`;
+  } else if (month >= 12 && month <= 2) {
+    return `Winter ${year}`;
+  } else {
+    return "";
+  }
+}
