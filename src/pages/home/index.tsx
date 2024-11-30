@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 
 // components
+import BannerSlider from "@/components/common/banner-slider";
 import CardSlider from "@/components/common/card-slider";
 import FetchError from "@/components/common/fetch-error";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // lib
-import { mapAnimeArray } from "@/lib/utils";
+import { getCurrentSeason, mapAnimeArray } from "@/lib/utils";
 // states
 import { asyncReceiveNow } from "@/states/now/action";
 import { asyncReceiveUpcoming } from "@/states/upcoming/action";
@@ -37,10 +38,10 @@ export default function Home() {
 
   return (
     <>
-      <CardSlider
-        title="Now"
+      <BannerSlider
+        title={`Now: ${getCurrentSeason()}`}
         link="/now"
-        data={seasonNow ? mapAnimeArray(seasonNow.data) : null}
+        data={seasonNow?.data || null}
         isLoading={loadingInNow}
       />
 
