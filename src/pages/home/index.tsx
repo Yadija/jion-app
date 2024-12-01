@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <>
       <BannerSlider
-        title={`Now: ${getCurrentSeason()}`}
+        title={`Season: ${getCurrentSeason()}`}
         link="/now"
         data={seasonNow?.data || null}
         isLoading={loadingInNow}
