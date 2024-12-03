@@ -23,7 +23,7 @@ export default function ScoreBoard({
           {score ? score : "N/A"}
         </p>
         <p className="text-xs">
-          {scored_by !== null ? `${scored_by} users` : "-"}
+          {scored_by !== null ? `${scored_by?.toLocaleString()} users` : "-"}
         </p>
       </article>
       <section className="text-sm sm:text-base">
