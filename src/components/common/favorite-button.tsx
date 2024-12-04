@@ -1,6 +1,8 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
+// components
+import { Button } from "@/components/ui/button";
 // lib
 import { db } from "@/lib/db";
 // types
@@ -44,10 +46,17 @@ export default function FavoriteButton({ data }: FavoriteButtonProps) {
   }
 
   return (
-    <section className="fixed bottom-0 right-0 z-[2] mx-10 my-6 flex size-12 items-center justify-center rounded-full bg-fun-blue text-2xl text-soft-peach shadow-md dark:bg-denim-blue dark:text-baltic-sea">
-      <button onClick={() => onFavoriteHandler(data)}>
-        {item ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
-      </button>
+    <section className="fixed bottom-0 right-0 z-[2] mx-2 my-6 md:mx-4 lg:mx-6 ">
+      <section className="flex justify-end px-5">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full bg-fun-blue text-soft-peach shadow-md hover:text-fun-blue dark:bg-denim-blue dark:text-baltic-sea hover:dark:bg-secondary dark:hover:text-denim-blue"
+          onClick={() => onFavoriteHandler(data)}
+        >
+          {item ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
+        </Button>
+      </section>
     </section>
   );
 }
