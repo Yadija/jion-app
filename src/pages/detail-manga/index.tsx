@@ -58,7 +58,7 @@ export default function DetailManga() {
 
       <BannerImage image={detail.data.images.jpg.large_image_url} />
 
-      <section className="relative mb-6 flex grow flex-col gap-4 px-4 sm:px-6 md:px-12 lg:px-20">
+      <section className="relative mx-auto mb-6 flex w-full max-w-7xl grow flex-col gap-4 px-5">
         <section className="grid gap-5 [grid-template-areas:'image_title''score_score'] [grid-template-columns:auto_1fr] md:[grid-template-areas:'image_title''image_score']">
           <section className="[grid-area:image]">
             <ImagePreview
