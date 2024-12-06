@@ -44,16 +44,12 @@ export default function AnimeInformationSection({
           <b>Aired:</b> {aired.string}
         </p>
       )}
-      {episodes && (
-        <p>
-          <b>Episodes:</b> {episodes}
-        </p>
-      )}
-      {duration && (
-        <p>
-          <b>Duration:</b> {duration}
-        </p>
-      )}
+      <p>
+        <b>Episodes:</b> {episodes ? episodes : "Unknown"}
+      </p>
+      <p>
+        <b>Duration:</b> {duration ? duration : "Unknown"}
+      </p>
       {source && (
         <p>
           <b>Source:</b> {source}
