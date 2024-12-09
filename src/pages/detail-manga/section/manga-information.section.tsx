@@ -2,6 +2,7 @@ interface MangaInformationSectionProps {
   status?: string;
   published?: { string: string };
   volumes?: number;
+  chapters?: number;
   type?: string;
 }
 
@@ -9,6 +10,7 @@ export default function MangaInformationSection({
   status,
   published,
   volumes,
+  chapters,
   type,
 }: MangaInformationSectionProps) {
   return (
@@ -26,11 +28,12 @@ export default function MangaInformationSection({
           <b>Published:</b> {published.string}
         </p>
       )}
-      {volumes && (
-        <p>
-          <b>Volumes:</b> {volumes}
-        </p>
-      )}
+      <p>
+        <b>Volumes:</b> {volumes ? volumes : "Unknown"}
+      </p>
+      <p>
+        <b>Chapters:</b> {chapters ? chapters : "Unknown"}
+      </p>
       {type && (
         <p>
           <b>Type:</b> {type}
