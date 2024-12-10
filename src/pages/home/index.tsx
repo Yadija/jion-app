@@ -7,9 +7,11 @@ import FetchError from "@/components/common/fetch-error";
 // hooks
 import { useAppDispatch, useAppSelector } from "@/hooks/use-redux";
 // lib
-import { getCurrentSeason, mapAnimeArray } from "@/lib/utils";
+import { getCurrentSeason, mapAnimeArray, mapMangaArray } from "@/lib/utils";
 // states
 import { asyncReceiveNow } from "@/states/now/action";
+import { asyncReceiveTopAnime } from "@/states/top-anime/action";
+import { asyncReceiveTopManga } from "@/states/top-manga/action";
 import { asyncReceiveUpcoming } from "@/states/upcoming/action";
 
 export default function Home() {
@@ -23,6 +25,18 @@ export default function Home() {
     isLoading: loadingInUpcoming,
     error: errorInUpcoming,
   } = useAppSelector((states) => states.upcoming);
+
+  const {
+    data: topAnime,
+    isLoading: loadingInTopAnime,
+    error: errorInTopAnime,
+  } = useAppSelector((states) => states.topAnime) || [];
+  const {
+    data: topManga,
+    isLoading: loadingInTopManga,
+    error: errorInTopManga,
+  } = useAppSelector((states) => states.topManga) || [];
+
   const dispatch = useAppDispatch();
 
   document.title = "Jion";
@@ -30,9 +44,14 @@ export default function Home() {
   useEffect(() => {
     dispatch(asyncReceiveNow());
     dispatch(asyncReceiveUpcoming());
+
+    setTimeout(() => {
+      dispatch(asyncReceiveTopAnime());
+      dispatch(asyncReceiveTopManga());
+    }, 2000);
   }, [dispatch]);
 
-  if (errorInNow || errorInUpcoming) {
+  if (errorInNow || errorInUpcoming || errorInTopAnime || errorInTopManga) {
     return <FetchError />;
   }
 
@@ -60,6 +79,20 @@ export default function Home() {
             : null
         }
         isLoading={loadingInUpcoming}
+      />
+
+      <CardSlider
+        title="Top Anime"
+        link="/top/anime"
+        data={topAnime ? mapAnimeArray(topAnime.data) : null}
+        isLoading={loadingInTopAnime}
+      />
+
+      <CardSlider
+        title="Top Manga"
+        link="/top/manga"
+        data={topManga ? mapMangaArray(topManga.data) : null}
+        isLoading={loadingInTopManga}
       />
     </>
   );
