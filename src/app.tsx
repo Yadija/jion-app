@@ -14,7 +14,6 @@ import Manga from "@/pages/manga";
 import NotFound from "@/pages/not-found";
 import Now from "@/pages/now";
 import Producers from "@/pages/producers";
-import Top from "@/pages/top";
 import TopAnime from "@/pages/top-anime";
 import TopManga from "@/pages/top-manga";
 import Upcoming from "@/pages/upcoming";
@@ -32,10 +31,6 @@ export default function App() {
     {
       path: "/upcoming",
       element: <Upcoming />,
-    },
-    {
-      path: "/top",
-      element: <Top />,
     },
     {
       path: "/top/anime",
