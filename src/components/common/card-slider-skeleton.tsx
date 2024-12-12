@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function CardSliderSkeleton() {
   return (
-    <section className="mx-auto max-w-7xl px-5">
+    <section className="mx-auto my-2 max-w-7xl px-5">
       <section className="flex justify-between">
         <Skeleton className="h-7 w-1/2" />
         <Skeleton className="h-7 w-1/6" />

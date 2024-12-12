@@ -30,7 +30,7 @@ export default function CardSlider({
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-5">
+    <section className="mx-auto my-2 max-w-7xl px-5">
       <section className="mb-2 flex justify-between text-baltic-sea dark:text-soft-peach">
         <h2 className="text-xl font-bold">{title}</h2>
         {link && (
