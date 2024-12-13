@@ -1,6 +1,15 @@
 import { parseAsInteger, useQueryState } from "nuqs";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
+// components
+import {
+  Pagination as UIPagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 // hooks
 import { DOTS, usePagination } from "@/hooks/use-pagination";
 // types
@@ -29,73 +38,65 @@ export default function Pagination({ pagination }: PaginationProps) {
   }
 
   return (
-    <section className="flex justify-center py-10 text-baltic-sea dark:text-soft-peach">
-      <ul className="inline-flex text-xl">
-        <li className="flex px-3">
-          <button
-            type="button"
-            className={`m-auto ${
-              currentPage === 1
-                ? "cursor-default"
-                : "hover:text-fun-blue hover:dark:text-denim-blue"
-            }`}
+    <UIPagination>
+      <PaginationContent className="my-5">
+        <PaginationItem>
+          <PaginationPrevious
+            withName={false}
             onClick={
               currentPage === 1 ? undefined : () => setPage(currentPage - 1)
             }
-          >
-            <FiChevronLeft />
-          </button>
-        </li>
+            className={currentPage === 1 ? "cursor-default" : "cursor-pointer"}
+          />
+        </PaginationItem>
+
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
-              <li key={pageNumber + Math.random()} className="cursor-default">
-                &#8230;
-              </li>
+              <PaginationItem key={pageNumber + Math.random()}>
+                <PaginationEllipsis />
+              </PaginationItem>
             );
           }
 
           return (
-            <li
-              key={pageNumber}
-              className={`px-3 hover:hover:text-fun-blue hover:dark:text-denim-blue ${
-                pageNumber === currentPage &&
-                "text-fun-blue dark:text-denim-blue"
-              }`}
-            >
-              <button
-                type="button"
-                className={pageNumber === currentPage ? "cursor-default" : ""}
+            <PaginationItem key={pageNumber}>
+              <PaginationLink
                 onClick={
                   typeof pageNumber === "number" &&
                   (pageNumber === currentPage || pageNumber > lastVisiblePage)
                     ? undefined
                     : () => setPage(Number(pageNumber))
                 }
+                isActive={pageNumber === currentPage}
+                className={
+                  pageNumber === currentPage
+                    ? "cursor-default"
+                    : "cursor-pointer"
+                }
               >
                 {pageNumber}
-              </button>
-            </li>
+              </PaginationLink>
+            </PaginationItem>
           );
         })}
-        <li className="flex px-3">
-          <button
-            type="button"
-            className={`m-auto ${
+
+        <PaginationItem>
+          <PaginationNext
+            withName={false}
+            className={
               currentPage === lastVisiblePage
                 ? "cursor-default"
-                : "hover:hover:text-fun-blue hover:dark:text-denim-blue"
-            }`}
+                : "cursor-pointer"
+            }
             onClick={
               currentPage === lastVisiblePage
                 ? undefined
                 : () => setPage(currentPage + 1)
             }
-          >
-            <FiChevronRight />
-          </button>
-        </li>
-      </ul>
-    </section>
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </UIPagination>
   );
 }
