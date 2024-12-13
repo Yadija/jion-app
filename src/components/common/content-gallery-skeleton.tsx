@@ -15,7 +15,7 @@ export default function ContentGallerySkeleton({
         <Skeleton className="mb-2 h-9" />
       </section>
 
-      <section className="grow">
+      <section className="mb-5 grow">
         <section className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {Array.from({ length: 24 }).map((_, index) => (
             <AspectRatio
@@ -29,7 +29,7 @@ export default function ContentGallerySkeleton({
       </section>
 
       <section className="py-10">
-        <Skeleton className="h-9" />
+        <Skeleton className="h-10" />
       </section>
     </section>
   );

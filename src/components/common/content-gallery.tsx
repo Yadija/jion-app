@@ -71,7 +71,7 @@ export default function ContentGallery({
       >
         {search ? `Search ${type}: ${search}` : title}
       </h1>
-      <section className="grow">
+      <section className="mb-5 grow">
         <CardList data={data} />
       </section>
       <Pagination pagination={pagination} />
