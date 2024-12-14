@@ -47,7 +47,7 @@ export default function CardSlider({
         modules={[Autoplay, Mousewheel]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        mousewheel={true}
+        mousewheel={{ forceToAxis: true }}
         spaceBetween={20}
         slidesPerView="auto" // this is a point to make the carousel fixed
       >
